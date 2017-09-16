@@ -35,6 +35,3 @@ function puppyfw_init() {
 	( new \PuppyFW\REST() )->init();
 }
 add_action( 'init', 'puppyfw_init' );
-
-// Example. Remove when completed.
-require_once PUPPYFW_PATH . 'demo/demo.php';
