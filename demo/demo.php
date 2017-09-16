@@ -1,6 +1,6 @@
 <?php
 /**
- * Example for simple options
+ * Example for options
  *
  * @package PuppyFW
  */
@@ -23,10 +23,10 @@ function prefix_register_options_demo( $framework ) {
 				'id'      => 'tab',
 				'type'    => 'tab',
 				'tabs'    => array(
-					'simple' => 'Simple fields',
-					'wordpress' => 'WordPress fields',
-					'advanced' => 'Advanced fields',
-					'dependency' => 'Field dependency',
+					'basic'      => 'Basic fields',
+					'wordpress'  => 'WordPress fields',
+					'advanced'   => 'Advanced fields',
+					'dependency' => 'Field dependencies',
 				),
 				'fields'  => array(
 					array(
@@ -35,21 +35,21 @@ function prefix_register_options_demo( $framework ) {
 						'desc'    => 'This is an example text field',
 						'default' => 'Default value',
 						'type'    => 'text',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 					),
 					array(
 						'id'      => 'test_email',
 						'title'   => 'Email field',
 						'default' => 'truongwp@gmail.com',
 						'type'    => 'email',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 					),
 					array(
 						'id'      => 'test_number',
 						'title'   => 'Number field',
 						'default' => 10,
 						'type'    => 'number',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'attrs'   => array(
 							'min'     => 0,
 							'step'    => 2,
@@ -60,7 +60,7 @@ function prefix_register_options_demo( $framework ) {
 						'id'      => 'test_tel',
 						'title'   => 'Tel field',
 						'type'    => 'tel',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'attrs'   => array(
 							'size' => 15,
 						),
@@ -69,14 +69,14 @@ function prefix_register_options_demo( $framework ) {
 						'id'      => 'test_checkbox',
 						'title'   => 'Checkbox field',
 						'type'    => 'checkbox',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'default' => true,
 					),
 					array(
 						'id'      => 'test_checkbox_list',
 						'title'   => 'Checkbox list field',
 						'type'    => 'checkbox_list',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'default' => array( 2, 3 ),
 						'options' => array(
 							1 => 'Option 1',
@@ -89,7 +89,7 @@ function prefix_register_options_demo( $framework ) {
 						'id'      => 'test_radio',
 						'title'   => 'Radio field',
 						'type'    => 'radio',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'inline'  => true,
 						'default' => 2,
 						'options' => array(
@@ -102,7 +102,7 @@ function prefix_register_options_demo( $framework ) {
 						'id'      => 'test_select',
 						'title'   => 'Select field',
 						'type'    => 'select',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'default' => 3,
 						'options' => array(
 							1 => 'Option 1',
@@ -115,7 +115,7 @@ function prefix_register_options_demo( $framework ) {
 						'id'      => 'test_multiple_select',
 						'title'   => 'Multiple select field',
 						'type'    => 'select',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 						'multiple' => true,
 						'default' => array( 2, 4 ),
 						'options' => array(
@@ -130,7 +130,7 @@ function prefix_register_options_demo( $framework ) {
 						'title'   => 'Textarea field',
 						'default' => "Default value\nSupport multiline",
 						'type'    => 'textarea',
-						'tab'     => 'simple',
+						'tab'     => 'basic',
 					),
 
 					// WordPress fields.
@@ -161,7 +161,7 @@ function prefix_register_options_demo( $framework ) {
 					),
 					array(
 						'id'    => 'test_editor',
-						'title' => 'Test editor',
+						'title' => 'Editor',
 						'type'  => 'editor',
 						'tab'   => 'wordpress',
 						'tinymce' => true,
@@ -185,7 +185,7 @@ function prefix_register_options_demo( $framework ) {
 					// Advanced fields.
 					array(
 						'id'    => 'test_map',
-						'title' => 'Test map',
+						'title' => 'Map field',
 						'type'  => 'map',
 						'tab'   => 'advanced',
 					),
@@ -200,20 +200,20 @@ function prefix_register_options_demo( $framework ) {
 						'tab'    => 'advanced',
 						'fields' => array(
 							array(
-								'id'    => 'test_textarea_2',
-								'title' => 'Test textarea 2',
+								'id'    => 'test_textarea_1',
+								'title' => 'Textarea 1',
 								'type'  => 'textarea',
 								'tab'   => 'tab-1',
 							),
 							array(
-								'id'    => 'test_textarea_3',
-								'title' => 'Test textarea 3',
+								'id'    => 'test_textarea_2',
+								'title' => 'Textarea 2',
 								'type'  => 'textarea',
 								'tab'   => 'tab-2',
 							),
 							array(
-								'id'    => 'test_textarea_4',
-								'title' => 'Test textarea 4',
+								'id'    => 'test_textarea_3',
+								'title' => 'Textarea 3',
 								'type'  => 'textarea',
 								'tab'   => 'tab-3',
 							),
@@ -221,7 +221,7 @@ function prefix_register_options_demo( $framework ) {
 					),
 					array(
 						'id'     => 'test_group',
-						'title'  => 'Test group',
+						'title'  => 'Group field',
 						'type'   => 'group',
 						'tab'    => 'advanced',
 						'fields' => array(
@@ -234,20 +234,6 @@ function prefix_register_options_demo( $framework ) {
 								'id'    => 'email',
 								'title' => 'Email',
 								'type'  => 'text',
-							),
-							array(
-								'id'    => 'nested_group',
-								'title' => 'Nested group',
-								'type'  => 'group',
-								'fields' => array(
-									array(
-										'id'    => 'test_editor',
-										'title' => 'Nested Editor',
-										'type'  => 'editor',
-										'tinymce' => true,
-										'quicktags' => false,
-									),
-								),
 							),
 						),
 					),
@@ -286,7 +272,7 @@ function prefix_register_options_demo( $framework ) {
 										'type'  => 'repeatable',
 										'repeat_field_type' => 'editor',
 										'tinymce' => true,
-										'quicktags' => false,
+										'quicktags' => true,
 									),
 								),
 							),
@@ -295,20 +281,20 @@ function prefix_register_options_demo( $framework ) {
 
 					// Dependency tab.
 					array(
-						'id' => 'human',
+						'id'    => 'human',
 						'title' => 'Are you a human?',
 						'type'  => 'checkbox',
 						'tab'   => 'dependency',
 					),
 					array(
-						'id' => 'has_name',
+						'id'    => 'has_name',
 						'title' => 'Do you have a name?',
 						'type'  => 'checkbox',
 						'tab'   => 'dependency',
 						'dependency' => array( 'human', '==', true ),
 					),
 					array(
-						'id' => 'your_name',
+						'id'    => 'your_name',
 						'title' => 'What is your name?',
 						'type'  => 'text',
 						'tab'   => 'dependency',
@@ -318,7 +304,7 @@ function prefix_register_options_demo( $framework ) {
 						),
 					),
 					array(
-						'id' => 'skills',
+						'id'    => 'skills',
 						'title' => 'Your skills?',
 						'type'  => 'checkbox_list',
 						'tab'   => 'dependency',
