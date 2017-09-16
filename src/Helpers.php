@@ -20,14 +20,14 @@ class Helpers {
 	 * @param boolean $echo     Whether to print template or not. Default is true.
 	 */
 	public static function get_view( $filename, $data = array(), $echo = true ) {
-		if ( ! file_exists( PUPPYPRESS_PATH . 'views/' . $filename ) ) {
+		if ( ! file_exists( PUPPYFW_PATH . 'views/' . $filename ) ) {
 			return;
 		}
 
 		extract( $data );
 
 		ob_start();
-		include PUPPYPRESS_PATH . 'views/' . $filename;
+		include PUPPYFW_PATH . 'views/' . $filename;
 		$output = ob_get_clean();
 
 		if ( ! $echo ) {

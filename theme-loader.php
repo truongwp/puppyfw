@@ -5,15 +5,15 @@
  * @package PuppyFW
  */
 
-if ( defined( 'PUPPYPRESS_VERSION' ) ) {
+if ( defined( 'PUPPYFW_VERSION' ) ) {
 	return;
 }
 
-define( 'PUPPYPRESS_VERSION', '0.1.0' );
-define( 'PUPPYPRESS_PATH', get_template_directory() . '/puppyfw/' );
-define( 'PUPPYPRESS_URL', get_template_directory_uri() . '/puppyfw/' );
+define( 'PUPPYFW_VERSION', '0.1.0' );
+define( 'PUPPYFW_PATH', get_template_directory() . '/puppyfw/' );
+define( 'PUPPYFW_URL', get_template_directory_uri() . '/puppyfw/' );
 
-require_once PUPPYPRESS_PATH . 'vendor/autoload.php';
+require_once PUPPYFW_PATH . 'vendor/autoload.php';
 
 /**
  * Framework initialize.
@@ -37,4 +37,4 @@ function puppyfw_init() {
 add_action( 'init', 'puppyfw_init' );
 
 // Example. Remove when completed.
-require_once PUPPYPRESS_PATH . 'demo/demo.php';
+require_once PUPPYFW_PATH . 'demo/demo.php';

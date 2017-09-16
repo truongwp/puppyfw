@@ -42,7 +42,7 @@ class Page {
 	 */
 	public function __construct( $data ) {
 		if ( empty( $data['menu_slug'] ) ) {
-			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), esc_html( PUPPYPRESS_VERSION ) );
+			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), esc_html( PUPPYFW_VERSION ) );
 			return;
 		}
 
@@ -200,14 +200,14 @@ class Page {
 
 		wp_enqueue_style(
 			'puppyfw',
-			PUPPYPRESS_URL . 'assets/css/puppyfw.css',
+			PUPPYFW_URL . 'assets/css/puppyfw.css',
 			array(),
 			'0.1.0'
 		);
 
 		wp_enqueue_script(
 			'vue',
-			PUPPYPRESS_URL . 'assets/js/lib/vue.min.js',
+			PUPPYFW_URL . 'assets/js/lib/vue.min.js',
 			array(),
 			'2.4.4',
 			true
@@ -217,7 +217,7 @@ class Page {
 
 		wp_enqueue_script(
 			'puppyfw-core',
-			PUPPYPRESS_URL . 'assets/js/core.js',
+			PUPPYFW_URL . 'assets/js/core.js',
 			array(
 				'jquery',
 				'vue',
