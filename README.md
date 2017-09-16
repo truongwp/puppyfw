@@ -2,7 +2,7 @@
 
 PuppyFW is a powerful options framework for WordPress themes and plugins.
 
-At the moment, this plugin only support option pages. If you want more features like meta boxes, term meta, comment meta, user profile fields, etc., visit [https://metabox/io](https://metabox/io), you won't be disappointed.
+At the moment, this plugin only support option pages. If you want more features like meta boxes, term meta, comment meta, user profile fields, etc., visit [https://metabox.io/](https://metabox.io/), you won't be disappointed.
 
 ### Features ###
 
@@ -30,7 +30,6 @@ At the moment, this plugin only support option pages. If you want more features 
 - map
 - editor
 - tab
-- section
 - group
 - repeatable
 
@@ -45,6 +44,8 @@ composer require truongwp\puppyfw=*
 ```
 
 ### Usage ###
+
+[[View full documentation]](https://github.com/truongwp/puppyfw/wiki)
 
 Add the code below to your themes or plugins:
 
@@ -71,6 +72,8 @@ If you get any problems when define fields, please create issue or contact me vi
 
 ### Contribution ###
 
-Contributor: [@truongwp](https://truongwp.com)
+**Contributor:** [@truongwp](https://truongwp.com)
+
+To contribute, clone this repo and run `composer dump-autoload`, add your code and create a Pull Request.
 
 Bug reports or Pull requests are welcome.
