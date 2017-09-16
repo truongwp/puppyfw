@@ -1,0 +1,43 @@
+.puppyfw {
+	border: 1px solid $color-border;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	background: #fff;
+	margin: 1.5em 0;
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+.puppyfw__title {
+	background-color: #222;
+	color: #fff;
+	padding: 30px 20px;
+	font-size: 2em;
+}
+
+.puppyfw__actions {
+	background-color: #f4f3f3;
+	padding: 15px 20px;
+	border-bottom: 1px solid #dfdfdf;
+
+	.puppyfw__footer & {
+		border-top: 1px solid #dfdfdf;
+		border-bottom: 0;
+	}
+}
+
+.puppyfw__content {
+	padding: 0 15px;
+}
+
+.puppyfw__credit {
+	font-size: 11px;
+	color: #777;
+	float: right;
+	line-height: 28px;
+
+	a {
+		color: inherit;
+	}
+}

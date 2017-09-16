@@ -1,0 +1,36 @@
+.puppyfw-images__preview {
+	@extend %clear;
+}
+
+.puppyfw-images__item {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #ddd;
+	padding: 4px;
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+
+	img {
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+.puppyfw-images__item-placeholder {
+	width: 80px;
+	height: 80px !important;
+	border: 1px dashed #ddd;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	float: left;
+}
+
+.puppyfw-images__remove {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	z-index: 10;
+}

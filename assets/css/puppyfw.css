@@ -1,0 +1,306 @@
+.puppyfw-tab__titles:after, .puppyfw-images__preview:after, .puppyfw-group__title:after {
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.puppyfw-tab__titles:after, .puppyfw-images__preview:after, .puppyfw-group__title:after {
+  content: " ";
+}
+
+.puppyfw-remove {
+  display: block;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  position: relative;
+  background-color: #d54e21;
+}
+
+.puppyfw-remove:before {
+  content: " ";
+  display: block;
+  height: 2px;
+  width: 6px;
+  background-color: #fff;
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  z-index: 1;
+}
+
+.puppyfw-notice {
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.puppyfw-notice-error {
+  background-color: #edc8c4;
+  border-color: #bd8180;
+  color: #c03a36;
+}
+
+.puppyfw-notice-error span {
+  color: #b4302b;
+}
+
+.puppyfw-notice-success {
+  background-color: #def3d5;
+  border-color: #afcda3;
+  color: #597250;
+}
+
+.puppyfw-notice-success span {
+  color: #597151;
+}
+
+.puppyfw-field {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #f0f0f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.puppyfw-field--fullwidth {
+  display: block;
+}
+
+.puppyfw-field:last-of-type {
+  border-bottom: 0;
+}
+
+.puppyfw-field__label {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+  width: 200px;
+  line-height: 29px;
+}
+
+.puppyfw-field__control {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.puppyfw-field__desc {
+  font-style: italic;
+  color: #777;
+  margin-top: 0.5em;
+}
+
+.puppyfw-checkbox .puppyfw-field__label,
+.puppyfw-checkbox-list .puppyfw-field__label {
+  line-height: 18px;
+}
+
+.puppyfw-textarea textarea {
+  width: 100%;
+  height: 150px;
+  max-width: 100%;
+}
+
+.puppyfw-editor .wp-switch-editor {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.puppyfw-checkbox-list,
+.puppyfw-radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.puppyfw-checkbox-list .puppyfw-field__control:not(.inline) label,
+.puppyfw-radio .puppyfw-field__control:not(.inline) label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.puppyfw-checkbox-list .puppyfw-field__control.inline label,
+.puppyfw-radio .puppyfw-field__control.inline label {
+  margin-right: 15px;
+}
+
+.puppyfw-repeatable {
+  padding-top: 0;
+  border-bottom: 0;
+}
+
+.puppyfw-repeatable__item .puppyfw-field:not(.puppyfw-group):last-of-type {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.puppyfw-repeatable__button {
+  margin-top: 1.5em !important;
+}
+
+.puppyfw-tab__titles {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.76923em;
+  position: relative;
+}
+
+.puppyfw-tab__titles:before {
+  content: " ";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #e5e5e5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.puppyfw-tab__titles li {
+  margin: 0 0.38462em 0 0;
+  float: left;
+  position: relative;
+  z-index: 10;
+}
+
+.puppyfw-tab__titles li a {
+  display: block;
+  border: 1px solid #e5e5e5;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  background-color: #f5f5f5;
+  color: #777;
+}
+
+.puppyfw-tab__titles li.active a {
+  border-bottom-color: #fff;
+  background-color: #fff;
+  color: #000;
+}
+
+.puppyfw-tab__pane {
+  padding: 0 10px;
+}
+
+.puppyfw-image-preview {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.puppyfw-image-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  padding: 5px;
+  border: 1px solid #eee;
+}
+
+.puppyfw-images__item {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  padding: 4px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.puppyfw-images__item img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.puppyfw-images__item-placeholder {
+  width: 80px;
+  height: 80px !important;
+  border: 1px dashed #ddd;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.puppyfw-images__remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
+}
+
+.puppyfw-map-container {
+  width: 450px;
+  height: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.puppyfw-group__title {
+  background-color: #e5e5e5;
+  padding: 8px 15px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.puppyfw-group__title .controls {
+  float: right;
+  display: block;
+}
+
+.puppyfw-group__container {
+  border: 1px solid #e5e5e5;
+  padding: 10px 15px;
+}
+
+.puppyfw {
+  border: 1px solid #e5e5e5;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  background: #fff;
+  margin: 1.5em 0;
+}
+
+.puppyfw * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.puppyfw__title {
+  background-color: #222;
+  color: #fff;
+  padding: 30px 20px;
+  font-size: 2em;
+}
+
+.puppyfw__actions {
+  background-color: #f4f3f3;
+  padding: 15px 20px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.puppyfw__footer .puppyfw__actions {
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 0;
+}
+
+.puppyfw__content {
+  padding: 0 15px;
+}
+
+.puppyfw__credit {
+  font-size: 11px;
+  color: #777;
+  float: right;
+  line-height: 28px;
+}
+
+.puppyfw__credit a {
+  color: inherit;
+}
+
+/*# sourceMappingURL=../sourcemaps/puppyfw.css.map */

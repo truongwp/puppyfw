@@ -1,0 +1,12 @@
+.puppyfw-image-preview {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    padding: 5px;
+    border: 1px solid #eee;
+  }
+}

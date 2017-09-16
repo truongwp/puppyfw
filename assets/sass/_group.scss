@@ -1,0 +1,18 @@
+.puppyfw-group__title {
+	@extend %clear;
+
+	background-color: #e5e5e5;
+	padding: 8px 15px;
+	font-weight: 700;
+	line-height: 16px;
+
+	.controls {
+		float: right;
+		display: block;
+	}
+}
+
+.puppyfw-group__container {
+	border: 1px solid #e5e5e5;
+	padding: 10px 15px;
+}

@@ -1,0 +1,86 @@
+.puppyfw-field {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+
+  &--fullwidth {
+    display: block;
+  }
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+    width: 200px;
+    line-height: 29px; // Equals input height
+  }
+
+  &__control {
+    flex-grow: 1;
+  }
+
+  &__desc {
+    font-style: italic;
+    color: #777;
+    margin-top: 0.5em;
+  }
+}
+
+.puppyfw-checkbox,
+.puppyfw-checkbox-list {
+  .puppyfw-field__label {
+    line-height: 18px;
+  }
+}
+
+.puppyfw-textarea {
+  textarea {
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
+  }
+}
+
+.puppyfw-editor {
+  .wp-switch-editor {
+    box-sizing: content-box;
+  }
+}
+
+.puppyfw-checkbox-list,
+.puppyfw-radio {
+  display: flex;
+
+  .puppyfw-field__control:not(.inline) {
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  .puppyfw-field__control.inline {
+    label {
+      margin-right: 15px;
+    }
+  }
+}
+
+.puppyfw-repeatable {
+  padding-top: 0;
+  border-bottom: 0;
+
+  &__item {
+    .puppyfw-field:not(.puppyfw-group):last-of-type {
+      border-bottom: 1px solid #f0f0f0;
+    }
+  }
+
+  &__button {
+    margin-top: 1.5em !important;
+  }
+}

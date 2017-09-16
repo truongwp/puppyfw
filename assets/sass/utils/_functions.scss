@@ -1,0 +1,3 @@
+@function ppfw-size($size-in-pixel, $font-size-base) {
+  @return $size-in-pixel / $font-size-base * 1em;
+}
