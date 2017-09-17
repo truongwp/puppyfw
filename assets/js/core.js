@@ -454,7 +454,11 @@
 		mixins: [ Field ],
 
 		beforeMount: function() {
-			Vue.set( this.field, 'value', Boolean( this.field.value ) );
+			if ( ! this.field.value || this.field.value == 'false' ) {
+				this.field.value = 0;
+			} else {
+				this.field.value = 1;
+			}
 		}
 	});
 
