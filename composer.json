@@ -15,6 +15,7 @@
             "PuppyFW\\": "src/"
         },
         "files": [
+            "loader.php",
             "src/functions.php"
         ]
     }
