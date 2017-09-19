@@ -10,7 +10,7 @@ At the moment, this plugin only support option pages. If you want more features 
 - Multi-level tabs
 - Multi-level groups
 - Unlimited repeat fields, works with any fields, any level of tabs and groups
-- Field dependency
+- Field dependencies
 - Option to save data to separate rows or single row in options table
 
 ### Supported fields ###
@@ -33,19 +33,38 @@ At the moment, this plugin only support option pages. If you want more features 
 - group
 - repeatable
 
+Checkout the short video below to have a first look about this plugin:
+
+[https://youtu.be/b7g5cdUrT9s](https://youtu.be/b7g5cdUrT9s)
+
 ### Installation ###
 
-1. Download from [WordPress plugins repo](https://wordpress.org/plugins/puppyfw/) and install it.
+**Manually install**
 
-2. Use composer:
+1. Download stable version [here](https://truongwp.blog/puppyfw.zip).
+2. Upload and install as a WordPress plugin.
+3. If you want to use PuppyFW in your plugins, include file `puppyfw/puppyfw.php`.
+4. If you want to use PuppyFW in your themes, include file `puppyfw/theme-loader.php` and remember to change two path constants.
 
+**Install via composer**
+
+Run following command to add PuppyFW to your dependencies:
 ```
-composer require truongwp\puppyfw=*
+composer require truongwp/puppyfw=*
 ```
+
+**Install directly from Github repo**
+
+1. Download or checkout this repo.
+2. Move to `puppyfw` folder and run following command:
+```
+composer dump-autoload
+```
+3. Do step 2 or 3 or 4 from **Manually install** section.
 
 ### Usage ###
 
-[[View full documentation]](https://github.com/truongwp/puppyfw/wiki)
+[[View full documentation]](https://github.com/truongwp/puppyfw/wiki) (*Work in process*)
 
 Add the code below to your themes or plugins:
 
@@ -66,14 +85,13 @@ function prefix_register_options( $framework ) {
 add_action( 'puppyfw_init', 'prefix_register_options' );
 ```
 
-For defining fields, please see file `puppyfw/demo/demo.php`. You can include that file to view the demo.
+See [https://developer.wordpress.org/reference/functions/add_submenu_page/](https://developer.wordpress.org/reference/functions/add_submenu_page/) and [https://developer.wordpress.org/reference/functions/add_menu_page/](https://developer.wordpress.org/reference/functions/add_menu_page/) for page parameters.
+For defining fields, please see file `puppyfw/demo/demo.php`. You can also include that file to view the demo.
 
 If you get any problems when define fields, please create issue or contact me via email [truongwp@gmail.com](mailto:truongwp@gmail.com). I'm working on documentation and will finish it ASAP.
 
 ### Contribution ###
 
 **Contributor:** [@truongwp](https://truongwp.com)
-
-To contribute, clone this repo and run `composer dump-autoload`, add your code and create a Pull Request.
 
 Bug reports or Pull requests are welcome.
