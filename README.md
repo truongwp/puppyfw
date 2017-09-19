@@ -4,7 +4,7 @@ PuppyFW is a powerful options framework for WordPress themes and plugins.
 
 At the moment, this plugin only support option pages. If you want more features like meta boxes, term meta, comment meta, user profile fields, etc., visit [https://metabox.io/](https://metabox.io/), you won't be disappointed.
 
-### Features ###
+## Features
 
 - Multiple option pages
 - Multi-level tabs
@@ -13,7 +13,7 @@ At the moment, this plugin only support option pages. If you want more features 
 - Field dependencies
 - Option to save data to separate rows or single row in options table
 
-### Supported fields ###
+## Supported fields
 
 - text
 - email
@@ -37,32 +37,34 @@ Checkout the short video below to have a first look about this plugin:
 
 [https://youtu.be/b7g5cdUrT9s](https://youtu.be/b7g5cdUrT9s)
 
-### Installation ###
+## Installation
 
-**Manually install**
+### Manually install
 
-1. Download stable version [here](https://truongwp.blog/puppyfw.zip).
-2. Upload and install as a WordPress plugin.
-3. If you want to use PuppyFW in your plugins, include file `puppyfw/puppyfw.php`.
-4. If you want to use PuppyFW in your themes, include file `puppyfw/theme-loader.php` and remember to change two path constants.
+**Step 1:** Download stable version [here](https://truongwp.blog/puppyfw.zip).
 
-**Install via composer**
+**Step 2:** Upload and install as a WordPress plugin.
+- If you want to use PuppyFW in your plugins, include file `puppyfw/puppyfw.php`.
+- If you want to use PuppyFW in your themes, include file `puppyfw/theme-loader.php` and remember to change two path constants.
 
-Run following command to add PuppyFW to your dependencies:
+### Install via composer
+
+Run following command to add PuppyFW to your plugins or themes:
 ```
 composer require truongwp/puppyfw=*
 ```
 
-**Install directly from Github repo**
+### Install from Github repo
 
-1. Download or checkout this repo.
-2. Move to `puppyfw` folder and run following command:
+**Step 1:** Download or checkout this repo.
+
+**Step 2:** Move to `puppyfw/` folder and run following command:
 ```
 composer dump-autoload
 ```
-3. Do step 2 or 3 or 4 from **Manually install** section.
+**Step 3:** Do step 2 from **Manually install** section.
 
-### Usage ###
+## Usage
 
 [[View full documentation]](https://github.com/truongwp/puppyfw/wiki) (*Work in process*)
 
@@ -85,13 +87,13 @@ function prefix_register_options( $framework ) {
 add_action( 'puppyfw_init', 'prefix_register_options' );
 ```
 
-See [https://developer.wordpress.org/reference/functions/add_submenu_page/](https://developer.wordpress.org/reference/functions/add_submenu_page/) and [https://developer.wordpress.org/reference/functions/add_menu_page/](https://developer.wordpress.org/reference/functions/add_menu_page/) for page parameters.
-For defining fields, please see file `puppyfw/demo/demo.php`. You can also include that file to view the demo.
+
+For defining fields, please read [Defining fields](https://github.com/truongwp/puppyfw/wiki/Defining-fields) or look at file `puppyfw/demo/demo.php`.
 
 If you get any problems when define fields, please create issue or contact me via email [truongwp@gmail.com](mailto:truongwp@gmail.com). I'm working on documentation and will finish it ASAP.
 
-### Contribution ###
+## Contribution
 
-**Contributor:** [@truongwp](https://truongwp.com)
+**Contributor:** [truongwp](https://truongwp.com)
 
 Bug reports or Pull requests are welcome.
