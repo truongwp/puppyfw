@@ -7,6 +7,7 @@
 
 namespace PuppyFW;
 
+use WP_Error;
 use WP_REST_Request;
 
 /**
@@ -37,19 +38,25 @@ class REST {
 	 * Save settings handle.
 	 *
 	 * @param  WP_REST_Request $request Request object.
-	 * @return object
+	 * @return WP_REST_Response|WP_Error
 	 */
 	public function save_settings( WP_REST_Request $request ) {
-		check_ajax_referer( 'wp_rest' );
+		if ( ! check_ajax_referer( 'wp_rest', '_wpnonce', false ) ) {
+			return new WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
+		}
 
 		if ( ! $request->get_param( 'field_data' ) ) {
-			return rest_ensure_response( esc_html__( 'Empty settings data.', 'puppyfw' ) );
+			return new WP_Error( 'empty-data', esc_html__( 'Empty settings data.', 'puppyfw' ) );
 		}
 
 		$data = $request->get_param( 'field_data' );
 		$page_data = $request->get_param( 'page_data' );
 		$option_name = ! empty( $page_data['option_name'] ) ? $page_data['option_name'] : '';
 		$option_value = array();
+
+		if ( ! current_user_can( $page_data['capability'] ) ) {
+			return new WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
+		}
 
 		foreach ( $data as $field_data ) {
 			if ( empty( $field_data['id'] ) ) {

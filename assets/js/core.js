@@ -427,8 +427,9 @@
 						});
 					},
 
-					error: function( error ) {
-						console.log( error );
+					error: function( response ) {
+						console.log( response );
+						_this.error( response.responseJSON.message );
 					}
 				});
 			}
