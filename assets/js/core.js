@@ -155,6 +155,10 @@
 					return value;
 				}
 
+				if ( 'EMPTY' == dependency.operator ) {
+					return ! value;
+				}
+
 				if ( 'CONTAIN' == dependency.operator ) {
 					if( typeof dependency.value == 'string' ) {
 						return value.indexOf( dependency.value ) >= 0;
