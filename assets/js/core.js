@@ -52,24 +52,10 @@
 			 * @return {Object}           Parsed dependency object.
 			 */
 			parseDependency: function( dependency ) {
-				var fieldId, operator, fieldVal;
-
-				fieldId = dependency[0];
-
-				if ( dependency.length == 1 ) {
-					operator == 'NOT EMPTY';
-				} else if ( dependency.length == 2 ) {
-					operator = '==';
-					fieldVal = dependency[1];
-				} else {
-					operator = dependency[1];
-					fieldVal = dependency[2];
-				}
-
 				return {
-					id: fieldId,
-					operator: operator,
-					value: fieldVal
+					id: dependency[0],
+					operator: dependency[1],
+					value: dependency[2]
 				};
 			},
 

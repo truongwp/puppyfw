@@ -299,8 +299,8 @@ function prefix_register_options_demo( $framework ) {
 						'type'  => 'text',
 						'tab'   => 'dependency',
 						'dependency' => array(
-							array( 'human', true ),
-							array( 'has_name', true ),
+							array( 'human', '==', true ),
+							array( 'has_name', '==', true ),
 						),
 					),
 					array(
