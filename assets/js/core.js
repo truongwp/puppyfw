@@ -256,9 +256,9 @@
 						break;
 
 					case 'group':
-						var sep = '---';
+						var delimiter = '---';
 						_.each( field.fields, function( childField ) {
-							childField.id_attr = field.id_attr + sep + childField.id;
+							childField.id_attr = field.id_attr + delimiter + childField.id;
 							_this.addFieldToRegistry( childField );
 						});
 
@@ -913,7 +913,7 @@
 			 */
 			populateData: function() {
 				var _this = this,
-					sep = '---';
+					delimiter = '---';
 
 				/**
 				 * Populate data for a field.
@@ -921,7 +921,7 @@
 				 */
 				var populate = function( field ) {
 					_.each( field.fields, function( childField ) {
-						childField.id_attr = field.id_attr + sep + childField.id;
+						childField.id_attr = field.id_attr + delimiter + childField.id;
 
 						if ( ! field.value ) {
 							return;
