@@ -10,7 +10,7 @@ At the moment, this plugin only support option pages. If you want more features 
 - Multi-level tabs
 - Multi-level groups
 - Unlimited repeat fields, works with any fields, any level of tabs and groups
-- Field dependencies
+- Field dependency
 - Option to save data to separate rows or single row in options table
 
 ## Supported fields
@@ -66,7 +66,7 @@ composer dump-autoload
 
 ## Usage
 
-[[View full documentation]](https://github.com/truongwp/puppyfw/wiki) (*Work in process*)
+[[View detail documentation]](https://github.com/truongwp/puppyfw/wiki)
 
 Add the code below to your themes or plugins:
 
