@@ -39,3 +39,11 @@ function puppyfw_init() {
 	( new \PuppyFW\REST() )->init();
 }
 add_action( 'init', 'puppyfw_init' );
+
+/**
+ * Load Localisation files.
+ */
+function puppyfw_load_plugin_textdomain() {
+	load_plugin_textdomain( 'puppyfw', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'puppyfw_load_plugin_textdomain' );
