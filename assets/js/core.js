@@ -903,7 +903,12 @@
 		}
 	});
 
-	Vue.component('puppyfw-group', {
+	Vue.component( 'puppyfw-html', {
+		template: '#puppyfw-field-template-html',
+		mixins: [ Field ]
+	});
+
+	Vue.component( 'puppyfw-group', {
 		template: '#puppyfw-field-template-group',
 		mixins: [ Field, ParentField ],
 

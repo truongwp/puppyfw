@@ -184,6 +184,11 @@ function prefix_register_options_demo( $framework ) {
 
 					// Advanced fields.
 					array(
+						'type'    => 'html',
+						'content' => '<h2>This is HTML content</h2>',
+						'tab'     => 'advanced',
+					),
+					array(
 						'id'    => 'test_map',
 						'title' => 'Map field',
 						'type'  => 'map',
