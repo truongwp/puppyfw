@@ -32,6 +32,9 @@ At the moment, this plugin only support option pages. If you want more features 
 - tab
 - group
 - repeatable
+- ...
+
+View [Defining fields](https://github.com/truongwp/puppyfw/wiki/Defining-fields) for all supported field types.
 
 Checkout the short video below to have a first look about this plugin:
 
@@ -94,6 +97,6 @@ If you get any problems when define fields, please create issue or contact me vi
 
 ## Contribution
 
-**Contributor:** [truongwp](https://truongwp.com)
+**Creator & Contributor:** [truongwp](https://truongwp.com)
 
 Bug reports or Pull requests are welcome.
