@@ -29,6 +29,10 @@
     color: #777;
     margin-top: 0.5em;
   }
+
+  .wp-picker-container * {
+    box-sizing: content-box;
+  }
 }
 
 .puppyfw-checkbox,

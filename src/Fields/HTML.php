@@ -7,6 +7,9 @@
 
 namespace PuppyFW\Fields;
 
+/**
+ * Class HTML
+ */
 class HTML extends Field {
 
 	/**

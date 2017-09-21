@@ -189,6 +189,14 @@ function prefix_register_options_demo( $framework ) {
 						'tab'     => 'advanced',
 					),
 					array(
+						'id'      => 'color',
+						'title'   => 'Colorpicker field',
+						'type'    => 'colorpicker',
+						'alpha'   => true, // Support rgba value.
+						'default' => '#c40000',
+						'tab'     => 'advanced',
+					),
+					array(
 						'id'    => 'test_map',
 						'title' => 'Map field',
 						'type'  => 'map',

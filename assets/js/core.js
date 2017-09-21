@@ -908,6 +908,23 @@
 		mixins: [ Field ]
 	});
 
+	Vue.component( 'puppyfw-colorpicker', {
+		template: '#puppyfw-field-template-colorpicker',
+		mixins: [ Field ],
+
+		mounted: function() {
+			var _this = this;
+			$( this.$el ).find( '.puppyfw-colorpicker-input' ).wpColorPicker({
+				change: function( event, ui ) {
+					Vue.set( _this.field, 'value', event.target.value );
+				},
+				clear: function() {
+					Vue.set( _this.field, 'value', '' );
+				}
+			});
+		}
+	});
+
 	Vue.component( 'puppyfw-group', {
 		template: '#puppyfw-field-template-group',
 		mixins: [ Field, ParentField ],

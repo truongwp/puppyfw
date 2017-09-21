@@ -195,6 +195,7 @@ class Page {
 			return;
 		}
 
+		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_editor();
 		wp_enqueue_media();
 
@@ -213,6 +214,14 @@ class Page {
 			true
 		);
 
+		wp_enqueue_script(
+			'wp-color-picker-alpha',
+			PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js',
+			array( 'wp-color-picker' ),
+			'1.2.2',
+			true
+		);
+
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
 		wp_enqueue_script(
@@ -224,6 +233,7 @@ class Page {
 				'underscore',
 				'editor',
 				'jquery-ui-sortable',
+				'wp-color-picker-alpha',
 			),
 			'0.1.0',
 			true
