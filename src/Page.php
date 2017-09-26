@@ -196,8 +196,14 @@ class Page {
 		}
 
 		wp_enqueue_style( 'wp-color-picker' );
+
 		wp_enqueue_editor();
 		wp_enqueue_media();
+
+		wp_enqueue_style( 'puppyfw-jquery-ui', PUPPYFW_URL . 'assets/lib/jquery-ui/jquery-ui.min.css', array(), '0.1.0' );
+
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_script( 'jquery-ui-sortable' );
 
 		wp_enqueue_style(
 			'puppyfw',
@@ -222,7 +228,16 @@ class Page {
 			true
 		);
 
-		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script(
+			'puppyfw-components',
+			PUPPYFW_URL . 'assets/js/components.js',
+			array(
+				'vue',
+				'jquery-ui-datepicker',
+			),
+			'0.1.0',
+			true
+		);
 
 		wp_enqueue_script(
 			'puppyfw-core',
@@ -234,6 +249,7 @@ class Page {
 				'editor',
 				'jquery-ui-sortable',
 				'wp-color-picker-alpha',
+				'puppyfw-components',
 			),
 			'0.1.0',
 			true

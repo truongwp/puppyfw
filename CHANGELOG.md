@@ -1,6 +1,6 @@
 ## [Unreleased]
 ### Added
-- Added `html`, `colorpicker` field
+- Added `html`, `colorpicker`, `datepicker` field
 
 ## [0.1.1] - 2017-09-21
 ### Added

@@ -147,6 +147,10 @@
   margin-top: 1.5em !important;
 }
 
+.puppyfw-datepicker-div #ui-datepicker-div {
+  z-index: 1000 !important;
+}
+
 .puppyfw-tab__titles {
   list-style: none;
   margin: 0;

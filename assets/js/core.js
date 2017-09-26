@@ -925,6 +925,11 @@
 		}
 	});
 
+	Vue.component( 'puppyfw-datepicker', {
+		template: '#puppyfw-field-template-datepicker',
+		mixins: [ Field ]
+	});
+
 	Vue.component( 'puppyfw-group', {
 		template: '#puppyfw-field-template-group',
 		mixins: [ Field, ParentField ],

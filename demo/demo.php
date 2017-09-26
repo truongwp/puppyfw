@@ -197,6 +197,16 @@ function prefix_register_options_demo( $framework ) {
 						'tab'     => 'advanced',
 					),
 					array(
+						'id'         => 'date',
+						'title'      => 'Datepicker field',
+						'type'       => 'datepicker',
+						'js_options' => array(
+							'minDate'    => '13/10/2017',
+							'dateFormat' => 'dd/mm/yy',
+						),
+						'tab'        => 'advanced',
+					),
+					array(
 						'id'    => 'test_map',
 						'title' => 'Map field',
 						'type'  => 'map',

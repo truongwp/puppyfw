@@ -88,3 +88,8 @@
     margin-top: 1.5em !important;
   }
 }
+
+// Fix z-index datepicker
+.puppyfw-datepicker-div #ui-datepicker-div {
+  z-index: 1000 !important;
+}
