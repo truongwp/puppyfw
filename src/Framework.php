@@ -10,7 +10,7 @@ namespace PuppyFW;
 /**
  * Class Framework
  */
-class Framework {
+class Framework extends Singleton {
 
 	/**
 	 * Settings pages.

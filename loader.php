@@ -20,10 +20,19 @@ if ( ! defined( 'PUPPYFW_URL' ) ) {
 }
 
 /**
+ * Gets framework instance.
+ *
+ * @return \PuppyFW\Framework
+ */
+function puppyfw() {
+	return \PuppyFW\Framework::get_instance();
+}
+
+/**
  * Framework initialize.
  */
 function puppyfw_init() {
-	$framework = new \PuppyFW\Framework();
+	$framework = puppyfw();
 
 	/**
 	 * Registers settings for framework.

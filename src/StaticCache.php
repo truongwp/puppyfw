@@ -4,6 +4,8 @@
  * Cache options value for multiple get option call
  *
  * @package PuppyFW
+ * @author Truong Giang <truongwp@gmail.com>
+ * @version 1.0.0
  */
 
 namespace PuppyFW;
