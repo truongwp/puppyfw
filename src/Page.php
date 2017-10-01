@@ -29,6 +29,13 @@ class Page {
 	protected $fields = array();
 
 	/**
+	 * Default value of fields.
+	 *
+	 * @var array
+	 */
+	public $defaults = array();
+
+	/**
 	 * Used field types.
 	 *
 	 * @var array
@@ -127,6 +134,8 @@ class Page {
 		}
 
 		unset( $this->data['fields'] );
+
+		var_dump($this->defaults);
 	}
 
 	/**

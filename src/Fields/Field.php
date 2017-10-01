@@ -132,10 +132,22 @@ abstract class Field {
 	 * @return array
 	 */
 	public function to_array() {
-		$data = $this->data;
-		$page = $this->data['option_page'];
 		$this->render();
 
+		$page = $this->data['option_page'];
+		$data = $this->data;
+
+		// Store default value. Omit child fields of group.
+		if ( ! is_null( $data['default'] ) && ! StaticCache::get( 'begin_group' ) ) {
+			$page->defaults[ $data['id'] ] = $data['default'];
+		}
+
+		// Flag for child fields can check if is in group.
+		if ( in_array( $data['type'], array( 'group', 'repeatable' ) ) ) {
+			StaticCache::set( 'begin_group', true );
+		}
+
+		// Recursive call.
 		if ( ! empty( $this->data['fields'] ) && is_array( $this->data['fields'] ) ) {
 			$fields = array();
 
@@ -151,6 +163,10 @@ abstract class Field {
 			}
 
 			$data['fields'] = $fields;
+		}
+
+		if ( in_array( $data['type'], array( 'group', 'repeatable' ) ) ) {
+			StaticCache::set( 'begin_group', false );
 		}
 
 		return $data;
