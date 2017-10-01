@@ -7,7 +7,7 @@
  * Author URI:      https://truongwp.com/
  * Text Domain:     puppyfw
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         0.1.2
  *
  * @package         PuppyFW
  */

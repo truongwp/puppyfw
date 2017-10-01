@@ -23,11 +23,15 @@ class Framework {
 	 * Adds page.
 	 *
 	 * @param array $page_data Page data.
-	 * @return Page
+	 * @return Page|false
 	 */
 	public function add_page( $page_data ) {
+		if ( empty( $page_data['menu_slug'] ) ) {
+			return false;
+		}
+
 		$page = new Page( $page_data );
-		$this->pages[] = $page;
+		$this->pages[ $page_data['menu_slug'] ] = $page;
 		return $page;
 	}
 
