@@ -67,7 +67,6 @@ class Page {
 			'position'    => 100,
 			'fields'      => array(),
 			'option_name' => '',
-			'logo'        => Helpers::get_view( 'logo.php', array(), false ),
 			'hide_header' => false,
 		) );
 	}

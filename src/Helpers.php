@@ -13,31 +13,6 @@ namespace PuppyFW;
 class Helpers {
 
 	/**
-	 * Gets view.
-	 *
-	 * @param string  $filename File name with extension.
-	 * @param array   $data     Data passed to view. Default is an empty array.
-	 * @param boolean $echo     Whether to print template or not. Default is true.
-	 */
-	public static function get_view( $filename, $data = array(), $echo = true ) {
-		if ( ! file_exists( PUPPYFW_PATH . 'views/' . $filename ) ) {
-			return;
-		}
-
-		extract( $data );
-
-		ob_start();
-		include PUPPYFW_PATH . 'views/' . $filename;
-		$output = ob_get_clean();
-
-		if ( ! $echo ) {
-			return $output;
-		}
-
-		echo $output; // WPCS: xss ok.
-	}
-
-	/**
 	 * Converts snakecase to camel case.
 	 *
 	 * @param  string $string String need to be converted.
