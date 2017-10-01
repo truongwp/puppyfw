@@ -1,4 +1,12 @@
 ## [Unreleased]
+### Added
+- Hook `puppyfw_after_init`
+- Added API to get page instance.
+
+### Removed
+
+### Changed
+- Use singleton pattern for Framework class
 
 ## [0.1.2]
 ### Added

@@ -50,4 +50,17 @@ class Framework extends Singleton {
 			$page->init();
 		}
 	}
+
+	/**
+	 * Gets page instance.
+	 *
+	 * @param  string $page_slug Page slug.
+	 * @return Page
+	 */
+	public function get_page( $page_slug ) {
+		if ( ! isset( $this->pages[ $page_slug ] ) ) {
+			return false;
+		}
+		return $this->pages[ $page_slug ];
+	}
 }

@@ -45,6 +45,15 @@ function puppyfw_init() {
 
 	$framework->init();
 
+	/**
+	 * Fires after init framework.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @param Framework $framework Framework instance.
+	 */
+	do_action( 'puppyfw_after_init', $framework );
+
 	( new \PuppyFW\REST() )->init();
 }
 add_action( 'init', 'puppyfw_init' );
