@@ -116,7 +116,12 @@ class Page {
 		$fields_data = $this->data['fields'];
 
 		foreach ( $fields_data as $field_data ) {
-			$field_data['option_name'] = $this->data['option_name'];
+			if ( ! empty( $this->data['option_name'] ) ) {
+				$field_data['option_name'] = $this->data['option_name'];
+			}
+
+			$field_data['option_page'] = $this;
+
 			$field = FieldFactory::get_field( $field_data );
 			$this->fields[] = $field->to_array();
 		}

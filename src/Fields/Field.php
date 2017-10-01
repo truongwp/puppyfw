@@ -137,7 +137,14 @@ abstract class Field {
 			$fields = array();
 
 			foreach ( $this->data['fields'] as $field ) {
-				$field['option_name'] = $this->data['option_name'];
+				if ( ! empty( $this->data['option_name'] ) ) {
+					$field['option_name'] = $this->data['option_name'];
+				}
+
+				if ( ! empty( $this->data['option_page'] ) ) {
+					$field['option_page'] = $this->data['option_page'];
+				}
+
 				$field = FieldFactory::get_field( $field );
 				$fields[] = $field->to_array();
 			}
