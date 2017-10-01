@@ -108,11 +108,13 @@ abstract class Field {
 	 * Field render.
 	 */
 	public function render() {
+		$page = $this->data['option_page'];
+
 		// Don't print template for used field types.
 		$mapped_type = Helpers::get_mapped_type( $this->data['type'] );
-		if ( ! in_array( $mapped_type, Page::$used_field_types ) ) {
+		if ( ! in_array( $mapped_type, $page->used_field_types ) ) {
 			add_action( 'admin_footer', array( $this, 'js_template' ) );
-			Page::$used_field_types[] = $mapped_type;
+			$page->used_field_types[] = $mapped_type;
 		}
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
@@ -131,6 +133,7 @@ abstract class Field {
 	 */
 	public function to_array() {
 		$data = $this->data;
+		$page = $this->data['option_page'];
 		$this->render();
 
 		if ( ! empty( $this->data['fields'] ) && is_array( $this->data['fields'] ) ) {
@@ -141,9 +144,7 @@ abstract class Field {
 					$field['option_name'] = $this->data['option_name'];
 				}
 
-				if ( ! empty( $this->data['option_page'] ) ) {
-					$field['option_page'] = $this->data['option_page'];
-				}
+				$field['option_page'] = $page;
 
 				$field = FieldFactory::get_field( $field );
 				$fields[] = $field->to_array();

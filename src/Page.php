@@ -33,7 +33,7 @@ class Page {
 	 *
 	 * @var array
 	 */
-	public static $used_field_types = array();
+	public $used_field_types = array();
 
 	/**
 	 * Class Page constructor.
