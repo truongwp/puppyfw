@@ -134,8 +134,6 @@ class Page {
 		}
 
 		unset( $this->data['fields'] );
-
-		var_dump($this->defaults);
 	}
 
 	/**
@@ -278,5 +276,32 @@ class Page {
 				'saveError' => __( 'Some errors occur when save data.', 'puppyfw' ),
 			),
 		) );
+	}
+
+	/**
+	 * Gets option value.
+	 *
+	 * @param  string $option_id Option ID.
+	 * @return mixed
+	 */
+	public function get_option( $option_id ) {
+		$default_value = isset( $this->defaults[ $option_id ] ) ? $this->defaults[ $option_id ] : null;
+		if ( $this->data['option_name'] ) {
+			$options = get_option( $this->data['option_name'], array() );
+			$value = isset( $options[ $option_id ] ) ? $options[ $option_id ] : $default_value;
+		} else {
+			$value = get_option( $option_id, $default_value );
+		}
+
+		/**
+		 * Filters option value.
+		 *
+		 * @since 0.2.0
+		 *
+		 * @param mixed  $value     Option value.
+		 * @param string $option_id Option ID.
+		 * @param Page   $page      Option page instance.
+		 */
+		return apply_filters( 'puppyfw_get_option', $value, $option_id, $this );
 	}
 }
