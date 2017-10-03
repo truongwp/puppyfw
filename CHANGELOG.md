@@ -1,12 +1,16 @@
 ## [Unreleased]
 ### Added
 - Hook `puppyfw_after_init`
-- Added API to get page instance.
+- Hook `puppyfw_before_page_rendering`
+- Added API to get page instance
+- Added API to get option value
+- Allow defining fields use OOP
 
 ### Removed
 
 ### Changed
-- Use singleton pattern for Framework class
+- Used singleton pattern for Framework class
+- Moved framework init to outside of `init` hook
 
 ## [0.1.2]
 ### Added

@@ -13,6 +13,17 @@ namespace PuppyFW\Fields;
 class Tab extends Field {
 
 	/**
+	 * Check if this field has value.
+	 *
+	 * @var bool
+	 */
+	protected $has_value = true;
+
+	public function add_tab( $tab_id, $tab_title ) {
+		$this->data['tabs'][ $tab_id ] = $tab_title;
+	}
+
+	/**
 	 * Render js template.
 	 */
 	public function js_template() {

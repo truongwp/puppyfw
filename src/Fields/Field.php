@@ -18,6 +18,13 @@ use PuppyFW\Page;
 abstract class Field {
 
 	/**
+	 * Check if this field has value. Eg: tab, html don't have value.
+	 *
+	 * @var bool
+	 */
+	protected $has_value = true;
+
+	/**
 	 * Field data.
 	 *
 	 * @var array
@@ -25,11 +32,41 @@ abstract class Field {
 	protected $data;
 
 	/**
+	 * Page instance.
+	 *
+	 * @var Page
+	 */
+	protected $page;
+
+	/**
+	 * Child fields.
+	 *
+	 * @var array
+	 */
+	protected $fields = array();
+
+	/**
 	 * Class Field construct.
 	 *
 	 * @param array $field_data Field data.
 	 */
 	public function __construct( $field_data ) {
+		$this->page = $field_data['page'];
+		unset( $field_data['page'] );
+
+		// Store default value.
+		if ( $this->has_value() && isset( $field_data['default'] ) && ! is_null( $field_data['default'] ) ) {
+			$this->page->add_default( $field_data['id'], $field_data['default'] );
+		}
+
+		// Support old defining fields method.
+		if ( ! empty( $field_data['fields'] ) ) {
+			foreach ( $field_data['fields'] as $field ) {
+				$this->add_field( $field );
+			}
+			unset( $field_data['fields'] );
+		}
+
 		$field_data = $this->normalize( $field_data );
 		$this->data = apply_filters( 'puppyfw_normalize_field_data', $field_data, $this );
 	}
@@ -59,48 +96,79 @@ abstract class Field {
 
 		$field_data['id_attr'] = 'puppyfw-' . $field_data['id'];
 
-		/**
-		 * Filters field value.
-		 *
-		 * @since 0.1.0
-		 *
-		 * @param mixed $value      Field value.
-		 * @param array $field_data Field data.
-		 */
-		$field_data['value'] = apply_filters( 'puppyfw_get_field_value', $this->get_value( $field_data ), $field_data );
+		if ( $this->has_value ) {
+			/**
+			 * Filters field value.
+			 *
+			 * @since 0.1.0
+			 *
+			 * @param mixed $value      Field value.
+			 * @param array $field_data Field data.
+			 */
+			$field_data['value'] = apply_filters( 'puppyfw_get_field_value', $this->get_value( $field_data ), $field_data );
+		}
 
 		return $field_data;
 	}
 
 	/**
+	 * Adds child field.
+	 *
+	 * @param array $field_data Field data.
+	 * @return Field Field instance.
+	 */
+	public function add_field( $field_data ) {
+		$field_data['page'] = $this->page;
+		$field = FieldFactory::get_field( $field_data );
+
+		// Add field.
+		$this->fields[] = $field;
+
+		return $field;
+	}
+
+	/**
+	 * Gets field data.
+	 *
+	 * @param  string $key Data key.
+	 * @return mixed
+	 */
+	public function get( $key ) {
+		if ( isset( $this->data[ $key ] ) ) {
+			return $this->data[ $key ];
+		}
+		return null;
+	}
+
+	/**
+	 * Gets page instance.
+	 *
+	 * @return Page
+	 */
+	public function get_page() {
+		return $this->page;
+	}
+
+	/**
+	 * Checks if this field has value.
+	 *
+	 * @return bool
+	 */
+	public function has_value() {
+		return $this->has_value;
+	}
+
+	/**
 	 * Gets field value. Only support first level field.
+	 * This method is called when normalizing so we must passed field data.
 	 *
 	 * @param  array $field_data Field data.
 	 * @return mixed
 	 */
 	protected function get_value( $field_data ) {
-		if ( in_array( $field_data['type'], array( 'tab', 'section' ) ) ) {
-			return null;
+		if ( $this->has_value ) {
+			return $this->page->get_option( $field_data['id'] );
 		}
-
-		if ( ! $field_data['option_name'] ) {
-			return get_option( $field_data['id'], $field_data['default'] );
-		}
-
-		$options = StaticCache::get( $field_data['option_name'] );
-		if ( is_null( $options ) ) {
-			$options = get_option( $field_data['option_name'] );
-			StaticCache::set( $field_data['option_name'], $options );
-		}
-
-		if ( isset( $options[ $field_data['id'] ] ) ) {
-			return $options[ $field_data['id'] ];
-		}
-
-		if ( isset( $field_data['default'] ) ) {
-			return $field_data['default'];
-		}
-
 		return null;
 	}
 
@@ -108,16 +176,17 @@ abstract class Field {
 	 * Field render.
 	 */
 	public function render() {
-		$page = $this->data['option_page'];
-
-		// Don't print template for used field types.
+		// Don't print template for rendered field types.
 		$mapped_type = Helpers::get_mapped_type( $this->data['type'] );
-		if ( ! in_array( $mapped_type, $page->used_field_types ) ) {
-			add_action( 'admin_footer', array( $this, 'js_template' ) );
-			$page->used_field_types[] = $mapped_type;
-		}
+		$rendered_fields = StaticCache::get( 'rendered_fields' );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		if ( ! in_array( $mapped_type, $rendered_fields ) ) {
+			add_action( 'admin_footer', array( $this, 'js_template' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+
+			$rendered_fields[] = $mapped_type;
+			StaticCache::set( 'rendered_fields', $rendered_fields );
+		}
 	}
 
 	/**
@@ -133,40 +202,14 @@ abstract class Field {
 	 */
 	public function to_array() {
 		$this->render();
-
-		$page = $this->data['option_page'];
 		$data = $this->data;
 
-		// Store default value. Omit child fields of group.
-		if ( ! is_null( $data['default'] ) && ! StaticCache::get( 'begin_group' ) ) {
-			$page->defaults[ $data['id'] ] = $data['default'];
-		}
-
-		// Flag for child fields can check if is in group.
-		if ( in_array( $data['type'], array( 'group', 'repeatable' ) ) ) {
-			StaticCache::set( 'begin_group', true );
-		}
-
-		// Recursive call.
-		if ( ! empty( $this->data['fields'] ) && is_array( $this->data['fields'] ) ) {
+		if ( $this->fields ) {
 			$fields = array();
-
-			foreach ( $this->data['fields'] as $field ) {
-				if ( ! empty( $this->data['option_name'] ) ) {
-					$field['option_name'] = $this->data['option_name'];
-				}
-
-				$field['option_page'] = $page;
-
-				$field = FieldFactory::get_field( $field );
+			foreach ( $this->fields as $field ) {
 				$fields[] = $field->to_array();
 			}
-
 			$data['fields'] = $fields;
-		}
-
-		if ( in_array( $data['type'], array( 'group', 'repeatable' ) ) ) {
-			StaticCache::set( 'begin_group', false );
 		}
 
 		return $data;

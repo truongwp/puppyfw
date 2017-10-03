@@ -723,7 +723,7 @@
 					tinymce: _this.field.tinymce,
 					quicktags: _this.field.quicktags
 				} );
-			}, 500 );
+			}, 600 );
 		}
 	});
 

@@ -28,35 +28,30 @@ function puppyfw() {
 	return \PuppyFW\Framework::get_instance();
 }
 
+$framework = puppyfw();
+
 /**
- * Framework initialize.
+ * Registers settings for framework.
+ *
+ * @since 0.1.0
+ *
+ * @param Framework $framework Framework instance.
  */
-function puppyfw_init() {
-	$framework = puppyfw();
+do_action( 'puppyfw_init', $framework );
 
-	/**
-	 * Registers settings for framework.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @param Framework $framework Framework instance.
-	 */
-	do_action( 'puppyfw_init', $framework );
+$framework->init();
 
-	$framework->init();
+/**
+ * Fires after init framework.
+ *
+ * @since 0.2.0
+ *
+ * @param Framework $framework Framework instance.
+ */
+do_action( 'puppyfw_after_init', $framework );
 
-	/**
-	 * Fires after init framework.
-	 *
-	 * @since 0.2.0
-	 *
-	 * @param Framework $framework Framework instance.
-	 */
-	do_action( 'puppyfw_after_init', $framework );
-
-	( new \PuppyFW\REST() )->init();
-}
-add_action( 'init', 'puppyfw_init' );
+$rest = new \PuppyFW\REST();
+$rest->init();
 
 /**
  * Load Localisation files.

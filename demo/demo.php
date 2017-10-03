@@ -11,7 +11,7 @@
  * @param \PuppyFW\Framework $framework Framework object.
  */
 function prefix_register_options_demo( $framework ) {
-	$framework->add_page( array(
+	$page = $framework->add_page( array(
 		'page_title' => 'PuppyFW Demo',
 		'menu_title' => 'PuppyFW Demo',
 		'capability' => 'manage_options',

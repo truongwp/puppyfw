@@ -20,6 +20,13 @@ class Framework extends Singleton {
 	protected $pages = array();
 
 	/**
+	 * Constructor.
+	 */
+	protected function __construct() {
+		StaticCache::set( 'rendered_fields', array() );
+	}
+
+	/**
 	 * Adds page.
 	 *
 	 * @param array $page_data Page data.
@@ -36,22 +43,6 @@ class Framework extends Singleton {
 	}
 
 	/**
-	 * Framework initialize.
-	 */
-	public function init() {
-		add_action( 'admin_menu', array( $this, 'init_pages' ) );
-	}
-
-	/**
-	 * Runs options pages.
-	 */
-	public function init_pages() {
-		foreach ( $this->pages as $page ) {
-			$page->init();
-		}
-	}
-
-	/**
 	 * Gets page instance.
 	 *
 	 * @param  string $page_slug Page slug.
@@ -62,5 +53,21 @@ class Framework extends Singleton {
 			return false;
 		}
 		return $this->pages[ $page_slug ];
+	}
+
+	/**
+	 * Framework initialize.
+	 */
+	public function init() {
+		add_action( 'admin_menu', array( $this, 'register_pages' ) );
+	}
+
+	/**
+	 * Registers options pages.
+	 */
+	public function register_pages() {
+		foreach ( $this->pages as $page ) {
+			$page->register();
+		}
 	}
 }

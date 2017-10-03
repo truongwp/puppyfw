@@ -22,25 +22,25 @@ class Page {
 	protected $data = array();
 
 	/**
-	 * Array of fields.
+	 * List of fields.
 	 *
 	 * @var array
 	 */
 	protected $fields = array();
 
 	/**
+	 * List of fields array.
+	 *
+	 * @var array
+	 */
+	protected $fields_array = array();
+
+	/**
 	 * Default value of fields.
 	 *
 	 * @var array
 	 */
-	public $defaults = array();
-
-	/**
-	 * Used field types.
-	 *
-	 * @var array
-	 */
-	public $used_field_types = array();
+	protected $defaults = array();
 
 	/**
 	 * Class Page constructor.
@@ -51,6 +51,13 @@ class Page {
 		if ( empty( $data['menu_slug'] ) ) {
 			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), esc_html( PUPPYFW_VERSION ) );
 			return;
+		}
+
+		if ( ! empty( $data['fields'] ) ) {
+			foreach ( $data['fields'] as $field ) {
+				$this->add_field( $field );
+			}
+			unset( $data['fields'] );
 		}
 
 		$data = $this->normalize( $data );
@@ -72,16 +79,58 @@ class Page {
 			'menu_slug'   => '',
 			'icon_url'    => '',
 			'position'    => 100,
-			'fields'      => array(),
 			'option_name' => '',
-			'hide_header' => false,
 		) );
 	}
 
 	/**
-	 * Page init.
+	 * Adds child field.
+	 *
+	 * @param array $field_data Field data.
+	 * @return Field Field instance.
 	 */
-	public function init() {
+	public function add_field( $field_data ) {
+		$field_data['page'] = $this;
+		$field = FieldFactory::get_field( $field_data );
+
+		// Add field.
+		$this->fields[] = $field;
+
+		return $field;
+	}
+
+	/**
+	 * Adds default value.
+	 *
+	 * @param string $field_id Field ID.
+	 * @param mixed  $value    Field default value.
+	 */
+	public function add_default( $field_id, $value ) {
+		$this->defaults[ $field_id ] = $value;
+	}
+
+	/**
+	 * Gets fields default value.
+	 *
+	 * @return array
+	 */
+	public function get_defaults() {
+		return $this->defaults;
+	}
+
+	/**
+	 * Gets page data.
+	 *
+	 * @return array
+	 */
+	public function get_data() {
+		return $this->data;
+	}
+
+	/**
+	 * Registers page.
+	 */
+	public function register() {
 		if ( ! $this->data['parent_slug'] ) {
 			$this->page_hook = add_menu_page(
 				$this->data['page_title'],
@@ -110,30 +159,57 @@ class Page {
 	 * Loads page.
 	 */
 	public function load() {
-		$this->build_fields();
+		/**
+		 * Fires before rendering page.
+		 *
+		 * @since 0.2.0
+		 *
+		 * @param Page $page Page instance.
+		 */
+		do_action( 'puppyfw_before_page_rendering', $this );
+
+		$this->fetch_fields_array();
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 	}
 
 	/**
-	 * Builds fields array.
+	 * Fetches fields array.
+	 *
+	 * @return array
 	 */
-	protected function build_fields() {
-		$this->fields = array();
-		$fields_data = $this->data['fields'];
+	public function fetch_fields_array() {
+		foreach ( $this->fields as $field ) {
+			$this->fields_array[] = $field->to_array();
+		}
+	}
 
-		foreach ( $fields_data as $field_data ) {
-			if ( ! empty( $this->data['option_name'] ) ) {
-				$field_data['option_name'] = $this->data['option_name'];
-			}
+	/**
+	 * Gets option value.
+	 *
+	 * @param  string $option_id Option ID.
+	 * @return mixed
+	 */
+	public function get_option( $option_id ) {
+		$default_value = isset( $this->defaults[ $option_id ] ) ? $this->defaults[ $option_id ] : null;
 
-			$field_data['option_page'] = $this;
-
-			$field = FieldFactory::get_field( $field_data );
-			$this->fields[] = $field->to_array();
+		if ( $this->data['option_name'] ) {
+			$options = get_option( $this->data['option_name'], array() );
+			$value = isset( $options[ $option_id ] ) ? $options[ $option_id ] : $default_value;
+		} else {
+			$value = get_option( $option_id, $default_value );
 		}
 
-		unset( $this->data['fields'] );
+		/**
+		 * Filters option value.
+		 *
+		 * @since 0.2.0
+		 *
+		 * @param mixed  $value     Option value.
+		 * @param string $option_id Option ID.
+		 * @param Page   $page      Option page instance.
+		 */
+		return apply_filters( 'puppyfw_get_option', $value, $option_id, $this );
 	}
 
 	/**
@@ -145,17 +221,15 @@ class Page {
 			<div id="puppyfw-app" class="puppyfw-page-<?php echo esc_attr( $this->data['menu_slug'] ); ?>">
 				<form>
 					<div class="puppyfw">
-						<?php if ( ! $this->data['hide_header'] ) : ?>
-							<div class="puppyfw__header">
-								<div class="puppyfw__title">
-									<?php echo esc_html( $this->data['page_title'] ); ?>
-								</div>
-
-								<div class="puppyfw__actions">
-									<button type="button" class="button button-primary" @click="save"><?php esc_html_e( 'Save options', 'puppyfw' ); ?></button>
-								</div>
+						<div class="puppyfw__header">
+							<div class="puppyfw__title">
+								<?php echo esc_html( $this->data['page_title'] ); ?>
 							</div>
-						<?php endif; ?>
+
+							<div class="puppyfw__actions">
+								<button type="button" class="button button-primary" @click="save"><?php esc_html_e( 'Save options', 'puppyfw' ); ?></button>
+							</div>
+						</div>
 
 						<div class="puppyfw__content">
 							<template v-if="notice.message">
@@ -268,7 +342,7 @@ class Page {
 
 		wp_localize_script( 'puppyfw-core', 'PuppyFW', array(
 			'pageData'  => $this->data,
-			'fields'    => $this->fields,
+			'fields'    => $this->fields_array,
 			'restNonce' => wp_create_nonce( 'wp_rest' ),
 			'endpoint'  => rest_url( REST::ROUTE_NAMESPACE . '/settings' ),
 			'mapping'   => Helpers::field_vue_component_mapping(),
@@ -276,32 +350,5 @@ class Page {
 				'saveError' => __( 'Some errors occur when save data.', 'puppyfw' ),
 			),
 		) );
-	}
-
-	/**
-	 * Gets option value.
-	 *
-	 * @param  string $option_id Option ID.
-	 * @return mixed
-	 */
-	public function get_option( $option_id ) {
-		$default_value = isset( $this->defaults[ $option_id ] ) ? $this->defaults[ $option_id ] : null;
-		if ( $this->data['option_name'] ) {
-			$options = get_option( $this->data['option_name'], array() );
-			$value = isset( $options[ $option_id ] ) ? $options[ $option_id ] : $default_value;
-		} else {
-			$value = get_option( $option_id, $default_value );
-		}
-
-		/**
-		 * Filters option value.
-		 *
-		 * @since 0.2.0
-		 *
-		 * @param mixed  $value     Option value.
-		 * @param string $option_id Option ID.
-		 * @param Page   $page      Option page instance.
-		 */
-		return apply_filters( 'puppyfw_get_option', $value, $option_id, $this );
 	}
 }
