@@ -7,10 +7,12 @@
 - Added API for defining fields use OOP
 
 ### Removed
+- Removed demo code. It will be moved to documentation
 
 ### Changed
 - Used singleton pattern for Framework class
-- Moved framework init to outside of `plugins_loaded` hook
+- Moved framework init to `plugins_loaded` hook
+- Fix style editor field
 - Improve demo
 
 ## [0.1.2]
