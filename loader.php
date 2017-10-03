@@ -9,7 +9,7 @@ if ( defined( 'PUPPYFW_VERSION' ) ) {
 	return;
 }
 
-define( 'PUPPYFW_VERSION', '0.1.2' );
+define( 'PUPPYFW_VERSION', '0.2.0' );
 
 if ( ! defined( 'PUPPYFW_PATH' ) ) {
 	define( 'PUPPYFW_PATH', plugin_dir_path( __FILE__ ) );
