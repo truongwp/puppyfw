@@ -1,4 +1,6 @@
 ## [Unreleased]
+
+## [0.2.0]
 ### Added
 - Hook `puppyfw_after_init`
 - Hook `puppyfw_before_page_rendering`
@@ -29,6 +31,7 @@
 ## [0.1.0] - 2017-09-19
 - First release
 
-[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/truongwp/puppyfw/compare/0.1.2...HEAD
 [0.1.2]: https://github.com/truongwp/puppyfw/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/truongwp/puppyfw/compare/0.1.0...0.1.1
