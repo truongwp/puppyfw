@@ -52,7 +52,9 @@ class Editor extends Field {
 				<label :for="field.id_attr" class="puppyfw-field__label">{{ field.title }}</label>
 
 				<div class="puppyfw-field__control">
-					<textarea v-bind="field.attrs" :id="field.id_attr" :value="field.value" @input="field.value = $event.target.value"></textarea>
+					<div :class="{ 'wp-editor-container': !field.tinymce }">
+						<textarea v-bind="field.attrs" :id="field.id_attr" :value="field.value" @input="field.value = $event.target.value"></textarea>
+					</div>
 
 					<div class="puppyfw-field__desc" v-if="field.desc">{{ field.desc }}</div>
 				</div>
