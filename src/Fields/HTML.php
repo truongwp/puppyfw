@@ -14,6 +14,13 @@ namespace PuppyFW\Fields;
 class HTML extends Field {
 
 	/**
+	 * Check if this field has value.
+	 *
+	 * @var bool
+	 */
+	protected $has_value = false;
+
+	/**
 	 * Render js template.
 	 */
 	public function js_template() {

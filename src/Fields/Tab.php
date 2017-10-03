@@ -17,7 +17,7 @@ class Tab extends Field {
 	 *
 	 * @var bool
 	 */
-	protected $has_value = true;
+	protected $has_value = false;
 
 	public function add_tab( $tab_id, $tab_title ) {
 		$this->data['tabs'][ $tab_id ] = $tab_title;
