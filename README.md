@@ -91,7 +91,7 @@ add_action( 'puppyfw_init', 'prefix_register_options' );
 ```
 
 
-For defining fields, please read [Defining fields](https://github.com/truongwp/puppyfw/wiki/Defining-fields) or look at file `puppyfw/demo/demo.php`.
+For defining fields, please read [Defining fields](https://github.com/truongwp/puppyfw/wiki/Defining-fields).
 
 If you get any problems when define fields, please create issue or contact me via email [truongwp@gmail.com](mailto:truongwp@gmail.com). I'm working on documentation and will finish it ASAP.
 
