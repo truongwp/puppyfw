@@ -11,6 +11,7 @@
 ### Changed
 - Used singleton pattern for Framework class
 - Moved framework init to outside of `init` hook
+- Update demo
 
 ## [0.1.2]
 ### Added
