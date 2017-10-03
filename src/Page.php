@@ -54,14 +54,18 @@ class Page {
 		}
 
 		if ( ! empty( $data['fields'] ) ) {
-			foreach ( $data['fields'] as $field ) {
-				$this->add_field( $field );
-			}
+			$fields = $data['fields'];
 			unset( $data['fields'] );
 		}
 
 		$data = $this->normalize( $data );
 		$this->data = apply_filters( 'puppyfw_normalize_page_data', $data, $this );
+
+		if ( isset( $fields ) ) {
+			foreach ( $fields as $field ) {
+				$this->add_field( $field );
+			}
+		}
 	}
 
 	/**
