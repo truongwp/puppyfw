@@ -78,7 +78,7 @@ add_action( 'plugins_loaded', 'puppyfw_load_plugin_textdomain' );
  * @param  string $option_id Option ID.
  * @return mixed
  */
-function presserva_get_option( $page_slug, $option_id ) {
+function puppyfw_get_option( $page_slug, $option_id ) {
 	$page = puppyfw()->get_page( $page_slug );
 
 	if ( ! $page ) {
