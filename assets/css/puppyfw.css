@@ -123,6 +123,11 @@
   display: flex;
 }
 
+.puppyfw-checkbox-list .puppyfw-field__control,
+.puppyfw-radio .puppyfw-field__control {
+  padding-top: 4px;
+}
+
 .puppyfw-checkbox-list .puppyfw-field__control:not(.inline) label,
 .puppyfw-radio .puppyfw-field__control:not(.inline) label {
   display: block;

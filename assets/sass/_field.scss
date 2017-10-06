@@ -60,16 +60,20 @@
 .puppyfw-radio {
   display: flex;
 
-  .puppyfw-field__control:not(.inline) {
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-  }
+  .puppyfw-field__control {
+    padding-top: 4px;
 
-  .puppyfw-field__control.inline {
-    label {
-      margin-right: 15px;
+    &:not(.inline) {
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+
+    &.inline {
+      label {
+        margin-right: 15px;
+      }
     }
   }
 }
