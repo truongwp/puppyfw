@@ -1,4 +1,10 @@
 ## [Unreleased]
+### Added
+- Options page builder
+- Hook `puppyfw_before_init`
+
+### Changed
+- Refactor framework structure and api
 
 ## [0.2.0]
 ### Added

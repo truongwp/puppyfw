@@ -328,10 +328,13 @@ class Page {
 			true
 		);
 
+		wp_enqueue_script( 'puppyfw' );
+
 		wp_enqueue_script(
-			'puppyfw-core',
-			PUPPYFW_URL . 'assets/js/core.js',
+			'puppyfw-page',
+			PUPPYFW_URL . 'assets/js/page.js',
 			array(
+				'puppyfw',
 				'jquery',
 				'vue',
 				'underscore',
@@ -344,7 +347,7 @@ class Page {
 			true
 		);
 
-		wp_localize_script( 'puppyfw-core', 'PuppyFW', array(
+		wp_localize_script( 'puppyfw-page', 'PuppyFW', array(
 			'pageData'  => $this->data,
 			'fields'    => $this->fields_array,
 			'restNonce' => wp_create_nonce( 'wp_rest' ),

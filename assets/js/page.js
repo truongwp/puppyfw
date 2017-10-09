@@ -1,4 +1,4 @@
-( function( $ ) {
+( function( puppyfw, $ ) {
 	"use strict";
 
 	var Field = PuppyFW.Field = {
@@ -1105,4 +1105,4 @@
 		}
 	});
 
-})( jQuery );
+})( window.puppyfw, jQuery );

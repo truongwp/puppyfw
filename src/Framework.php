@@ -60,6 +60,7 @@ class Framework extends Singleton {
 	 */
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'register_pages' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
 	/**
@@ -69,5 +70,12 @@ class Framework extends Singleton {
 		foreach ( $this->pages as $page ) {
 			$page->register();
 		}
+	}
+
+	/**
+	 * Registers scripts.
+	 */
+	public function scripts() {
+		wp_register_script( 'puppyfw', PUPPYFW_URL . 'assets/js/puppyfw.js', array(), '0.3.0', true );
 	}
 }
