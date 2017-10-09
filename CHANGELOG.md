@@ -2,6 +2,8 @@
 ### Added
 - Options page builder
 - Hook `puppyfw_before_init`
+- Hook `puppyfw_i18n`
+- Hook `puppyfw_show_builder`
 
 ### Changed
 - Refactor framework structure and api

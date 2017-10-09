@@ -347,15 +347,11 @@ class Page {
 			true
 		);
 
-		wp_localize_script( 'puppyfw-page', 'PuppyFW', array(
+		wp_localize_script( 'puppyfw-page', 'puppyfwPage', array(
 			'pageData'  => $this->data,
 			'fields'    => $this->fields_array,
 			'restNonce' => wp_create_nonce( 'wp_rest' ),
 			'endpoint'  => rest_url( REST::ROUTE_NAMESPACE . '/settings' ),
-			'mapping'   => Helpers::field_vue_component_mapping(),
-			'i18n'      => array(
-				'saveError' => __( 'Some errors occur when save data.', 'puppyfw' ),
-			),
 		) );
 	}
 }

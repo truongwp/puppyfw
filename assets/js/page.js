@@ -1,7 +1,9 @@
 ( function( puppyfw, $ ) {
 	"use strict";
 
-	var Field = PuppyFW.Field = {
+	var components = puppyfw.components = puppyfw.components || {};
+
+	var Field = components.Field = {
 		props: ['field'],
 
 		computed: {
@@ -15,7 +17,7 @@
 				if ( newVal == oldVal ) {
 					return;
 				}
-				PuppyFW.App.$emit( 'puppyfw_changed_' + this.field.id_attr, newVal, oldVal );
+				puppyfw.app.$emit( 'puppyfw_changed_' + this.field.id_attr, newVal, oldVal );
 			}
 		},
 
@@ -79,7 +81,7 @@
 					}
 
 					// Handle visibility on first load.
-					var fieldVal = PuppyFW.App.getValueFromIdAttr( 'puppyfw-' + dependency.id );
+					var fieldVal = puppyfw.app.getValueFromIdAttr( 'puppyfw-' + dependency.id );
 					var visible = _this.isVisible( dependency, fieldVal );
 
 					// Combine with other dependencies.
@@ -108,7 +110,7 @@
 						return;
 					}
 
-					PuppyFW.App.$on( 'puppyfw_changed_puppyfw-' + dependency.id, function( newVal ) {
+					puppyfw.app.$on( 'puppyfw_changed_puppyfw-' + dependency.id, function( newVal ) {
 						var visible = _this.isVisible( dependency, newVal );
 
 						// Combine with other dependencies.
@@ -200,11 +202,11 @@
 		}
 	};
 
-	var ParentField = PuppyFW.ParentField = {
+	var ParentField = components.ParentField = {
 		methods: {
 			getComponentName: function( type ) {
-				if ( PuppyFW.mapping[ type ] ) {
-					type = PuppyFW.mapping[ type ];
+				if ( puppyfw.mapping[ type ] ) {
+					type = puppyfw.mapping[ type ];
 				}
 
 				return 'puppyfw-' + type;
@@ -212,10 +214,10 @@
 		}
 	};
 
-	PuppyFW.App = new Vue({
+	puppyfw.app = new Vue({
 		el: '#puppyfw-app',
 
-		mixins: [ PuppyFW.ParentField ],
+		mixins: [ ParentField ],
 
 		data: {
 			fields: [],
@@ -233,9 +235,9 @@
 			fetchFields: function() {
 				var _this = this;
 
-				this.fields = PuppyFW.fields;
+				this.fields = puppyfwPage.fields;
 
-				_.each( PuppyFW.fields, function( field ) {
+				_.each( this.fields, function( field ) {
 					_this.addFieldToRegistry( field );
 				});
 			},
@@ -397,18 +399,18 @@
 				var _this = this;
 
 				$.ajax({
-					url: PuppyFW.endpoint,
+					url: puppyfwPage.endpoint,
 					type: 'post',
 					data: {
 						field_data: this.getSaveData(),
-						page_data: PuppyFW.pageData,
-						_wpnonce: PuppyFW.restNonce
+						page_data: puppyfwPage.pageData,
+						_wpnonce: puppyfwPage.restNonce
 					},
 					success: function( response ) {
 						if ( response.updated ) {
 							_this.success( response.message );
 						} else {
-							var message = response.message || PuppyFW.i18n.saveError;
+							var message = response.message || puppyfw.i18n.errorSaving;
 							_this.error( message );
 						}
 

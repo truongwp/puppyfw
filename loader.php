@@ -35,11 +35,20 @@ function puppyfw_init() {
 	$framework = puppyfw();
 
 	/**
+	 * Fires before init framework.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param \PuppyFW\Framework $framework Framework instance.
+	 */
+	do_action( 'puppyfw_before_init', $framework );
+
+	/**
 	 * Registers settings for framework.
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param Framework $framework Framework instance.
+	 * @param \PuppyFW\Framework $framework Framework instance.
 	 */
 	do_action( 'puppyfw_init', $framework );
 
@@ -50,14 +59,37 @@ function puppyfw_init() {
 	 *
 	 * @since 0.2.0
 	 *
-	 * @param Framework $framework Framework instance.
+	 * @param \PuppyFW\Framework $framework Framework instance.
 	 */
 	do_action( 'puppyfw_after_init', $framework );
+}
+add_action( 'plugins_loaded', 'puppyfw_init' );
+
+
+/**
+ * Runs something before init framework.
+ *
+ * @param \PuppyFW\Framework $framework Framework instance.
+ */
+function puppyfw_before_init( \PuppyFW\Framework $framework ) {
+	\PuppyFW\StaticCache::set( 'rendered_fields', array() );
 
 	$rest = new \PuppyFW\REST();
 	$rest->init();
+
+	/**
+	 * Filters for enabling/disabling options page builder.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param bool $enable Whether to enable options page builder or not.
+	 */
+	if ( apply_filters( 'puppyfw_show_builder', false ) ) {
+		require_once PUPPYFW_PATH . 'builder/builder.php';
+	}
 }
-add_action( 'plugins_loaded', 'puppyfw_init' );
+add_action( 'puppyfw_before_init', 'puppyfw_before_init' );
+
 
 /**
  * Load Localisation files.

@@ -20,13 +20,6 @@ class Framework extends Singleton {
 	protected $pages = array();
 
 	/**
-	 * Constructor.
-	 */
-	protected function __construct() {
-		StaticCache::set( 'rendered_fields', array() );
-	}
-
-	/**
 	 * Adds page.
 	 *
 	 * @param array $page_data Page data.
@@ -77,5 +70,20 @@ class Framework extends Singleton {
 	 */
 	public function scripts() {
 		wp_register_script( 'puppyfw', PUPPYFW_URL . 'assets/js/puppyfw.js', array(), '0.3.0', true );
+
+		wp_localize_script( 'puppyfw', 'puppyfw', array(
+			'mapping' => Helpers::field_vue_component_mapping(),
+
+			/**
+			 * Filters i18n data.
+			 *
+			 * @since 0.3.0
+			 *
+			 * @param array $i18n I18n data.
+			 */
+			'i18n'    => apply_filters( 'puppyfw_i18n', array(
+				'errorSaving' => __( 'Some errors occur when save data.', 'puppyfw' ),
+			) ),
+		) );
 	}
 }
