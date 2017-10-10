@@ -19,7 +19,7 @@
 		}
 	});
 
-	/*builder.api.registerControl( 'choice-control', {
+	builder.api.registerControl( 'choice-control', {
 		template: '#puppyfw-choice-control-tpl',
 		props: {
 			id: {
@@ -29,11 +29,14 @@
 				type: String
 			},
 			value: {
-				type: Boolean,
-				default: false
+				type: String
+			},
+			options: {
+				type: Array,
+				default: []
 			}
 		}
-	});*/
+	});
 
 	builder.api.registerControl( 'email-control', {
 		template: '#puppyfw-email-control-tpl',

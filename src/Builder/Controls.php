@@ -89,6 +89,21 @@ class Controls {
 				</div>
 			</div>
 		</script>
+
+		<script type="text/x-template" id="puppyfw-choice-control-tpl">
+			<div class="t-field t-field--inline">
+				<label class="t-label">{{ label }}</label>
+				<div>
+					<div v-for="(option, index) in options" :key="index">
+						<input type="text" placeholder="key" v-model="option.key">
+						<input type="text" placeholder="value" v-model="option.value">
+						<label><input type="radio" :checked="value == option.key"> {{ puppyfw.i18n.builder.labels.default }}</label>
+						<a href="#" @click.prevent="$emit('removeItem', index)">Remove</a>
+					</div>
+					<button type="button" class="button" @click="$emit('addItem')">+ Add choice</button>
+				</div>
+			</div>
+		</script>
 		<?php
 	}
 }

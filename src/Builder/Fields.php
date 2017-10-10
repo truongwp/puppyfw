@@ -54,6 +54,31 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-checkbox-list-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<choice-control
+					:id="field.baseId + '-default'"
+					:label="puppyfw.i18n.builder.labels.default"
+					:value="field.default"
+					:options="field.options"
+					@addItem="addOption"
+					@removeItem="index => removeOption(index)"
+					@changeValue="value => field.default = value"
+				></choice-control>
+
+				<?php FieldSettings::field_attrs(); ?>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-email-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>

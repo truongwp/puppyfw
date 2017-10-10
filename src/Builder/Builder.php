@@ -110,6 +110,7 @@ class Builder {
 		$i18n['builder'] = array(
 			'types'  => array(
 				'checkbox' => _x( 'Checkbox', 'field type', 'puppyfw' ),
+				'checkboxList' => _x( 'Checkbox list', 'field type', 'puppyfw' ),
 				'email'    => _x( 'Email', 'field type', 'puppyfw' ),
 				'number'   => _x( 'Number', 'field type', 'puppyfw' ),
 				'tel'      => _x( 'Tel', 'field type', 'puppyfw' ),

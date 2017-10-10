@@ -98,6 +98,7 @@
 		component.mixins = component.mixins || [];
 		component.mixins.push( builder.mixins.HasFieldProp );
 		component.mixins.push( builder.mixins.HasAttrs );
+		component.mixins.push( builder.mixins.HasOptions );
 
 		component.components = component.components || {};
 		component.components = Vue.util.extend( builder.controls, component.components );
@@ -126,6 +127,21 @@
 
 			removeAttr: function( index ) {
 				Vue.delete( this.field.attrs, index );
+			}
+		}
+	};
+
+	builder.mixins.HasOptions = {
+		methods: {
+			addOption: function() {
+				this.field.options.push({
+					key: '',
+					value: ''
+				});
+			},
+
+			removeOption: function( index ) {
+				Vue.delete( this.field.options, index );
 			}
 		}
 	};

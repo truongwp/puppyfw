@@ -1,92 +1,27 @@
 ( function( puppyfw, Vue, _, $ ) {
 	"use strict";
 
-	puppyfw.builder = puppyfw.builder || {};
-	puppyfw.builder.mixins = puppyfw.builder.mixins || {};
-	puppyfw.builder.components = puppyfw.builder.components || {};
-
-	/*---------------------------------
-	 *          M I X I N S
-	 *--------------------------------*/
-	var HasFieldProp = puppyfw.builder.mixins.HasFieldProp;
-
-	/*---------------------------------
-	 *       C O M P O N E N T S
-	 *--------------------------------*/
-
-	var Components = {
-		Controls: {},
-		Templates: {},
-		Builder: {}
-	};
+	var builder = puppyfw.builder = puppyfw.builder || {};
+	builder.mixins = builder.mixins || {};
+	builder.components = builder.components || {};
 
 
-
-
-	// Template components
-	Components.Templates.FieldItemEdit = {
-		name: 'field-item-edit',
-		template: '#puppyfw-field-item-edit-tpl',
-
-		mixins: [ HasFieldProp ],
-
-		components: puppyfw.builder.controls,
-
-		methods: {
-			addAttr: function() {
-				this.field.attrs.push({
-					key: '',
-					value: ''
-				});
-			},
-
-			removeAttr: function( index ) {
-				Vue.delete( this.field.attrs, index );
-			}
-		}
-	};
-
-	Components.Templates.FieldItemEditNumber = {
-		name: 'field-item-edit-number',
-		template: '#puppyfw-field-item-edit-number-tpl',
-		mixins: [ Components.Templates.FieldItemEdit ]
-	};
-
-	Components.Templates.FieldItemEditHtml = {
-		name: 'field-item-edit-html',
-		template: '#puppyfw-field-item-edit-html-tpl',
-		mixins: [ Components.Templates.FieldItemEdit ]
-	};
-
-	Components.Templates.FieldItemEditCheckbox = {
-		name: 'field-item-edit-checkbox',
-		template: '#puppyfw-field-item-edit-checkbox-tpl',
-		mixins: [ Components.Templates.FieldItemEdit ]
-	};
-
-	Components.Templates.FieldItemEditChoice = {
-		name: 'field-item-edit-choice',
-		template: '#puppyfw-field-item-edit-choice-tpl',
-		mixins: [ Components.Templates.FieldItemEdit ]
-	};
-
-
-	puppyfw.builder.components.FieldItemHeading = {
+	builder.components.FieldItemHeading = {
 		template: '#puppyfw-field-item-heading-tpl',
 
-		mixins: [ HasFieldProp ]
+		mixins: [ builder.mixins.HasFieldProp ]
 	};
 
-	puppyfw.builder.templates['field-item-heading'] = puppyfw.builder.components.FieldItemHeading;
+	builder.templates['field-item-heading'] = builder.components.FieldItemHeading;
 
-	puppyfw.builder.components.FieldItem = {
+	builder.components.FieldItem = {
 		name: 'field-item',
 
 		template: '#puppyfw-field-item-tpl',
 
-		components: puppyfw.builder.templates,
+		components: builder.templates,
 
-		mixins: [ HasFieldProp ],
+		mixins: [ builder.mixins.HasFieldProp ],
 
 		data: function() {
 			return {
@@ -101,13 +36,14 @@
 		}
 	};
 
+
 	Vue.component( 'fields-builder', {
 		name: 'fields-builder',
 
 		template: '#puppyfw-fields-builder-tpl',
 
 		components: {
-			'field-item': puppyfw.builder.components.FieldItem
+			'field-item': builder.components.FieldItem
 		},
 
 		props: {
@@ -178,7 +114,7 @@
 	/*---------------------------------
 	 *     A P P L I C A T I O N
 	 *--------------------------------*/
-	puppyfw.builder.app = new Vue({
+	builder.app = new Vue({
 		data: {
 			fields: []
 		},
@@ -213,5 +149,5 @@
 		}
 	});
 
-	puppyfw.builder.app.$mount( '#puppyfw-builder' );
+	builder.app.$mount( '#puppyfw-builder' );
 })( window.puppyfw, Vue, _, jQuery );

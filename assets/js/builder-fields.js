@@ -15,6 +15,12 @@
 	});
 
 
+	builder.api.registerFieldType( 'checkbox-list', puppyfw.i18n.builder.types.checkboxList );
+	builder.api.registerTemplate( 'checkbox-list', {
+		template: '#puppyfw-field-edit-checkbox-list-tpl'
+	});
+
+
 	builder.api.registerFieldType( 'email', puppyfw.i18n.builder.types.email );
 	builder.api.registerTemplate( 'email', {
 		template: '#puppyfw-field-edit-email-tpl'
