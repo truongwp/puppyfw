@@ -1050,8 +1050,8 @@
 
 		methods: {
 			addItem: function() {
-				var field = this.cloneDeep( this.repeatField ),
-					fields = this.cloneDeep( this.field.repeatFields );
+				var field = puppyfw.helper.clone( this.repeatField ),
+					fields = puppyfw.helper.clone( this.field.repeatFields );
 				field.id_attr = this.field.id_attr + this.delimiter + parseInt( Math.random() * 1000 );
 				fields.push( field );
 				Vue.set( this.field, 'repeatFields', fields );
@@ -1075,7 +1075,7 @@
 			},
 
 			initRepeatField: function() {
-				var repeatField = this.cloneDeep( this.field );
+				var repeatField = puppyfw.helper.clone( this.field );
 				repeatField.type = repeatField.repeat_field_type;
 				repeatField.value = null;
 				this.repeatField = repeatField;
@@ -1086,17 +1086,13 @@
 					_this = this;
 
 				_.each( this.field.value, function( value, index ) {
-					var field = _this.cloneDeep( _this.repeatField );
+					var field = puppyfw.helper.clone( _this.repeatField );
 					field.value = value;
 					field.id_attr = _this.field.id_attr + _this.delimiter + index;
 					fields.push( field );
 				});
 
 				Vue.set( this.field, 'repeatFields', fields );
-			},
-
-			cloneDeep: function( obj ) {
-				return JSON.parse( JSON.stringify( obj ) );
 			}
 		},
 
