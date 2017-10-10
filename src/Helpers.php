@@ -13,7 +13,7 @@ namespace PuppyFW;
 class Helpers {
 
 	/**
-	 * Converts snakecase to camel case.
+	 * Converts field type to camel case.
 	 *
 	 * @param  string $string String need to be converted.
 	 * @return string
@@ -22,6 +22,21 @@ class Helpers {
 		$string = str_replace( array( '-', '_' ), ' ', $string );
 		$string = ucwords( $string );
 		$string = str_replace( ' ', '', $string );
+		return $string;
+	}
+
+	/**
+	 * Converts field type to snake case.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param  string $string String need to be converted.
+	 * @return string
+	 */
+	public static function to_snake_case( $string ) {
+		$string = str_replace( array( '-', '_' ), ' ', $string );
+		$string = ucwords( $string );
+		$string = str_replace( ' ', '_', $string );
 		return $string;
 	}
 
@@ -64,5 +79,26 @@ class Helpers {
 		}
 
 		return $type;
+	}
+
+	/**
+	 * Normalizes page data.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param  array $page_data Page data.
+	 * @return array
+	 */
+	public static function normalize_page( $page_data ) {
+		return wp_parse_args( $page_data, array(
+			'parent_slug' => '',
+			'page_title'  => '',
+			'menu_title'  => '',
+			'capability'  => 'manage_options',
+			'menu_slug'   => '',
+			'icon_url'    => '',
+			'position'    => 100,
+			'option_name' => '',
+		) );
 	}
 }

@@ -84,8 +84,9 @@ function puppyfw_before_init( \PuppyFW\Framework $framework ) {
 	 *
 	 * @param bool $enable Whether to enable options page builder or not.
 	 */
-	if ( apply_filters( 'puppyfw_show_builder', false ) ) {
-		require_once PUPPYFW_PATH . 'builder/builder.php';
+	if ( apply_filters( 'puppyfw_show_builder', true ) ) {
+		$builder = new \PuppyFW\Builder\Builder();
+		$builder->init();
 	}
 }
 add_action( 'puppyfw_before_init', 'puppyfw_before_init' );

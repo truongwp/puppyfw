@@ -1,0 +1,62 @@
+.field {
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.field__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f6f6f6;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+.field__heading:hover {
+  background-color: #f0f0f0;
+}
+
+.field__title {
+  font-weight: bold;
+  color: #222;
+}
+
+.field__id,
+.field__type {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: #999;
+}
+
+.field__control {
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+.field__control .delete {
+  color: #a00;
+}
+
+.field__control .delete:hover, .field__control .delete:focus {
+  color: #dc3232;
+}
+
+.field__edit {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-top: 0;
+}
+
+.field-placeholder {
+  border: 1px dashed #f0f0f0;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=../sourcemaps/builder.css.map */

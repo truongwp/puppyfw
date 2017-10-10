@@ -1,0 +1,65 @@
+$border-color: #eee;
+$heading-bg-color: #f6f6f6;
+$heading-bg-color-hover: #f0f0f0;
+$black: #222;
+$gray: #777;
+$light-gray: #999;
+$delete-color: #a00;
+$delete-color-hover: #dc3232;
+$field-mb: 10px;
+
+.field {
+  margin-bottom: $field-mb;
+  background-color: #fff;
+}
+
+.field__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $heading-bg-color;
+  padding: 5px 10px;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $heading-bg-color-hover;
+  }
+}
+
+.field__title {
+  font-weight: bold;
+  color: $black;
+}
+
+.field__id,
+.field__type {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: $light-gray;
+}
+
+.field__control {
+  font-size: 0.8em;
+  margin-left: 10px;
+
+  .delete {
+    color: $delete-color;
+
+    &:hover,
+    &:focus {
+      color: $delete-color-hover;
+    }
+  }
+}
+
+.field__edit {
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-top: 0;
+}
+
+.field-placeholder {
+  border: 1px dashed $heading-bg-color-hover;
+  margin-bottom: $field-mb;
+}

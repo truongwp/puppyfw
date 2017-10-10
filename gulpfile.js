@@ -14,8 +14,7 @@ var output = 'assets/css';
 
 var sassOptions = {
 	errLogToConsole: true,
-	outputStyle: 'expanded',
-	indentedSyntax: true
+	outputStyle: 'expanded'
 };
 
 var autoprefixerOptions = {

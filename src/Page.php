@@ -75,16 +75,7 @@ class Page {
 	 * @return array
 	 */
 	protected function normalize( $page_data ) {
-		return wp_parse_args( $page_data, array(
-			'parent_slug' => '',
-			'page_title'  => '',
-			'menu_title'  => '',
-			'capability'  => 'manage_options',
-			'menu_slug'   => '',
-			'icon_url'    => '',
-			'position'    => 100,
-			'option_name' => '',
-		) );
+		return Helpers::normalize_page( $page_data );
 	}
 
 	/**
