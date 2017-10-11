@@ -60,6 +60,12 @@
 	});
 
 
+	builder.api.registerFieldType( 'group', puppyfw.i18n.builder.types.group );
+	builder.api.registerTemplate( 'group', {
+		template: '#puppyfw-field-edit-group-tpl'
+	});
+
+
 	builder.api.registerFieldType( 'number', puppyfw.i18n.builder.types.number );
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',

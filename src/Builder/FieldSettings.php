@@ -128,7 +128,12 @@ class FieldSettings {
 	 */
 	public static function child_fields_builder() {
 		?>
-		<fields-builder :fields="field.fields"></fields-builder>
+		<div class="t-field t-field--inline">
+			<label :for="field.baseId" class="t-label">{{ puppyfw.i18n.builder.labels.fields }}</label>
+			<div class="t-control">
+				<fields-builder :fields="field.fields"></fields-builder>
+			</div>
+		</div>
 		<?php
 	}
 }
