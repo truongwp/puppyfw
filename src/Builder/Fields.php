@@ -73,8 +73,6 @@ class Fields {
 					@addItem="addOption"
 					@removeItem="index => removeOption(index)"
 				></key-value-control>
-
-				<?php FieldSettings::field_attrs(); ?>
 			</div>
 		</script>
 
