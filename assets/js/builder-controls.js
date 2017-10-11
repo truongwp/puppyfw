@@ -61,6 +61,10 @@
 			label: {
 				type: String
 			},
+			addLabel: {
+				type: String,
+				default: '+'
+			},
 			options: {
 				type: Array,
 				default: []

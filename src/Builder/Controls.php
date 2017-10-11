@@ -83,9 +83,9 @@ class Controls {
 					<div v-for="(option, index) in options" :key="index">
 						<input type="text" placeholder="key" v-model="option.key">
 						<input type="text" placeholder="value" v-model="option.value">
-						<a href="#" @click.prevent="$emit('removeItem', index)">Remove</a>
+						<a href="#" @click.prevent="$emit('removeItem', index)">{{ puppyfw.i18n.builder.labels.remove }}</a>
 					</div>
-					<button type="button" class="button" @click="$emit('addItem')">+ Add attribute</button>
+					<button type="button" class="button" @click="$emit('addItem')">{{ addLabel }}</button>
 				</div>
 			</div>
 		</script>

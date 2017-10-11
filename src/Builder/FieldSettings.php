@@ -85,6 +85,7 @@ class FieldSettings {
 		?>
 		<key-value-control
 			:label="puppyfw.i18n.builder.labels.attributes"
+			:add-label="puppyfw.i18n.builder.labels.addAttribute"
 			:options="field.attrs"
 			@addItem="addAttr"
 			@removeItem="index => removeAttr(index)"

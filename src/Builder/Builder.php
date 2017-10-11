@@ -123,9 +123,11 @@ class Builder {
 				'type'        => _x( 'Field type', 'field setting label', 'puppyfw' ),
 				'attributes'  => _x( 'Field attributes', 'field setting label', 'puppyfw' ),
 				'default'     => _x( 'Default', 'field setting label', 'puppyfw' ),
+				'options'     => _x( 'Options', 'field setting label', 'puppyfw' ),
 				'key'         => _x( 'Key', 'field setting label', 'puppyfw' ),
 				'value'       => _x( 'Value', 'field setting label', 'puppyfw' ),
 				'remove'      => _x( 'Remove', 'field setting label', 'puppyfw' ),
+				'addAttribute' => _x( '+ Add attribute', 'field setting label', 'puppyfw' ),
 			),
 		);
 
