@@ -19,6 +19,7 @@ class BuilderMetaBox {
 		add_action( 'add_meta_boxes', array( $this, 'register' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ), 20 );
 		add_action( 'admin_footer', array( $this, 'js_templates' ) );
+		$this->add_save_handle();
 	}
 
 	/**
@@ -28,6 +29,20 @@ class BuilderMetaBox {
 	 */
 	protected function post_type() {
 		return 'puppyfw_page';
+	}
+
+	/**
+	 * Adds saving handle.
+	 */
+	protected function add_save_handle() {
+		add_action( "save_post_{$this->post_type()}", array( $this, 'save' ) );
+	}
+
+	/**
+	 * Removes saving handle.
+	 */
+	protected function remove_save_handle() {
+		remove_action( "save_post_{$this->post_type()}", array( $this, 'save' ) );
 	}
 
 	/**
@@ -54,6 +69,7 @@ class BuilderMetaBox {
 	 * @param WP_Post $post Post object.
 	 */
 	public function render( $post ) {
+		wp_nonce_field( 'puppyfw_builder_meta_box', 'puppyfw_builder_meta_box_nonce' );
 		$fields = $post->post_content ? json_decode( html_entity_decode( $post->post_content ), true ) : array();
 		?>
 		<input type="hidden" id="field-data" value="<?php echo esc_attr( wp_json_encode( $fields ) ); ?>">
@@ -61,7 +77,7 @@ class BuilderMetaBox {
 		<div id="puppyfw-builder">
 			{{ fields }}
 
-			<input type="hidden" name="post_content" :value="JSON.stringify(fields)">
+			<input type="hidden" name="puppyfw_fields" :value="JSON.stringify(fields)">
 
 			<fields-builder
 				:fields="fields"
@@ -175,5 +191,60 @@ class BuilderMetaBox {
 			</div>
 		</script>
 		<?php
+	}
+
+	/**
+	 * Saves data.
+	 *
+	 * @param int $post_id Post ID.
+	 */
+	public function save( $post_id ) {
+		/*
+		 * We need to verify this came from the our screen and with proper authorization,
+		 * because save_post can be triggered at other times.
+		 */
+
+		// Check if our nonce is set.
+		if ( ! isset( $_POST['puppyfw_builder_meta_box_nonce'] ) ) {
+			return;
+		}
+
+		$nonce = $_POST['puppyfw_builder_meta_box_nonce']; // WPCS: sanitization, csrf ok.
+
+		// Verify that the nonce is valid.
+		if ( ! wp_verify_nonce( $nonce, 'puppyfw_builder_meta_box' ) ) {
+			return;
+		}
+
+		/*
+		 * If this is an autosave, our form has not been submitted,
+		 * so we don't want to do anything.
+		 */
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		// Check the user's permissions.
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		if ( empty( $_POST['puppyfw_fields'] ) ) {
+			return;
+		}
+
+		$this->remove_save_handle();
+
+		$fields = json_decode( wp_unslash( $_POST['puppyfw_fields'] ), true ); // WPCS: sanitization ok.
+
+		$cleanup = new Cleanup();
+		$fields = $cleanup->clean( $fields );
+
+		wp_update_post( array(
+			'ID'           => $post_id,
+			'post_content' => wp_json_encode( $fields ),
+		) );
+
+		$this->add_save_handle();
 	}
 }

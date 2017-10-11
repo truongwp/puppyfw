@@ -121,7 +121,12 @@
 
 		beforeMount: function() {
 			var fields = document.getElementById( 'field-data' ).value;
+
 			fields = JSON.parse( fields );
+
+			if ( ! fields ) {
+				return;
+			}
 
 			for ( var i = 0; i < fields.length; i++ ) {
 				fields[ i ] = this.parseField( fields[ i ] );
@@ -135,10 +140,6 @@
 				var emptyField = puppyfw.helper.getEmptyField();
 
 				field = Vue.util.extend( emptyField, field );
-
-				if ( puppyfw.helper.isNonEmptyObject( field.attrs ) ) {
-					field.attrs = puppyfw.helper.objectToArray( field.attrs );
-				}
 
 				if ( puppyfw.helper.isNonEmptyObject( field.options ) ) {
 					field.options = puppyfw.helper.objectToArray( field.options );

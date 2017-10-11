@@ -31,7 +31,7 @@
 	};
 
 	helper.isNonEmptyObject = function( obj ) {
-		return typeof obj === 'object' && obj.length && ! obj[0];
+		return typeof obj === 'object' && Object.keys( obj ).length && ! obj[0];
 	};
 
 	helper.replaceId = function( field ) {
@@ -117,6 +117,12 @@
 	};
 
 	builder.mixins.HasAttrs = {
+		beforeMount: function() {
+			if ( puppyfw.helper.isNonEmptyObject( this.field.attrs ) ) {
+				Vue.set( this.field, 'attrs', puppyfw.helper.objectToArray( this.field.attrs ) );
+			}
+		},
+
 		methods: {
 			addAttr: function() {
 				this.field.attrs.push({

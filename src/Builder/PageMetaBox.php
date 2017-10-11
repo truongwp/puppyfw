@@ -23,7 +23,7 @@ class PageMetaBox {
 	}
 
 	/**
-	 * Gets post type.
+	 * Gets supported post type.
 	 *
 	 * @return string
 	 */
