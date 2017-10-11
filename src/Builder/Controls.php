@@ -94,12 +94,37 @@ class Controls {
 			<div class="t-field t-field--inline">
 				<label class="t-label">{{ label }}</label>
 				<div>
-					<div v-for="(option, index) in options" :key="index">
-						<input type="text" placeholder="key" v-model="option.key">
-						<input type="text" placeholder="value" v-model="option.value">
-						<label><input type="radio" :checked="value == option.key"> {{ puppyfw.i18n.builder.labels.default }}</label>
-						<a href="#" @click.prevent="$emit('removeItem', index)">Remove</a>
-					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>{{ puppyfw.i18n.builder.labels.key }}</th>
+								<th>{{ puppyfw.i18n.builder.labels.value }}</th>
+								<th>{{ puppyfw.i18n.builder.labels.default }}</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr v-for="(option, index) in options" :key="index">
+								<td>
+									<input type="text" placeholder="key" v-model="option.key">
+								</td>
+
+								<td>
+									<input type="text" placeholder="value" v-model="option.value">
+								</td>
+
+								<td>
+									<input type="radio">
+								</td>
+
+								<td>
+									<a href="#" @click.prevent="$emit('removeItem', index)">{{ puppyfw.i18n.builder.labels.remove }}</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
 					<button type="button" class="button" @click="$emit('addItem')">+ Add choice</button>
 				</div>
 			</div>
