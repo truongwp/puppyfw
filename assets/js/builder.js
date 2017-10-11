@@ -97,8 +97,6 @@
 
 		component.mixins = component.mixins || [];
 		component.mixins.push( builder.mixins.HasFieldProp );
-		component.mixins.push( builder.mixins.HasAttrs );
-		component.mixins.push( builder.mixins.HasOptions );
 
 		component.components = component.components || {};
 		component.components = Vue.util.extend( builder.controls, component.components );
@@ -118,56 +116,24 @@
 
 	builder.mixins.HasAttrs = {
 		beforeMount: function() {
-			if ( puppyfw.helper.isNonEmptyObject( this.field.attrs ) ) {
-				Vue.set( this.field, 'attrs', puppyfw.helper.objectToArray( this.field.attrs ) );
-			}
-
-			for ( var i = 0; i < this.field.attrs.length; i++ ) {
-				if ( ! this.field.attrs[ i ].baseId ) {
-					this.field.attrs[ i ].baseId = 'option-' + helper.getRandomString();
-				}
-			}
-		},
-
-		methods: {
-			addAttr: function() {
-				this.field.attrs.push({
-					baseId: 'option-' + helper.getRandomString(),
-					key: '',
-					value: ''
-				});
-			},
-
-			removeAttr: function( index ) {
-				Vue.delete( this.field.attrs, index );
+			if ( ! this.field.attrs ) {
+				this.field.attrs = [];
 			}
 		}
 	};
 
 	builder.mixins.HasOptions = {
 		beforeMount: function() {
-			if ( puppyfw.helper.isNonEmptyObject( this.field.options ) ) {
-				Vue.set( this.field, 'options', puppyfw.helper.objectToArray( this.field.options ) );
+			if ( ! this.field.options ) {
+				this.field.options = [];
 			}
+		}
+	};
 
-			for ( var i = 0; i < this.field.options.length; i++ ) {
-				if ( ! this.field.options[ i ].baseId ) {
-					this.field.options[ i ].baseId = 'option-' + helper.getRandomString();
-				}
-			}
-		},
-
-		methods: {
-			addOption: function() {
-				this.field.options.push({
-					baseId: 'option-' + helper.getRandomString(),
-					key: '',
-					value: ''
-				});
-			},
-
-			removeOption: function( index ) {
-				Vue.delete( this.field.options, index );
+	builder.mixins.HasJsOptions = {
+		beforeMount: function() {
+			if ( ! this.field.js_options ) {
+				this.field.js_options = [];
 			}
 		}
 	};

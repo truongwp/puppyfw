@@ -65,7 +65,7 @@
 				type: String,
 				default: '+'
 			},
-			options: {
+			items: {
 				type: Array,
 				default: []
 			},
@@ -75,15 +75,37 @@
 			}
 		},
 
+		data: function() {
+			return {
+				stateItems: []
+			};
+		},
+
+		watch: {
+			stateItems: function( newVal ) {
+				this.$emit( 'changeValue', newVal );
+			}
+		},
+
+		beforeMount: function() {
+			this.stateItems = this.items;
+			this.transform();
+			this.normalize();
+		},
+
 		mounted: function() {
 			this.initSortable();
 		},
 
 		methods: {
+			generateBaseId: function() {
+				return 'option-' + puppyfw.helper.getRandomString();
+			},
+
 			initSortable: function() {
 				var _this = this;
 
-				$( this.$el ).find( '.key-value-options' ).sortable({
+				$( this.$el ).find( '.key-value-items' ).sortable({
 					cursor: 'move',
 					handle: '.key-value-move',
 					placeholder: 'key-value-placeholder',
@@ -97,15 +119,41 @@
 						start = ui.item.data( 'start' );
 						end = ui.item.index();
 
-						_this.moveOption( start, end );
+						_this.moveItem( start, end );
 					},
 				});
 			},
 
-			moveOption: function( start, end ) {
+			transform: function() {
+				if ( puppyfw.helper.isNonEmptyObject( this.stateItems ) ) {
+					this.stateItems = puppyfw.helper.objectToArray( this.stateItems );
+				}
+			},
+
+			normalize: function() {
+				for ( var i = 0; i < this.stateItems.length; i++ ) {
+					if ( ! this.stateItems[ i ].baseId ) {
+						this.stateItems[ i ].baseId = this.generateBaseId();
+					}
+				}
+			},
+
+			moveItem: function( start, end ) {
 				var item;
-				item = this.options.splice( start, 1 )[0];
-				this.options.splice( end, 0, item );
+				item = this.stateItems.splice( start, 1 )[0];
+				this.stateItems.splice( end, 0, item );
+			},
+
+			addItem: function() {
+				this.stateItems.push({
+					baseId: this.generateBaseId(),
+					key: '',
+					value: ''
+				});
+			},
+
+			removeItem: function( index ) {
+				Vue.delete( this.stateItems, index );
 			}
 		}
 	});

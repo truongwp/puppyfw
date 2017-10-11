@@ -66,13 +66,7 @@ class Fields {
 
 				<?php FieldSettings::field_default(); ?>
 
-				<key-value-control
-					:label="puppyfw.i18n.builder.labels.options"
-					:add-label="puppyfw.i18n.builder.labels.addOption"
-					:options="field.options"
-					@addItem="addOption"
-					@removeItem="index => removeOption(index)"
-				></key-value-control>
+				<?php FieldSettings::field_options(); ?>
 			</div>
 		</script>
 
@@ -88,6 +82,25 @@ class Fields {
 				<?php FieldSettings::field_desc(); ?>
 
 				<?php FieldSettings::field_default(); ?>
+
+				<?php FieldSettings::field_attrs(); ?>
+			</div>
+		</script>
+
+
+		<script type="text/x-template" id="puppyfw-field-edit-datepicker-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_default(); ?>
+
+				<?php FieldSettings::field_js_options(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
 			</div>

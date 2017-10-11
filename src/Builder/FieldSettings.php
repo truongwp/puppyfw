@@ -86,10 +86,39 @@ class FieldSettings {
 		<key-value-control
 			:label="puppyfw.i18n.builder.labels.attributes"
 			:add-label="puppyfw.i18n.builder.labels.addAttribute"
-			:options="field.attrs"
+			:items="field.attrs"
 			:sortable="false"
-			@addItem="addAttr"
-			@removeItem="index => removeAttr(index)"
+			@changeValue="value => field.attrs = value"
+		></key-value-control>
+		<?php
+	}
+
+	/**
+	 * Field js options setting.
+	 */
+	public static function field_js_options() {
+		?>
+		<key-value-control
+			:label="puppyfw.i18n.builder.labels.js_options"
+			:add-label="puppyfw.i18n.builder.labels.addOption"
+			:items="field.js_options"
+			:sortable="false"
+			@changeValue="value => field.js_options = value"
+		></key-value-control>
+		<?php
+	}
+
+	/**
+	 * Field options setting.
+	 */
+	public static function field_options() {
+		?>
+		<key-value-control
+			:label="puppyfw.i18n.builder.labels.options"
+			:add-label="puppyfw.i18n.builder.labels.addOption"
+			:items="field.options"
+			:sortable="false"
+			@changeValue="value => field.options = value"
 		></key-value-control>
 		<?php
 	}

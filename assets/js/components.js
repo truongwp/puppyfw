@@ -32,6 +32,7 @@
 		methods: {
 			initDatepicker: function() {
 				var options = this.options || {};
+				console.log( options );
 
 				// Set date format to yy-mm-dd by default.
 				if ( ! options.dateFormat ) {
