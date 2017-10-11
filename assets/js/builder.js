@@ -121,11 +121,18 @@
 			if ( puppyfw.helper.isNonEmptyObject( this.field.attrs ) ) {
 				Vue.set( this.field, 'attrs', puppyfw.helper.objectToArray( this.field.attrs ) );
 			}
+
+			for ( var i = 0; i < this.field.attrs.length; i++ ) {
+				if ( ! this.field.attrs[ i ].baseId ) {
+					this.field.attrs[ i ].baseId = 'option-' + helper.getRandomString();
+				}
+			}
 		},
 
 		methods: {
 			addAttr: function() {
 				this.field.attrs.push({
+					baseId: 'option-' + helper.getRandomString(),
 					key: '',
 					value: ''
 				});
@@ -142,11 +149,18 @@
 			if ( puppyfw.helper.isNonEmptyObject( this.field.options ) ) {
 				Vue.set( this.field, 'options', puppyfw.helper.objectToArray( this.field.options ) );
 			}
+
+			for ( var i = 0; i < this.field.options.length; i++ ) {
+				if ( ! this.field.options[ i ].baseId ) {
+					this.field.options[ i ].baseId = 'option-' + helper.getRandomString();
+				}
+			}
 		},
 
 		methods: {
 			addOption: function() {
 				this.field.options.push({
+					baseId: 'option-' + helper.getRandomString(),
 					key: '',
 					value: ''
 				});

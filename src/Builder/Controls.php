@@ -80,11 +80,15 @@ class Controls {
 			<div class="t-field t-field--inline">
 				<label class="t-label">{{ label }}</label>
 				<div>
-					<div v-for="(option, index) in options" :key="index">
-						<input type="text" placeholder="key" v-model="option.key">
-						<input type="text" placeholder="value" v-model="option.value">
-						<a href="#" @click.prevent="$emit('removeItem', index)">{{ puppyfw.i18n.builder.labels.remove }}</a>
+					<div class="key-value-options">
+						<div v-for="(option, index) in options" :key="option.baseId" class="key-value-option">
+							<span class="key-value-move dashicons dashicons-menu" v-if="sortable"></span>
+							<input type="text" placeholder="key" v-model="option.key">
+							<input type="text" placeholder="value" v-model="option.value">
+							<a href="#" @click.prevent="$emit('removeItem', index)">{{ puppyfw.i18n.builder.labels.remove }}</a>
+						</div>
 					</div>
+
 					<button type="button" class="button" @click="$emit('addItem')">{{ addLabel }}</button>
 				</div>
 			</div>

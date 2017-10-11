@@ -1,4 +1,4 @@
-( function( puppyfw ) {
+( function( puppyfw, Vue, $ ) {
 	"use strict";
 
 	var builder = puppyfw.builder;
@@ -68,6 +68,44 @@
 			options: {
 				type: Array,
 				default: []
+			},
+			sortable: {
+				type: Boolean,
+				default: true
+			}
+		},
+
+		mounted: function() {
+			this.initSortable();
+		},
+
+		methods: {
+			initSortable: function() {
+				var _this = this;
+
+				$( this.$el ).find( '.key-value-options' ).sortable({
+					cursor: 'move',
+					handle: '.key-value-move',
+					placeholder: 'key-value-placeholder',
+					start: function( e, ui ) {
+						ui.placeholder.height( ui.item.height() );
+						ui.item.data( 'start', ui.item.index() );
+					},
+					update: function( event, ui ) {
+						var start, end;
+
+						start = ui.item.data( 'start' );
+						end = ui.item.index();
+
+						_this.moveOption( start, end );
+					},
+				});
+			},
+
+			moveOption: function( start, end ) {
+				var item;
+				item = this.options.splice( start, 1 )[0];
+				this.options.splice( end, 0, item );
 			}
 		}
 	});
@@ -140,4 +178,4 @@
 		}
 	});
 
-})( window.puppyfw );
+})( window.puppyfw, Vue, jQuery );
