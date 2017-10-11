@@ -37,6 +37,22 @@
 	});
 
 
+	builder.api.registerFieldType( 'editor', puppyfw.i18n.builder.types.editor );
+	builder.api.registerTemplate( 'editor', {
+		template: '#puppyfw-field-edit-editor-tpl',
+		mixins: [ builder.mixins.HasAttrs ],
+		beforeMount: function() {
+			if ( typeof this.field.quicktags == 'undefined' ) {
+				Vue.set( this.field, 'quicktags', true );
+			}
+
+			if ( typeof this.field.tinymce == 'undefined' ) {
+				Vue.set( this.field, 'tinymce', false );
+			}
+		}
+	});
+
+
 	builder.api.registerFieldType( 'email', puppyfw.i18n.builder.types.email );
 	builder.api.registerTemplate( 'email', {
 		template: '#puppyfw-field-edit-email-tpl',

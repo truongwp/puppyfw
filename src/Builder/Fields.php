@@ -100,7 +100,41 @@ class Fields {
 
 				<?php FieldSettings::field_default(); ?>
 
-				<?php FieldSettings::field_js_options(); ?>
+				<?php FieldSettings::field_attrs(); ?>
+			</div>
+		</script>
+
+
+		<script type="text/x-template" id="puppyfw-field-edit-editor-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<textarea-control
+					:id="field.baseId + '-default'"
+					:label="puppyfw.i18n.builder.labels.default"
+					:value="field.default"
+					@changeValue="value => field.default = value"
+				></textarea-control>
+
+				<checkbox-control
+					:id="field.baseId + '-quicktags'"
+					:label="puppyfw.i18n.builder.labels.quicktags"
+					:value="field.quicktags"
+					@changeValue="value => field.quicktags = value"
+				></checkbox-control>
+
+				<checkbox-control
+					:id="field.baseId + '-tinymce'"
+					:label="puppyfw.i18n.builder.labels.tinymce"
+					:value="field.tinymce"
+					@changeValue="value => field.tinymce = value"
+				></checkbox-control>
 
 				<?php FieldSettings::field_attrs(); ?>
 			</div>
