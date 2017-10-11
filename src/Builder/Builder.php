@@ -109,12 +109,13 @@ class Builder {
 	public function register_i18n( $i18n ) {
 		$i18n['builder'] = array(
 			'types'  => array(
-				'checkbox' => _x( 'Checkbox', 'field type', 'puppyfw' ),
+				'checkbox'     => _x( 'Checkbox', 'field type', 'puppyfw' ),
 				'checkboxList' => _x( 'Checkbox list', 'field type', 'puppyfw' ),
-				'email'    => _x( 'Email', 'field type', 'puppyfw' ),
-				'number'   => _x( 'Number', 'field type', 'puppyfw' ),
-				'tel'      => _x( 'Tel', 'field type', 'puppyfw' ),
-				'text'     => _x( 'Text', 'field type', 'puppyfw' ),
+				'colorpicker'  => _x( 'Colorpicker', 'field type', 'puppyfw' ),
+				'email'        => _x( 'Email', 'field type', 'puppyfw' ),
+				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
+				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
+				'text'         => _x( 'Text', 'field type', 'puppyfw' ),
 			),
 			'labels' => array(
 				'id'          => _x( 'Field ID', 'field setting label', 'puppyfw' ),

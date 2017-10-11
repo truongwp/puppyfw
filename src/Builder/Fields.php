@@ -77,6 +77,23 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-colorpicker-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_default(); ?>
+
+				<?php FieldSettings::field_attrs(); ?>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-email-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>

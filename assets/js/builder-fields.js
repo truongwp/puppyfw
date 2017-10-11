@@ -21,6 +21,12 @@
 	});
 
 
+	builder.api.registerFieldType( 'colorpicker', puppyfw.i18n.builder.types.colorpicker );
+	builder.api.registerTemplate( 'colorpicker', {
+		template: '#puppyfw-field-edit-colorpicker-tpl'
+	});
+
+
 	builder.api.registerFieldType( 'email', puppyfw.i18n.builder.types.email );
 	builder.api.registerTemplate( 'email', {
 		template: '#puppyfw-field-edit-email-tpl'
