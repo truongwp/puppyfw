@@ -1,0 +1,46 @@
+.t-label {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.t-control {
+  display: block;
+  width: 100%;
+}
+
+.t-field {
+  margin-bottom: 1em;
+}
+
+@media (min-width: 768px) {
+  .t-field--inline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .t-field--inline .t-label {
+    padding-top: 0.4em;
+    -ms-flex-preferred-size: 150px;
+        flex-basis: 150px;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+  .t-field--inline .t-control input[type="checkbox"],
+  .t-field--inline .t-control input[type="radio"] {
+    margin-top: 0.4em;
+  }
+}
+
+.t-control-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/*# sourceMappingURL=../sourcemaps/form.css.map */

@@ -1,0 +1,38 @@
+.t-label {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.t-control {
+  display: block;
+  width: 100%;
+}
+
+.t-field {
+  margin-bottom: 1em;
+
+  &--inline {
+    @media (min-width: 768px) {
+      display: flex;
+
+      .t-label {
+        padding-top: 0.4em;
+        flex-basis: 150px;
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+
+      .t-control {
+        input[type="checkbox"],
+        input[type="radio"] {
+          margin-top: 0.4em;
+        }
+      }
+    }
+  }
+}
+
+.t-control-group {
+  display: flex;
+  align-items: center;
+}

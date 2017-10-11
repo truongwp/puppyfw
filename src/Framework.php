@@ -69,6 +69,8 @@ class Framework extends Singleton {
 	 * Registers scripts.
 	 */
 	public function scripts() {
+		wp_enqueue_style( 'puppyfw-form', PUPPYFW_URL . 'assets/css/form.css', array(), '0.3.0' );
+
 		wp_register_script( 'puppyfw', PUPPYFW_URL . 'assets/js/puppyfw.js', array(), '0.3.0', true );
 
 		wp_localize_script( 'puppyfw', 'puppyfw', array(

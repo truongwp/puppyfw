@@ -72,16 +72,18 @@ class Controls {
 		<script type="text/x-template" id="puppyfw-checkbox-control-tpl">
 			<div class="t-field t-field--inline">
 				<label :for="id" class="t-label">{{ label }}</label>
-				<input type="checkbox" :id="id" :checked="value" @change="$emit('changeValue', $event.target.checked)">
+				<div class="t-control">
+					<input type="checkbox" :id="id" :checked="value" @change="$emit('changeValue', $event.target.checked)">
+				</div>
 			</div>
 		</script>
 
 		<script type="text/x-template" id="puppyfw-key-value-control-tpl">
-			<div class="t-field t-field--inline">
+			<div class="t-field">
 				<label class="t-label">{{ label }}</label>
 				<div>
 					<div class="key-value-items">
-						<div v-for="(item, index) in stateItems" :key="item.baseId" class="key-value-item">
+						<div v-for="(item, index) in stateItems" :key="item.baseId" class="key-value-item t-control-group">
 							<span class="key-value-move dashicons dashicons-menu" v-if="sortable"></span>
 							<input type="text" placeholder="key" v-model="item.key">
 							<input type="text" placeholder="value" v-model="item.value">
