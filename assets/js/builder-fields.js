@@ -66,6 +66,12 @@
 	});
 
 
+	builder.api.registerFieldType( 'html', puppyfw.i18n.builder.types.html );
+	builder.api.registerTemplate( 'html', {
+		template: '#puppyfw-field-edit-html-tpl'
+	});
+
+
 	builder.api.registerFieldType( 'number', puppyfw.i18n.builder.types.number );
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',

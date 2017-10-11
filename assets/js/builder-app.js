@@ -76,7 +76,7 @@
 
 		methods: {
 			addField: function() {
-				this.fields.push( puppyfw.helper.getEmptyField() );
+				this.fields.push( puppyfw.helper.getDefaultField() );
 			},
 
 			moveField: function( start, end ) {
@@ -137,14 +137,8 @@
 
 		methods: {
 			parseField: function( field ) {
-				var emptyField = puppyfw.helper.getEmptyField();
-
+				var emptyField = puppyfw.helper.getDefaultField();
 				field = Vue.util.extend( emptyField, field );
-
-				if ( puppyfw.helper.isNonEmptyObject( field.options ) ) {
-					field.options = puppyfw.helper.objectToArray( field.options );
-				}
-
 				return field;
 			}
 		}

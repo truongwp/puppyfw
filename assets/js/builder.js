@@ -4,6 +4,16 @@
 	var helper, builder;
 	helper = puppyfw.helper = puppyfw.helper || {};
 	builder = puppyfw.builder = puppyfw.builder || {};
+	builder.defaultField = {
+		title: puppyfw.i18n.builder.types.text,
+		type: 'text',
+		desc: '',
+		default: '',
+		attrs: [],
+		options: [],
+		content: '',
+		fields: []
+	};
 	builder.types = {};
 	builder.mapping = {};
 	builder.controls = {};
@@ -46,20 +56,13 @@
 		}
 	};
 
-	helper.getEmptyField = function() {
-		var rand = helper.getRandomString();
-		return {
-			baseId: 'field-' + rand,
-			id: 'field-' + rand,
-			title: 'Field title',
-			type: 'text',
-			desc: '',
-			default: '',
-			attrs: [],
-			options: [],
-			content: '',
-			fields: []
-		};
+	helper.getDefaultField = function() {
+		var field, id;
+		field = this.clone( builder.defaultField );
+		id = 'field-' + helper.getRandomString();
+		field.baseId = id;
+		field.id = id;
+		return field;
 	};
 
 	helper.getTypeEditComponent = function( type ) {
@@ -90,6 +93,10 @@
 
 	builder.api.map = function( type, componentName ) {
 		builder.mapping[ type ] = componentName;
+	};
+
+	builder.api.addDefaultFieldData = function( name, value ) {
+		builder.defaultField[ name ] = value;
 	};
 
 	builder.api.registerTemplate = function( type, component ) {

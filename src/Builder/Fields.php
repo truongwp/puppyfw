@@ -176,6 +176,26 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-html-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<textarea-control
+					:id="field.baseId + '-content'"
+					:label="puppyfw.i18n.builder.labels.content"
+					:value="field.content"
+					@changeValue="value => field.content = value"
+				></textarea-control>
+
+				<?php FieldSettings::field_attrs(); ?>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-number-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>

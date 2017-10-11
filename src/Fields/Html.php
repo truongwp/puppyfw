@@ -1,6 +1,6 @@
 <?php
 /**
- * HTML field
+ * Html field
  *
  * @package PuppyFW\Fields
  * @since 0.1.2
@@ -9,9 +9,9 @@
 namespace PuppyFW\Fields;
 
 /**
- * Class HTML
+ * Class Html
  */
-class HTML extends Field {
+class Html extends Field {
 
 	/**
 	 * Check if this field has value.
