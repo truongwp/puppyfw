@@ -90,7 +90,7 @@ class Controls {
 			</div>
 		</script>
 
-		<script type="text/x-template" id="puppyfw-choice-control-tpl">
+		<!-- <script type="text/x-template" id="puppyfw-choice-control-tpl">
 			<div class="t-field t-field--inline">
 				<label class="t-label">{{ label }}</label>
 				<div>
@@ -115,7 +115,7 @@ class Controls {
 								</td>
 
 								<td>
-									<input type="radio">
+									<input type="radio" :name="id">
 								</td>
 
 								<td>
@@ -128,7 +128,7 @@ class Controls {
 					<button type="button" class="button" @click="$emit('addItem')">+ Add choice</button>
 				</div>
 			</div>
-		</script>
+		</script> -->
 		<?php
 	}
 }

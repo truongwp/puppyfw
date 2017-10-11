@@ -64,15 +64,14 @@ class Fields {
 
 				<?php FieldSettings::field_desc(); ?>
 
-				<choice-control
-					:id="field.baseId + '-default'"
-					:label="puppyfw.i18n.builder.labels.default"
-					:value="field.default"
+				<?php FieldSettings::field_default(); ?>
+
+				<key-value-control
+					:label="puppyfw.i18n.builder.labels.options"
 					:options="field.options"
 					@addItem="addOption"
 					@removeItem="index => removeOption(index)"
-					@changeValue="value => field.default = value"
-				></choice-control>
+				></key-value-control>
 
 				<?php FieldSettings::field_attrs(); ?>
 			</div>

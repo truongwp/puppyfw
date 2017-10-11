@@ -15,8 +15,8 @@
 	});
 
 
-	builder.api.registerFieldType( 'checkbox-list', puppyfw.i18n.builder.types.checkboxList );
-	builder.api.registerTemplate( 'checkbox-list', {
+	builder.api.registerFieldType( 'checkbox_list', puppyfw.i18n.builder.types.checkboxList );
+	builder.api.registerTemplate( 'checkbox_list', {
 		template: '#puppyfw-field-edit-checkbox-list-tpl'
 	});
 

@@ -462,6 +462,8 @@
 		beforeMount: function() {
 			if ( ! this.field.value ) {
 				Vue.set( this.field, 'value', [] );
+			} else if ( typeof this.field.value != 'object' ) {
+				Vue.set( this.field, 'value', [ this.field.value ] );
 			}
 		}
 	});
