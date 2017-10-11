@@ -21,6 +21,7 @@ class Cleanup {
 	public function clean( $fields ) {
 		foreach ( $fields as $index => $field ) {
 			$this->clean_attrs( $field );
+			$this->clean_options( $field );
 
 			$fields[ $index ] = $field;
 		}
@@ -42,5 +43,21 @@ class Cleanup {
 			}
 		}
 		$field['attrs'] = $attrs;
+	}
+
+	/**
+	 * Cleans options parameter.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function clean_options( &$field ) {
+		$options = array();
+		$field['options'] = isset( $field['options'] ) ? (array) $field['options'] : array();
+		foreach ( $field['options'] as $attr ) {
+			if ( ! empty( $attr['key'] ) ) {
+				$options[ $attr['key'] ] = $attr['value'];
+			}
+		}
+		$field['options'] = $options;
 	}
 }

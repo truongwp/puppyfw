@@ -138,6 +138,12 @@
 	};
 
 	builder.mixins.HasOptions = {
+		beforeMount: function() {
+			if ( puppyfw.helper.isNonEmptyObject( this.field.options ) ) {
+				Vue.set( this.field, 'options', puppyfw.helper.objectToArray( this.field.options ) );
+			}
+		},
+
 		methods: {
 			addOption: function() {
 				this.field.options.push({

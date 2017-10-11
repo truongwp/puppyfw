@@ -68,6 +68,7 @@ class Fields {
 
 				<key-value-control
 					:label="puppyfw.i18n.builder.labels.options"
+					:add-label="puppyfw.i18n.builder.labels.addOption"
 					:options="field.options"
 					@addItem="addOption"
 					@removeItem="index => removeOption(index)"
