@@ -23,6 +23,7 @@ class Cleanup {
 			$this->clean_attrs( $field );
 			$this->clean_options( $field );
 			$this->clean_js_options( $field );
+			$this->normalize_image_default( $field );
 
 			$fields[ $index ] = $field;
 		}
@@ -76,5 +77,33 @@ class Cleanup {
 			}
 		}
 		$field['js_options'] = $js_options;
+	}
+
+	/**
+	 * Normalizes default of image field.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function normalize_image_default( &$field ) {
+		if ( 'image' !== $field['type'] ) {
+			return;
+		}
+
+		if ( empty( $field['default'] ) ) {
+			return;
+		}
+
+		if ( is_numeric( $field['default'] ) ) {
+			$field['default'] = array(
+				'id'  => intval( $field['default'] ),
+				'url' => '',
+			);
+			return;
+		}
+
+		$field['default'] = array(
+			'id'  => '',
+			'url' => esc_url( $field['default'] ),
+		);
 	}
 }

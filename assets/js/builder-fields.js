@@ -72,6 +72,21 @@
 	});
 
 
+	builder.api.registerFieldType( 'image', puppyfw.i18n.builder.types.image );
+	builder.api.registerTemplate( 'image', {
+		template: '#puppyfw-field-edit-image-tpl',
+		beforeMount: function() {
+			if ( this.field.default.id ) {
+				Vue.set( this.field, 'default', this.field.default.id );
+			} else if ( this.field.default.url ) {
+				Vue.set( this.field, 'default', this.field.default.url );
+			} else if ( typeof this.field.default == 'object' ) {
+				Vue.set( this.field, 'default', '' );
+			}
+		}
+	});
+
+
 	builder.api.registerFieldType( 'number', puppyfw.i18n.builder.types.number );
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',

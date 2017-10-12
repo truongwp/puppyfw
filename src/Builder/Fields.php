@@ -196,6 +196,21 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-image-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_default(); ?>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-number-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>
