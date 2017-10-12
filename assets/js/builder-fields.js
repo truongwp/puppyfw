@@ -87,6 +87,12 @@
 	});
 
 
+	builder.api.registerFieldType( 'images', puppyfw.i18n.builder.types.images );
+	builder.api.registerTemplate( 'images', {
+		template: '#puppyfw-field-edit-images-tpl'
+	});
+
+
 	builder.api.registerFieldType( 'number', puppyfw.i18n.builder.types.number );
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',

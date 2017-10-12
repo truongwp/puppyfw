@@ -24,6 +24,7 @@ class Cleanup {
 			$this->clean_options( $field );
 			$this->clean_js_options( $field );
 			$this->normalize_image_default( $field );
+			$this->normalize_images_default( $field );
 
 			$fields[ $index ] = $field;
 		}
@@ -105,5 +106,18 @@ class Cleanup {
 			'id'  => '',
 			'url' => esc_url( $field['default'] ),
 		);
+	}
+
+	/**
+	 * Normalizes default of images field.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function normalize_images_default( &$field ) {
+		if ( 'images' !== $field['type'] ) {
+			return;
+		}
+
+		$field['default'] = array();
 	}
 }
