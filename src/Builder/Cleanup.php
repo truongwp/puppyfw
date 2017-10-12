@@ -26,6 +26,10 @@ class Cleanup {
 			$this->normalize_image_default( $field );
 			$this->normalize_images_default( $field );
 
+			if ( ! empty( $field['fields'] ) ) {
+				$field['fields'] = $this->clean( $field['fields'] );
+			}
+
 			$fields[ $index ] = $field;
 		}
 
