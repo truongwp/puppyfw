@@ -105,7 +105,26 @@ class BuilderMetaBox {
 
 		wp_enqueue_style( 'puppyfw-builder', PUPPYFW_URL . 'assets/css/builder.css', array(), '0.3.0' );
 
-		wp_enqueue_script( 'puppyfw-builder', PUPPYFW_URL . 'assets/js/builder.js', array( 'puppyfw' ), '0.3.0', true );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_script( 'jquery-ui-sortable' );
+
+		wp_enqueue_script( 'vue' );
+		wp_enqueue_script( 'puppyfw' );
+		wp_enqueue_script( 'puppyfw-components' );
+
+		wp_enqueue_script(
+			'puppyfw-builder',
+			PUPPYFW_URL . 'assets/js/builder.js',
+			array(
+				'vue',
+				'jquery',
+				'jquery-ui-sortable',
+				'puppyfw',
+				'puppyfw-components',
+			),
+			'0.3.0',
+			true
+		);
 
 		/**
 		 * Hook for enqueuing builder controls assets.

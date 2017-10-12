@@ -277,49 +277,20 @@ class Page {
 
 		wp_enqueue_style( 'wp-color-picker' );
 
+		wp_enqueue_style( 'puppyfw-jquery-ui', PUPPYFW_URL . 'assets/lib/jquery-ui/jquery-ui.min.css', array(), '0.1.0' );
+
+		wp_enqueue_style( 'puppyfw', PUPPYFW_URL . 'assets/css/puppyfw.css', array(), '0.1.0' );
+
 		wp_enqueue_editor();
 		wp_enqueue_media();
 
-		wp_enqueue_style( 'puppyfw-jquery-ui', PUPPYFW_URL . 'assets/lib/jquery-ui/jquery-ui.min.css', array(), '0.1.0' );
+		wp_enqueue_script( 'wp-color-picker-alpha', PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '1.2.2', true );
 
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
-
-		wp_enqueue_style(
-			'puppyfw',
-			PUPPYFW_URL . 'assets/css/puppyfw.css',
-			array(),
-			'0.1.0'
-		);
-
-		wp_enqueue_script(
-			'vue',
-			PUPPYFW_URL . 'assets/js/lib/vue.min.js',
-			array(),
-			'2.4.4',
-			true
-		);
-
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
-			PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js',
-			array( 'wp-color-picker' ),
-			'1.2.2',
-			true
-		);
-
-		wp_enqueue_script(
-			'puppyfw-components',
-			PUPPYFW_URL . 'assets/js/components.js',
-			array(
-				'vue',
-				'jquery-ui-datepicker',
-			),
-			'0.1.0',
-			true
-		);
-
+		wp_enqueue_script( 'vue' );
 		wp_enqueue_script( 'puppyfw' );
+		wp_enqueue_script( 'puppyfw-components' );
 
 		wp_enqueue_script(
 			'puppyfw-page',
