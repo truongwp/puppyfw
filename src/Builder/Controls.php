@@ -79,11 +79,11 @@ class Controls {
 		</script>
 
 		<script type="text/x-template" id="puppyfw-key-value-control-tpl">
-			<div class="t-field">
+			<div class="t-field t-field--inline">
 				<label class="t-label">{{ label }}</label>
 				<div>
 					<div class="key-value-items">
-						<div v-for="(item, index) in stateItems" :key="item.baseId" class="key-value-item t-control-group">
+						<div v-for="(item, index) in stateItems" :key="item.baseId" class="key-value-item t-control-group t-control-group--inline">
 							<span class="key-value-move dashicons dashicons-menu" v-if="sortable"></span>
 							<input type="text" placeholder="key" v-model="item.key">
 							<input type="text" placeholder="value" v-model="item.value">

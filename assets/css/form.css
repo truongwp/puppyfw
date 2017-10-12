@@ -12,7 +12,7 @@
   margin-bottom: 1em;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 782px) {
   .t-field--inline {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -34,7 +34,7 @@
   }
 }
 
-.t-control-group {
+.t-control-group--inline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

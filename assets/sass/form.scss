@@ -12,7 +12,7 @@
   margin-bottom: 1em;
 
   &--inline {
-    @media (min-width: 768px) {
+    @media (min-width: 782px) {
       display: flex;
 
       .t-label {
@@ -32,7 +32,7 @@
   }
 }
 
-.t-control-group {
+.t-control-group--inline {
   display: flex;
   align-items: center;
 }
