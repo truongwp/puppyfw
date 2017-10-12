@@ -54,27 +54,32 @@
 		},
 
 		mounted: function() {
-			var _this = this;
-
-			$( this.$el ).sortable({
-				placeholder: 'field-placeholder',
-				start: function( e, ui ) {
-					ui.placeholder.height( ui.item.height() );
-					ui.item.data( 'start', ui.item.index() );
-				},
-				update: function( event, ui ) {
-					var start, end;
-
-					start = ui.item.data( 'start' );
-					end = ui.item.index();
-
-					_this.moveField( start, end );
-				},
-				cancel: '.field__edit'
-			});
+			this.initSortable();
 		},
 
 		methods: {
+			initSortable: function() {
+				var _this = this;
+
+				$( this.$el ).sortable({
+					placeholder: 'field-placeholder',
+					start: function( e, ui ) {
+						ui.placeholder.height( ui.item.height() );
+						ui.item.data( 'start', ui.item.index() );
+					},
+					update: function( event, ui ) {
+						var start, end;
+
+						start = ui.item.data( 'start' );
+						end = ui.item.index();
+
+						_this.moveField( start, end );
+					},
+					handle: '.field__heading',
+					cancel: '.field__control'
+				});
+			},
+
 			addField: function() {
 				this.fields.push( puppyfw.helper.getDefaultField() );
 			},
