@@ -91,4 +91,188 @@
 			$( this.$el ).datepicker( 'hide' ).datepicker( 'destroy' );
 		}
 	});
+
+
+	Vue.component( 'puppyfw-element-map', {
+		template: '#puppyfw-element-map-template',
+
+		props: {
+			formatted_address: {
+				type: String,
+				default: ''
+			},
+			lat: {
+				type: Number,
+				default: 0
+			},
+			lng: {
+				type: Number,
+				default: 0
+			}
+		},
+
+		data: function() {
+			return {
+				map: null,
+				center: {
+					formatted_address: '',
+					lat: 0,
+					lng: 0
+				},
+				markers: [],
+				searchInput: null,
+				error: ''
+			};
+		},
+
+		watch: {
+			center: {
+				handler: function( newVal ) {
+					this.$emit( 'changeCenter', newVal );
+				},
+				deep: true
+			}
+		},
+
+		beforeMount: function() {
+			Vue.set( this.center, 'formatted_address', this.formatted_address );
+			Vue.set( this.center, 'lat', this.lat );
+			Vue.set( this.center, 'lng', this.lng );
+
+			this.triggerResize();
+		},
+
+		mounted: function() {
+			this.initMap();
+			this.initMarkers();
+			this.initMapSearch();
+		},
+
+		methods: {
+			/**
+			 * Initialize map.
+			 */
+			initMap: function() {
+				this.map = new google.maps.Map( this.$refs.map, {
+					center: this.center,
+					zoom: 16
+				});
+			},
+
+			/**
+			 * Initialize map search.
+			 */
+			initMapSearch: function() {
+				var _this = this;
+
+				this.searchInput = new google.maps.places.SearchBox( this.$refs.search );
+
+				this.map.addListener( 'bounds_changed', this.bounds_changed );
+
+				// Listen for the event fired when the user selects a prediction and retrieve
+				// more details for that place.
+				this.searchInput.addListener( 'places_changed', this.places_changed );
+			},
+
+			bounds_changed: function() {
+				this.searchInput.setBounds( this.map.getBounds() );
+			},
+
+			places_changed: function() {
+				var places = this.searchInput.getPlaces(),
+					_this = this;
+
+				if ( places.length == 0 ) {
+					return;
+				}
+
+				this.clearMarkers();
+
+				// For each place, get the icon, name and location.
+				var bounds = new google.maps.LatLngBounds();
+
+				places.forEach( function( place ) {
+					if ( ! place.geometry ) {
+						console.log( 'Returned place contains no geometry' );
+						return;
+					}
+
+					// Create a marker for each place.
+					_this.markers.push( new google.maps.Marker({
+						map: _this.map,
+						// icon: icon,
+						title: place.name,
+						position: place.geometry.location
+					}));
+
+					Vue.set( _this.center, 'lat', place.geometry.location.lat() );
+					Vue.set( _this.center, 'lng', place.geometry.location.lng() );
+					Vue.set( _this.center, 'formatted_address', place.formatted_address );
+
+					if ( place.geometry.viewport ) {
+						// Only geocodes have viewport.
+						bounds.union( place.geometry.viewport );
+					} else {
+						bounds.extend( place.geometry.location );
+					}
+				});
+
+				this.map.fitBounds( bounds );
+			},
+
+			/**
+			 * Initialize map marker.
+			 */
+			initMarkers: function() {
+				if ( ! this.center.lat || ! this.center.lng ) {
+					return;
+				}
+
+				this.markers.push( new google.maps.Marker({
+					map: this.map,
+					title: this.center.formatted_address,
+					position: this.center
+				}));
+			},
+
+			/**
+			 * Clear out the old markers.
+			 */
+			clearMarkers: function() {
+				this.markers.forEach( function( marker ) {
+					marker.setMap( null );
+				});
+				this.markers = [];
+			},
+
+			/**
+			 * Fix map doesn't show when change from invisible to visible.
+			 */
+			triggerResize: function() {
+				var _this = this;
+				$( document ).one( 'puppyfw_changed_tab puppyfw_edit_field', function( ev ) {
+					setTimeout( function() {
+						google.maps.event.trigger( _this.map, 'resize' );
+						_this.map.setCenter( _this.center );
+					}, 500 );
+				});
+			},
+
+			/**
+			 * Clear map.
+			 */
+			clearMap: function() {
+				this.clearMarkers();
+
+				Vue.set( this.center, 'lat', 0 );
+				Vue.set( this.center, 'lng', 0 );
+				Vue.set( this.center, 'formatted_address', '' );
+
+				this.map.setCenter({
+					lat: 0,
+					lng: 0
+				});
+			}
+		}
+	});
 })( Vue, jQuery );

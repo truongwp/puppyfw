@@ -32,6 +32,8 @@
 		methods: {
 			toggleEditing: function() {
 				this.editing = ! this.editing;
+
+				this.editing ? $( document ).trigger( 'puppyfw_edit_field' ) : $( document ).trigger( 'puppyfw_close_edit_field' );
 			}
 		}
 	};

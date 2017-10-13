@@ -93,6 +93,21 @@
 	});
 
 
+	builder.api.registerFieldType( 'map', puppyfw.i18n.builder.types.map );
+	builder.api.registerTemplate( 'map', {
+		template: '#puppyfw-field-edit-map-tpl',
+		beforeMount: function() {
+			if ( ! this.field.default || typeof this.field.default != 'object' ) {
+				Vue.set( this.field, 'default', {
+					lat: 0,
+					lng: 0,
+					formatted_address: ''
+				});
+			}
+		}
+	});
+
+
 	builder.api.registerFieldType( 'number', puppyfw.i18n.builder.types.number );
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',

@@ -75,8 +75,6 @@ class Framework extends Singleton {
 
 		wp_register_script( 'puppyfw', PUPPYFW_URL . 'assets/js/puppyfw.js', array(), '0.3.0', true );
 
-		wp_register_script( 'puppyfw-components', PUPPYFW_URL . 'assets/js/components.js', array( 'vue', 'jquery-ui-datepicker' ), '0.1.0', true );
-
 		wp_localize_script( 'puppyfw', 'puppyfw', array(
 			'mapping' => Helpers::field_vue_component_mapping(),
 

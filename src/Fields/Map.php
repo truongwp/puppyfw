@@ -13,13 +13,6 @@ namespace PuppyFW\Fields;
 class Map extends Field {
 
 	/**
-	 * Enqueues custom scripts and styles.
-	 */
-	public function enqueue() {
-		wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuOALLadUZV06Yroa1SonBWh5coy-RNZc&libraries=places', array(), false, true );
-	}
-
-	/**
 	 * Render js template.
 	 */
 	public function js_template() {

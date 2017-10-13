@@ -224,6 +224,31 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-map-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<div class="t-field">
+					<label class="t-label">{{ puppyfw.i18n.builder.labels.default }}</label>
+					<div class="t-control">
+						<puppyfw-element-map
+							:lat="field.default.lat"
+							:lng="field.default.lng"
+							:formatted_address="field.default.formatted_address"
+							@changeCenter="value => field.default = value"
+						></puppyfw-element-map>
+					</div>
+				</div>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-number-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>

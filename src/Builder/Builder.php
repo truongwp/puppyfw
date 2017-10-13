@@ -119,6 +119,7 @@ class Builder {
 				'html'         => _x( 'Html', 'field type', 'puppyfw' ),
 				'image'        => _x( 'Image', 'field type', 'puppyfw' ),
 				'images'       => _x( 'Images', 'field type', 'puppyfw' ),
+				'map'          => _x( 'Map', 'field type', 'puppyfw' ),
 				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
 				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
 				'text'         => _x( 'Text', 'field type', 'puppyfw' ),

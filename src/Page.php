@@ -286,11 +286,11 @@ class Page {
 
 		wp_enqueue_script( 'wp-color-picker-alpha', PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '1.2.2', true );
 
-		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'vue' );
 		wp_enqueue_script( 'puppyfw' );
-		wp_enqueue_script( 'puppyfw-components' );
+
+		Helpers::enqueue_components();
 
 		wp_enqueue_script(
 			'puppyfw-page',

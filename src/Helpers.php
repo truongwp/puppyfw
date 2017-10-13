@@ -101,4 +101,31 @@ class Helpers {
 			'option_name' => '',
 		) );
 	}
+
+	/**
+	 * Loads vue components.
+	 */
+	public static function enqueue_components() {
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_script( 'google-maps-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDuOALLadUZV06Yroa1SonBWh5coy-RNZc&libraries=places', array(), false, true );
+		wp_enqueue_script( 'puppyfw-components', PUPPYFW_URL . 'assets/js/components.js', array( 'vue', 'jquery-ui-datepicker' ), '0.1.0', true );
+
+		add_action( 'admin_footer', array( __CLASS__, 'components_templates' ) );
+	}
+
+	/**
+	 * Prints components templates.
+	 */
+	public static function components_templates() {
+		?>
+		<script type="text/x-template" id="puppyfw-element-map-template">
+			<div class="puppyfw-element-map">
+				<input type="text" size="43" ref="search" :value="center.formatted_address">
+				<button type="button" class="button button-secondary" @click="clearMap"><?php esc_html_e( 'Clear', 'puppyfw' ); ?></button>
+
+				<div class="puppyfw-map-container" ref="map" style="height: 350px;">{{ error }}</div>
+			</div>
+		</script>
+		<?php
+	}
 }

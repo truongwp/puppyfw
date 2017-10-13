@@ -7,6 +7,8 @@
 
 namespace PuppyFW\Builder;
 
+use PuppyFW\Helpers;
+
 /**
  * Class BuilderMetaBox
  */
@@ -105,12 +107,12 @@ class BuilderMetaBox {
 
 		wp_enqueue_style( 'puppyfw-builder', PUPPYFW_URL . 'assets/css/builder.css', array(), '0.3.0' );
 
-		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
 		wp_enqueue_script( 'vue' );
 		wp_enqueue_script( 'puppyfw' );
-		wp_enqueue_script( 'puppyfw-components' );
+
+		Helpers::enqueue_components();
 
 		wp_enqueue_script(
 			'puppyfw-builder',
@@ -261,7 +263,7 @@ class BuilderMetaBox {
 
 		wp_update_post( array(
 			'ID'           => $post_id,
-			'post_content' => wp_json_encode( $fields ),
+			'post_content' => wp_json_encode( $fields, JSON_UNESCAPED_UNICODE ),
 		) );
 
 		$this->add_save_handle();
