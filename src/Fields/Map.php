@@ -22,10 +22,12 @@ class Map extends Field {
 				<label :for="field.id_attr" class="puppyfw-field__label">{{ field.title }}</label>
 
 				<div class="puppyfw-field__control">
-					<input type="text" size="43" ref="searchInput" :value="field.value ? field.value.formatted_address : ''">
-					<button type="button" class="button button-secondary" @click="clearMap"><?php esc_html_e( 'Clear', 'puppyfw' ); ?></button>
-
-					<div class="puppyfw-map-container" ref="map">{{ error }}</div>
+					<puppyfw-element-map
+						:lat="field.value.lat"
+						:lng="field.value.lng"
+						:formatted_address="field.value.formatted_address"
+						@changeCenter="value => field.value = value"
+					></puppyfw-element-map>
 
 					<div class="puppyfw-field__desc" v-if="field.desc">{{ field.desc }}</div>
 				</div>

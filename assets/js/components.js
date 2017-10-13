@@ -136,8 +136,8 @@
 
 		beforeMount: function() {
 			Vue.set( this.center, 'formatted_address', this.formatted_address );
-			Vue.set( this.center, 'lat', this.lat );
-			Vue.set( this.center, 'lng', this.lng );
+			Vue.set( this.center, 'lat', parseFloat( this.lat ) );
+			Vue.set( this.center, 'lng', parseFloat( this.lng ) );
 
 			this.triggerResize();
 		},
