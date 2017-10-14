@@ -13,6 +13,13 @@ namespace PuppyFW\Fields;
 class Radio extends Choice {
 
 	/**
+	 * Flag to check if field support none option.
+	 *
+	 * @var bool
+	 */
+	protected $support_none_option = true;
+
+	/**
 	 * Render js template.
 	 */
 	public function js_template() {

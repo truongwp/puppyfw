@@ -12,7 +12,12 @@
 		attrs: [],
 		options: [],
 		content: '',
-		fields: []
+		fields: [],
+		inline: false,
+		data_source: 'options',
+		post_type: 'post',
+		taxonomy: 'category',
+		none_option: ''
 	};
 	builder.types = {};
 	builder.mapping = {};
@@ -142,6 +147,26 @@
 			if ( ! this.field.js_options ) {
 				this.field.js_options = [];
 			}
+		}
+	};
+
+	builder.mixins.ChoiceField = {
+		mixins: [ builder.mixins.HasOptions ],
+
+		data: function() {
+			return {
+				dataSource: {
+					options: puppyfw.i18n.builder.labels.options,
+					post: puppyfw.i18n.builder.labels.post,
+					term: puppyfw.i18n.builder.labels.term,
+					taxonomy: puppyfw.i18n.builder.labels.taxonomy
+				},
+				supportNoneOption: false
+			};
+		},
+
+		beforeMount: function() {
+
 		}
 	};
 

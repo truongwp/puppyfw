@@ -19,7 +19,7 @@
 	builder.api.registerFieldType( 'checkbox_list', puppyfw.i18n.builder.types.checkboxList );
 	builder.api.registerTemplate( 'checkbox_list', {
 		template: '#puppyfw-field-edit-choice-tpl',
-		mixins: [ builder.mixins.HasOptions ]
+		mixins: [ builder.mixins.ChoiceField ]
 	});
 
 
@@ -118,14 +118,24 @@
 	builder.api.registerFieldType( 'radio', puppyfw.i18n.builder.types.radio );
 	builder.api.registerTemplate( 'radio', {
 		template: '#puppyfw-field-edit-choice-tpl',
-		mixins: [ builder.mixins.HasOptions ]
+		mixins: [ builder.mixins.ChoiceField ],
+		data: function() {
+			return {
+				supportNoneOption: true
+			};
+		}
 	});
 
 
 	builder.api.registerFieldType( 'select', puppyfw.i18n.builder.types.select );
 	builder.api.registerTemplate( 'select', {
 		template: '#puppyfw-field-edit-choice-tpl',
-		mixins: [ builder.mixins.HasOptions ]
+		mixins: [ builder.mixins.ChoiceField ],
+		data: function() {
+			return {
+				supportNoneOption: true
+			};
+		}
 	});
 
 

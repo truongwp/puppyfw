@@ -14,6 +14,13 @@ namespace PuppyFW\Fields;
 abstract class Choice extends Field {
 
 	/**
+	 * Flag to check if field support none option.
+	 *
+	 * @var bool
+	 */
+	protected $support_none_option = false;
+
+	/**
 	 * Normalize field data.
 	 *
 	 * @param  array $field_data Field data.
@@ -34,11 +41,17 @@ abstract class Choice extends Field {
 			$field_data['taxonomy'] = 'category';
 		}
 
-		if ( ! isset( $field_data['none_option'] ) ) {
-			$field_data['none_option'] = '';
+		$options = array();
+		if ( $this->support_none_option && ! empty( $field_data['none_option'] ) ) {
+			$options[] = array(
+				'key'   => '',
+				'value' => $field_data['none_option'],
+			);
 		}
 
-		$field_data['options'] = $this->parse_options( $field_data );
+		$options = array_merge( $options, $this->parse_options( $field_data ) );
+
+		$field_data['options'] = $options;
 
 		return $field_data;
 	}
@@ -87,14 +100,6 @@ abstract class Choice extends Field {
 	 */
 	protected function get_post_options( $field_data ) {
 		$options = array();
-
-		if ( $field_data['none_option'] ) {
-			$options[] = array(
-				'key'   => '',
-				'value' => $field_data['none_option'],
-			);
-		}
-
 		$posts = get_posts( array(
 			'post_type' => $field_data['post_type'],
 			'nopaging'  => true,
@@ -120,14 +125,6 @@ abstract class Choice extends Field {
 	 */
 	protected function get_term_options( $field_data ) {
 		$options = array();
-
-		if ( $field_data['none_option'] ) {
-			$options[] = array(
-				'key'   => '',
-				'value' => $field_data['none_option'],
-			);
-		}
-
 		$terms = get_terms( array(
 			'taxonomy'   => $field_data['taxonomy'],
 			'orderby'    => 'name',
@@ -153,14 +150,6 @@ abstract class Choice extends Field {
 	 */
 	protected function get_taxonomy_options( $field_data ) {
 		$options = array();
-
-		if ( $field_data['none_option'] ) {
-			$options[] = array(
-				'key'   => '',
-				'value' => $field_data['none_option'],
-			);
-		}
-
 		$taxonomies = get_taxonomies();
 
 		foreach ( $taxonomies as $taxonomy ) {

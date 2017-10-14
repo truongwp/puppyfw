@@ -66,7 +66,50 @@ class Fields {
 
 				<?php FieldSettings::field_default(); ?>
 
-				<?php FieldSettings::field_options(); ?>
+				<select-control
+					:id="field.baseId + '-data-source'"
+					:label="puppyfw.i18n.builder.labels.dataSource"
+					:value="field.data_source"
+					:options="dataSource"
+					@changeValue="value => field.data_source = value"
+				></select-control>
+
+				<template v-if="field.data_source == 'options'">
+					<?php FieldSettings::field_options(); ?>
+				</template>
+
+				<template v-else v-if="field.data_source == 'post'">
+					<text-control
+						:id="field.baseId + '-post-type'"
+						:label="puppyfw.i18n.builder.labels.postType"
+						:value="field.post_type"
+						@changeValue="value => field.post_type = value"
+					></text-control>
+				</template>
+
+				<template v-else v-if="field.data_source == 'term'">
+					<text-control
+						:id="field.baseId + '-taxonomy'"
+						:label="puppyfw.i18n.builder.labels.taxonomy"
+						:value="field.taxonomy"
+						@changeValue="value => field.taxonomy = value"
+					></text-control>
+				</template>
+
+				<text-control
+					v-if="supportNoneOption"
+					:id="field.baseId + '-none-option'"
+					:label="puppyfw.i18n.builder.labels.noneOption"
+					:value="field.none_option"
+					@changeValue="value => field.none_option = value"
+				></text-control>
+
+				<checkbox-control
+					:id="field.baseId + '-inline'"
+					:label="puppyfw.i18n.builder.labels.inline"
+					:value="field.inline"
+					@changeValue="value => field.inline = value"
+				></checkbox-control>
 			</div>
 		</script>
 

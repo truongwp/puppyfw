@@ -13,6 +13,13 @@ namespace PuppyFW\Fields;
 class Select extends Choice {
 
 	/**
+	 * Flag to check if field support none option.
+	 *
+	 * @var bool
+	 */
+	protected $support_none_option = true;
+
+	/**
 	 * Normalize field data.
 	 *
 	 * @param  array $field_data Field data.

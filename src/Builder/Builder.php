@@ -135,7 +135,7 @@ class Builder {
 				'attributes'  => _x( 'Field attributes', 'field setting label', 'puppyfw' ),
 				'default'     => _x( 'Default', 'field setting label', 'puppyfw' ),
 				'options'     => _x( 'Options', 'field setting label', 'puppyfw' ),
-				'js_options'  => _x( 'Javascript Options', 'field setting label', 'puppyfw' ),
+				'jsOptions'   => _x( 'Javascript Options', 'field setting label', 'puppyfw' ),
 				'quicktags'   => _x( 'Quicktags', 'field setting label', 'puppyfw' ),
 				'tinymce'     => _x( 'Tinymce', 'field setting label', 'puppyfw' ),
 				'fields'      => _x( 'Fields', 'field setting label', 'puppyfw' ),
@@ -145,6 +145,13 @@ class Builder {
 				'remove'      => _x( 'Remove', 'field setting label', 'puppyfw' ),
 				'addAttribute' => _x( '+ Add attribute', 'field setting label', 'puppyfw' ),
 				'addOption'    => _x( '+ Add option', 'field setting label', 'puppyfw' ),
+				'inline'       => _x( 'Inline', 'field setting label', 'puppyfw' ),
+				'dataSource'   => _x( 'Data source', 'field setting label', 'puppyfw' ),
+				'post'         => _x( 'Post', 'field setting label', 'puppyfw' ),
+				'postType'     => _x( 'Post type', 'field setting label', 'puppyfw' ),
+				'term'         => _x( 'Term', 'field setting label', 'puppyfw' ),
+				'taxonomy'     => _x( 'Taxonomy', 'field setting label', 'puppyfw' ),
+				'noneOption'   => _x( 'None option', 'field setting label', 'puppyfw' ),
 			),
 		);
 
