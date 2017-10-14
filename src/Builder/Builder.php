@@ -122,6 +122,7 @@ class Builder {
 				'map'          => _x( 'Map', 'field type', 'puppyfw' ),
 				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
 				'radio'        => _x( 'Radio', 'field type', 'puppyfw' ),
+				'select'       => _x( 'Select', 'field type', 'puppyfw' ),
 				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
 				'text'         => _x( 'Text', 'field type', 'puppyfw' ),
 			),

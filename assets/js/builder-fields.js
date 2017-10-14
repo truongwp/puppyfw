@@ -122,6 +122,13 @@
 	});
 
 
+	builder.api.registerFieldType( 'select', puppyfw.i18n.builder.types.select );
+	builder.api.registerTemplate( 'select', {
+		template: '#puppyfw-field-edit-choice-tpl',
+		mixins: [ builder.mixins.HasOptions ]
+	});
+
+
 	builder.api.registerFieldType( 'tel', puppyfw.i18n.builder.types.tel );
 	builder.api.registerTemplate( 'tel', {
 		template: '#puppyfw-field-edit-tel-tpl',
