@@ -54,7 +54,7 @@ class Fields {
 		</script>
 
 
-		<script type="text/x-template" id="puppyfw-field-edit-checkbox-list-tpl">
+		<script type="text/x-template" id="puppyfw-field-edit-choice-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>
 

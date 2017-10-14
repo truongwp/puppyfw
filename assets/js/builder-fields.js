@@ -18,7 +18,7 @@
 
 	builder.api.registerFieldType( 'checkbox_list', puppyfw.i18n.builder.types.checkboxList );
 	builder.api.registerTemplate( 'checkbox_list', {
-		template: '#puppyfw-field-edit-checkbox-list-tpl',
+		template: '#puppyfw-field-edit-choice-tpl',
 		mixins: [ builder.mixins.HasOptions ]
 	});
 
@@ -112,6 +112,13 @@
 	builder.api.registerTemplate( 'number', {
 		template: '#puppyfw-field-edit-number-tpl',
 		mixins: [ builder.mixins.HasAttrs ]
+	});
+
+
+	builder.api.registerFieldType( 'radio', puppyfw.i18n.builder.types.radio );
+	builder.api.registerTemplate( 'radio', {
+		template: '#puppyfw-field-edit-choice-tpl',
+		mixins: [ builder.mixins.HasOptions ]
 	});
 
 
