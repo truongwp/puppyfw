@@ -123,6 +123,7 @@ class Builder {
 				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
 				'radio'        => _x( 'Radio', 'field type', 'puppyfw' ),
 				'select'       => _x( 'Select', 'field type', 'puppyfw' ),
+				'tab'          => _x( 'Tab', 'field type', 'puppyfw' ),
 				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
 				'text'         => _x( 'Text', 'field type', 'puppyfw' ),
 			),

@@ -129,6 +129,13 @@
 	});
 
 
+	builder.api.registerFieldType( 'tab', puppyfw.i18n.builder.types.tab );
+	builder.api.registerTemplate( 'tab', {
+		template: '#puppyfw-field-edit-tab-tpl',
+		mixins: [ builder.mixins.HasAttrs ]
+	});
+
+
 	builder.api.registerFieldType( 'tel', puppyfw.i18n.builder.types.tel );
 	builder.api.registerTemplate( 'tel', {
 		template: '#puppyfw-field-edit-tel-tpl',
