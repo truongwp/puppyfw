@@ -862,29 +862,20 @@
 
 		data: function() {
 			return {
-				repeatField: null,
 				delimiter: '---'
 			};
 		},
 
 		beforeMount: function() {
 			this.initValue();
-			this.initRepeatField();
 			this.initRepeatFields();
 		},
 
 		methods: {
 			initValue: function() {
 				if ( ! this.field.value || typeof this.field.value != 'object' ) {
-					Vue.set( this.field, 'value', [ null ] );
+					Vue.set( this.field, 'value', [ this.field.repeat_field.default ] );
 				}
-			},
-
-			initRepeatField: function() {
-				var repeatField = puppyfw.helper.clone( this.field );
-				repeatField.type = repeatField.repeat_field_type;
-				repeatField.value = null;
-				this.repeatField = repeatField;
 			},
 
 			initRepeatFields: function() {
@@ -892,7 +883,7 @@
 					_this = this;
 
 				_.each( this.field.value, function( value, index ) {
-					var field = puppyfw.helper.clone( _this.repeatField );
+					var field = puppyfw.helper.clone( _this.field.repeat_field );
 					field.value = value;
 					field.id_attr = _this.field.id_attr + _this.delimiter + index;
 					fields.push( field );
@@ -902,11 +893,10 @@
 			},
 
 			addItem: function() {
-				var field = puppyfw.helper.clone( this.repeatField ),
-					fields = puppyfw.helper.clone( this.field.repeatFields );
+				var field = puppyfw.helper.clone( this.field.repeat_field );
+				field.value = this.field.repeat_field.default;
 				field.id_attr = this.field.id_attr + this.delimiter + parseInt( Math.random() * 1000 );
-				fields.push( field );
-				Vue.set( this.field, 'repeatFields', fields );
+				this.field.repeatFields.push( field );
 			},
 
 			removeItem: function( index ) {
