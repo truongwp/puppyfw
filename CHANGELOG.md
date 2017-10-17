@@ -4,6 +4,7 @@
 - Hook `puppyfw_before_init`
 - Hook `puppyfw_i18n`
 - Hook `puppyfw_show_builder`
+- Hook `puppyfw_fields_have_nested`
 
 ### Changed
 - Refactor framework structure and api

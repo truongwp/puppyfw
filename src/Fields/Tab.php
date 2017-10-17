@@ -49,7 +49,7 @@ class Tab extends Field {
 				<div class="puppyfw-tab__panes">
 					<template v-for="(tab, index) in tabs" :key="tab.baseId">
 						<div :id="getTabId(tab.key)" class="puppyfw-tab__pane" v-show="tab.key == currentTab">
-							<template v-for="childField in field.fields" v-if="tab.key == childField.tab">
+							<template v-for="childField in field.fields" :key="childField.id_attr" v-if="tab.key == childField.tab">
 								<component :is="getComponentName(childField.type)" :field="childField" v-show="childField.visible"></component>
 							</template>
 						</div>

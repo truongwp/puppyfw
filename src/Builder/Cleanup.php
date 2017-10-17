@@ -20,9 +20,10 @@ class Cleanup {
 	 */
 	public function clean( $fields ) {
 		foreach ( $fields as $index => $field ) {
-			$this->clean_attrs( $field );
-			$this->clean_options( $field );
-			$this->clean_js_options( $field );
+			$this->clean_nested_fields( $field );
+			$this->clean_key_value_data( $field, 'attrs' );
+			$this->clean_key_value_data( $field, 'options' );
+			$this->clean_key_value_data( $field, 'js_options' );
 			$this->normalize_image_default( $field );
 			$this->normalize_images_default( $field );
 
@@ -37,51 +38,22 @@ class Cleanup {
 	}
 
 	/**
-	 * Cleans attrs parameter.
+	 * Cleans key value parameter.
 	 *
-	 * @param array $field Field data.
+	 * @param array  $field Field data.
+	 * @param string $name  Parameter name.
 	 */
-	protected function clean_attrs( &$field ) {
-		$attrs = array();
-		$field['attrs'] = isset( $field['attrs'] ) ? (array) $field['attrs'] : array();
-		foreach ( $field['attrs'] as $attr ) {
-			if ( ! empty( $attr['key'] ) ) {
-				$attrs[ $attr['key'] ] = $attr['value'];
-			}
+	protected function clean_key_value_data( &$field, $name ) {
+		if ( empty( $field[ $name ] ) || ! is_array( $field[ $name ] ) ) {
+			$field[ $name ] = array();
+			return;
 		}
-		$field['attrs'] = $attrs;
-	}
 
-	/**
-	 * Cleans options parameter.
-	 *
-	 * @param array $field Field data.
-	 */
-	protected function clean_options( &$field ) {
-		$options = array();
-		$field['options'] = isset( $field['options'] ) ? (array) $field['options'] : array();
-		foreach ( $field['options'] as $attr ) {
-			if ( ! empty( $attr['key'] ) ) {
-				$options[ $attr['key'] ] = $attr['value'];
+		foreach ( $field[ $name ] as $index => $value ) {
+			if ( empty( $value['key'] ) ) {
+				unset( $field[ $name ][ $index ] );
 			}
 		}
-		$field['options'] = $options;
-	}
-
-	/**
-	 * Cleans js options parameter.
-	 *
-	 * @param array $field Field data.
-	 */
-	protected function clean_js_options( &$field ) {
-		$js_options = array();
-		$field['js_options'] = isset( $field['js_options'] ) ? (array) $field['js_options'] : array();
-		foreach ( $field['js_options'] as $attr ) {
-			if ( ! empty( $attr['key'] ) ) {
-				$js_options[ $attr['key'] ] = $attr['value'];
-			}
-		}
-		$field['js_options'] = $js_options;
 	}
 
 	/**
@@ -123,5 +95,36 @@ class Cleanup {
 		}
 
 		$field['default'] = array();
+	}
+
+	/**
+	 * Cleans nested fields.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function clean_nested_fields( &$field ) {
+		if ( in_array( $field['type'], $this->get_fields_have_nested() ) ) {
+			return;
+		}
+
+		if ( isset( $field['fields'] ) ) {
+			unset( $field['fields'] );
+		}
+	}
+
+	/**
+	 * Gets field types have nested.
+	 *
+	 * @return array
+	 */
+	protected function get_fields_have_nested() {
+		/**
+		 * Filters field types have nested.
+		 *
+		 * @since 0.3.0
+		 *
+		 * @param array $types Field types which have nested.
+		 */
+		return apply_filters( 'puppyfw_fields_have_nested', array( 'group', 'tab' ) );
 	}
 }

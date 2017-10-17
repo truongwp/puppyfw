@@ -215,8 +215,6 @@
 	};
 
 	puppyfw.app = new Vue({
-		el: '#puppyfw-app',
-
 		mixins: [ ParentField ],
 
 		data: {
@@ -869,28 +867,15 @@
 			};
 		},
 
+		beforeMount: function() {
+			this.initValue();
+			this.initRepeatField();
+			this.initRepeatFields();
+		},
+
 		methods: {
-			addItem: function() {
-				var field = puppyfw.helper.clone( this.repeatField ),
-					fields = puppyfw.helper.clone( this.field.repeatFields );
-				field.id_attr = this.field.id_attr + this.delimiter + parseInt( Math.random() * 1000 );
-				fields.push( field );
-				Vue.set( this.field, 'repeatFields', fields );
-			},
-
-			removeItem: function( index ) {
-				var fields = this.field.repeatFields,
-					value = this.field.value;
-
-				Vue.delete( fields, index );
-				Vue.delete( value, index );
-
-				Vue.set( this.field, 'repeatFields', fields );
-				Vue.set( this.field, 'value', value );
-			},
-
 			initValue: function() {
-				if ( ! this.field.value ) {
+				if ( ! this.field.value || typeof this.field.value != 'object' ) {
 					Vue.set( this.field, 'value', [ null ] );
 				}
 			},
@@ -914,14 +899,29 @@
 				});
 
 				Vue.set( this.field, 'repeatFields', fields );
-			}
-		},
+			},
 
-		beforeMount: function() {
-			this.initValue();
-			this.initRepeatField();
-			this.initRepeatFields();
+			addItem: function() {
+				var field = puppyfw.helper.clone( this.repeatField ),
+					fields = puppyfw.helper.clone( this.field.repeatFields );
+				field.id_attr = this.field.id_attr + this.delimiter + parseInt( Math.random() * 1000 );
+				fields.push( field );
+				Vue.set( this.field, 'repeatFields', fields );
+			},
+
+			removeItem: function( index ) {
+				var fields = this.field.repeatFields,
+					value = this.field.value;
+
+				Vue.delete( fields, index );
+				Vue.delete( value, index );
+
+				Vue.set( this.field, 'repeatFields', fields );
+				Vue.set( this.field, 'value', value );
+			}
 		}
 	});
+
+	puppyfw.app.$mount( '#puppyfw-app' );
 
 })( window.puppyfw, jQuery );

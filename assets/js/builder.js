@@ -19,7 +19,6 @@
 		taxonomy: 'category',
 		none_option: '',
 		tabs: [],
-		parentTabs: [],
 		tab: '',
 		repeatable: false
 	};

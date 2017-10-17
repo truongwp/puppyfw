@@ -22,7 +22,7 @@ class CheckboxList extends Choice {
 				<label :for="'puppyfw-' + field.id" class="puppyfw-field__label">{{ field.title }}</label>
 
 				<div class="puppyfw-field__control" :class="{ 'inline': field.inline }">
-					<label v-for="option in field.options">
+					<label v-for="option in field.options" :key="option.baseId">
 						<input type="checkbox" :value="option.key" v-model="field.value"> {{ option.value }}
 					</label>
 

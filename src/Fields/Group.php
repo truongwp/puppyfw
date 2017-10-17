@@ -25,7 +25,7 @@ class Group extends Field {
 				</div>
 
 				<div class="puppyfw-group__container">
-					<template v-for="childField in field.fields">
+					<template v-for="childField in field.fields" :key="childField.id_attr">
 						<component :is="getComponentName(childField.type)" :field="childField" :key="childField" v-show="childField.visible"></component>
 					</template>
 
