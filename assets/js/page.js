@@ -787,7 +787,7 @@
 						}
 
 						if ( field.value ) {
-							childField.value = field.value[ childField.id ];
+							childField.value = field.value[ childField.id ] || childField.default;
 						}
 
 						if ( childField.type === 'group' ) {
