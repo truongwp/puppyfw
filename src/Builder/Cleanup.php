@@ -21,6 +21,7 @@ class Cleanup {
 	public function clean( $fields ) {
 		foreach ( $fields as $index => $field ) {
 			$this->clean_nested_fields( $field );
+			$this->clean_tabs( $field );
 			$this->clean_key_value_data( $field, 'attrs' );
 			$this->clean_key_value_data( $field, 'options' );
 			$this->clean_key_value_data( $field, 'js_options' );
@@ -109,6 +110,21 @@ class Cleanup {
 
 		if ( isset( $field['fields'] ) ) {
 			unset( $field['fields'] );
+		}
+	}
+
+	/**
+	 * Cleans tabs.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function clean_tabs( &$field ) {
+		if ( 'tab' === $field['type'] ) {
+			return;
+		}
+
+		if ( isset( $field['tabs'] ) ) {
+			unset( $field['tabs'] );
 		}
 	}
 
