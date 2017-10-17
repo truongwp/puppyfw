@@ -20,7 +20,8 @@
 		none_option: '',
 		tabs: [],
 		parentTabs: [],
-		tab: ''
+		tab: '',
+		repeatable: false
 	};
 	builder.types = {};
 	builder.mapping = {};
@@ -28,29 +29,6 @@
 	builder.templates = {};
 	builder.mixins = {};
 	builder.api = {};
-
-	helper.getRandomString = function( length ) {
-		if ( ! length ) {
-			length = 5;
-		}
-
-		var str = '';
-		var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-		for ( var i = 0; i < length; i++ ) {
-			str += possible.charAt( Math.floor( Math.random() * possible.length ) );
-		}
-
-		return str;
-	};
-
-	helper.clone = function( obj ) {
-		return JSON.parse( JSON.stringify( obj ) );
-	};
-
-	helper.isNonEmptyObject = function( obj ) {
-		return typeof obj === 'object' && Object.keys( obj ).length && ! obj[0];
-	};
 
 	helper.replaceId = function( field ) {
 		var rand = helper.getRandomString();
@@ -76,20 +54,6 @@
 	helper.getTypeEditComponent = function( type ) {
 		return builder.mapping[ type ] || 'field-edit-text';
 	};
-
-	helper.objectToArray = function( obj ) {
-		var arr = [];
-
-		for ( var i in obj ) {
-			arr.push({
-				key: i,
-				value: obj[ i ]
-			});
-		}
-
-		return arr;
-	};
-
 
 	builder.api.registerFieldType = function( type, title ) {
 		builder.types[ type ] = title;

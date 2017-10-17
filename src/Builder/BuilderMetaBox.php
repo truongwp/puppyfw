@@ -208,7 +208,11 @@ class BuilderMetaBox {
 				</div>
 
 				<div>
-					<span class="field__type">{{ field.type }}</span>
+					<span class="field__type">
+						{{ field.type }}
+
+						<template v-if="field.repeatable">| repeatable</template>
+					</span>
 					<span class="field__control">
 						<a href="#" class="edit"><?php esc_html_e( 'Edit', 'puppyfw' ); ?></a> |
 						<a href="#" class="clone" @click.prevent.stop="$emit('cloneField')"><?php esc_html_e( 'Clone', 'puppyfw' ); ?></a> |

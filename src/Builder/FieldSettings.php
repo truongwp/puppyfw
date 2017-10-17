@@ -124,6 +124,20 @@ class FieldSettings {
 	}
 
 	/**
+	 * Field repeatable setting.
+	 */
+	public static function field_repeatable() {
+		?>
+		<checkbox-control
+			:id="field.baseId + '-repeatable'"
+			:label="puppyfw.i18n.builder.labels.repeatable"
+			:value="field.repeatable"
+			@changeValue="value => field.repeatable = value"
+		></checkbox-control>
+		<?php
+	}
+
+	/**
 	 * Field tab setting.
 	 */
 	public static function field_tab() {

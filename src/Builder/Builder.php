@@ -122,6 +122,7 @@ class Builder {
 				'map'          => _x( 'Map', 'field type', 'puppyfw' ),
 				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
 				'radio'        => _x( 'Radio', 'field type', 'puppyfw' ),
+				'repeatable'   => _x( 'Repeatable', 'field type', 'puppyfw' ),
 				'select'       => _x( 'Select', 'field type', 'puppyfw' ),
 				'tab'          => _x( 'Tab', 'field type', 'puppyfw' ),
 				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
@@ -155,6 +156,7 @@ class Builder {
 				'term'         => _x( 'Term', 'field setting label', 'puppyfw' ),
 				'taxonomy'     => _x( 'Taxonomy', 'field setting label', 'puppyfw' ),
 				'noneOption'   => _x( 'None option', 'field setting label', 'puppyfw' ),
+				'repeatable'   => _x( 'Repeatable', 'field setting label', 'puppyfw' ),
 			),
 		);
 

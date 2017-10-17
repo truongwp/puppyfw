@@ -19,6 +19,10 @@ class FieldFactory {
 	 * @return Field
 	 */
 	public static function get_field( $field_data ) {
+		if ( ! empty( $field_data['repeatable'] ) ) {
+			$field_data['repeat_field_type'] = $field_data['type'];
+			$field_data['type'] = 'repeatable';
+		}
 		$class_name = self::get_field_class( $field_data );
 		return new $class_name( $field_data );
 	}

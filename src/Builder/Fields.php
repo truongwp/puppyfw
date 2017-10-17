@@ -51,6 +51,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -113,6 +115,8 @@ class Fields {
 					@changeValue="value => field.inline = value"
 				></checkbox-control>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -132,6 +136,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -150,6 +156,8 @@ class Fields {
 				<?php FieldSettings::field_default(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
 			</div>
@@ -189,6 +197,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -213,6 +223,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -226,9 +238,11 @@ class Fields {
 
 				<?php FieldSettings::field_title(); ?>
 
-				<?php FieldSettings::child_fields_builder(); ?>
+				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::child_fields_builder(); ?>
 			</div>
 		</script>
 
@@ -250,6 +264,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -267,6 +283,8 @@ class Fields {
 
 				<?php FieldSettings::field_default(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -281,6 +299,8 @@ class Fields {
 				<?php FieldSettings::field_title(); ?>
 
 				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
 			</div>
@@ -309,6 +329,8 @@ class Fields {
 					</div>
 				</div>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -333,6 +355,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -354,6 +378,8 @@ class Fields {
 					:items="field.tabs"
 					@changeValue="value => field.tabs = value"
 				></key-value-control>
+
+				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
 
@@ -381,6 +407,8 @@ class Fields {
 
 				<?php FieldSettings::field_attrs(); ?>
 
+				<?php FieldSettings::field_repeatable(); ?>
+
 				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
@@ -399,6 +427,8 @@ class Fields {
 				<?php FieldSettings::field_default(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
 			</div>

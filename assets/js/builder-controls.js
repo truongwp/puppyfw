@@ -89,8 +89,7 @@
 
 		beforeMount: function() {
 			this.stateItems = this.items;
-			this.transform();
-			this.normalize();
+			this.stateItems = puppyfw.helper.convertObjectToArray( this.stateItems );
 		},
 
 		mounted: function() {
@@ -98,10 +97,6 @@
 		},
 
 		methods: {
-			generateBaseId: function() {
-				return 'option-' + puppyfw.helper.getRandomString();
-			},
-
 			initSortable: function() {
 				var _this = this;
 
@@ -124,20 +119,6 @@
 				});
 			},
 
-			transform: function() {
-				if ( puppyfw.helper.isNonEmptyObject( this.stateItems ) ) {
-					this.stateItems = puppyfw.helper.objectToArray( this.stateItems );
-				}
-			},
-
-			normalize: function() {
-				for ( var i = 0; i < this.stateItems.length; i++ ) {
-					if ( ! this.stateItems[ i ].baseId ) {
-						this.stateItems[ i ].baseId = this.generateBaseId();
-					}
-				}
-			},
-
 			moveItem: function( start, end ) {
 				var item;
 				item = this.stateItems.splice( start, 1 )[0];
@@ -146,7 +127,7 @@
 
 			addItem: function() {
 				this.stateItems.push({
-					baseId: this.generateBaseId(),
+					baseId: 'base-id_' + puppyfw.helper.getRandomString(),
 					key: '',
 					value: ''
 				});
@@ -201,28 +182,7 @@
 
 		beforeMount: function() {
 			this.stateOptions = this.options;
-			this.transform();
-			this.normalize();
-		},
-
-		methods: {
-			generateBaseId: function() {
-				return 'option-' + puppyfw.helper.getRandomString();
-			},
-
-			transform: function() {
-				if ( puppyfw.helper.isNonEmptyObject( this.stateOptions ) ) {
-					this.stateOptions = puppyfw.helper.objectToArray( this.stateOptions );
-				}
-			},
-
-			normalize: function() {
-				for ( var i = 0; i < this.stateOptions.length; i++ ) {
-					if ( ! this.stateOptions[ i ].baseId ) {
-						this.stateOptions[ i ].baseId = this.generateBaseId();
-					}
-				}
-			}
+			this.stateOptions = puppyfw.helper.convertObjectToArray( this.stateOptions );
 		}
 	});
 

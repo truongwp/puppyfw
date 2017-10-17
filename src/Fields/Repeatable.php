@@ -20,7 +20,7 @@ class Repeatable extends Field {
 		<script type="text/x-template" id="puppyfw-field-template-repeatable">
 			<div class="puppyfw-field puppyfw-field--fullwidth puppyfw-repeatable" :id="field.id_attr">
 				<div v-for="(cField, index) in field.repeatFields" class="puppyfw-repeatable__item" :data-index="index" :key="cField.id_attr">
-					<component :is="getComponentName(cField.type)" :field="cField">
+					<component :is="getComponentName(cField.type)" :field="cField" v-show="field.visible">
 						<a class="puppyfw-repeatable-remove" href="#" slot="controls" @click.prevent="removeItem(index)"><span class="puppyfw-remove"></span></a>
 					</component>
 				</div>

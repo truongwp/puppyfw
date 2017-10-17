@@ -814,26 +814,26 @@
 
 		data: function() {
 			return {
+				tabs: [],
 				currentTab: '',
 				tabChanged: false
 			};
 		},
 
+		beforeMount: function() {
+			this.tabs = this.field.tabs;
+			this.tabs = puppyfw.helper.convertObjectToArray( this.tabs );
+			this.currentTab = this.tabs.length ? this.tabs[0].key : '';
+		},
+
+		updated: function( a, b ) {
+			if ( this.tabChanged ) {
+				$( document ).trigger( 'puppyfw_changed_tab', this );
+				this.tabChanged = false;
+			}
+		},
+
 		methods: {
-			/**
-			 * Set default active tab.
-			 */
-			setDefaultTab: function() {
-				var tabs = this.field.tabs || {},
-					tabIds = Object.keys(tabs);
-
-				if (typeof tabIds[0] === 'undefined') {
-					return;
-				}
-
-				this.currentTab = tabIds[0];
-			},
-
 			/**
 			 * Get tab ID attribute.
 			 *
@@ -853,17 +853,6 @@
 				this.currentTab = tabId;
 				this.tabChanged = true;
 				$( document ).trigger( 'puppyfw_change_tab', this );
-			}
-		},
-
-		mounted: function() {
-			this.setDefaultTab();
-		},
-
-		updated: function( a, b ) {
-			if ( this.tabChanged ) {
-				$( document ).trigger( 'puppyfw_changed_tab', this );
-				this.tabChanged = false;
 			}
 		}
 	});
