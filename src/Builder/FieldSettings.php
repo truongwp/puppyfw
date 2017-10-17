@@ -124,6 +124,22 @@ class FieldSettings {
 	}
 
 	/**
+	 * Field tab setting.
+	 */
+	public static function field_tab() {
+		?>
+		<select-control
+			v-show="tabs.length"
+			:id="field.baseId + '-tab'"
+			:label="puppyfw.i18n.builder.labels.tab"
+			:value="field.tab"
+			:options="tabs"
+			@changeValue="value => field.tab = value"
+		></select-control>
+		<?php
+	}
+
+	/**
 	 * Child fields builder setting.
 	 */
 	public static function child_fields_builder() {
@@ -131,7 +147,7 @@ class FieldSettings {
 		<div class="t-field t-field--inline">
 			<label :for="field.baseId" class="t-label">{{ puppyfw.i18n.builder.labels.fields }}</label>
 			<div class="t-control">
-				<fields-builder :fields="field.fields"></fields-builder>
+				<fields-builder :fields="field.fields" :tabs="field.tabs"></fields-builder>
 			</div>
 		</div>
 		<?php

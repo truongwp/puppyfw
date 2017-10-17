@@ -50,6 +50,8 @@ class Fields {
 				></checkbox-control>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -110,6 +112,8 @@ class Fields {
 					:value="field.inline"
 					@changeValue="value => field.inline = value"
 				></checkbox-control>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -127,6 +131,8 @@ class Fields {
 				<?php FieldSettings::field_default(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -144,6 +150,8 @@ class Fields {
 				<?php FieldSettings::field_default(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -180,6 +188,8 @@ class Fields {
 				></checkbox-control>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -202,6 +212,8 @@ class Fields {
 				></email-control>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -215,6 +227,8 @@ class Fields {
 				<?php FieldSettings::field_title(); ?>
 
 				<?php FieldSettings::child_fields_builder(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -235,6 +249,8 @@ class Fields {
 				></textarea-control>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -250,6 +266,8 @@ class Fields {
 				<?php FieldSettings::field_desc(); ?>
 
 				<?php FieldSettings::field_default(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -263,6 +281,8 @@ class Fields {
 				<?php FieldSettings::field_title(); ?>
 
 				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -288,6 +308,8 @@ class Fields {
 						></puppyfw-element-map>
 					</div>
 				</div>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -310,6 +332,32 @@ class Fields {
 				></number-control>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
+			</div>
+		</script>
+
+
+		<script type="text/x-template" id="puppyfw-field-edit-tab-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<key-value-control
+					:label="puppyfw.i18n.builder.labels.tabs"
+					:add-label="puppyfw.i18n.builder.labels.addTab"
+					:items="field.tabs"
+					@changeValue="value => field.tabs = value"
+				></key-value-control>
+
+				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::child_fields_builder(); ?>
 			</div>
 		</script>
 
@@ -332,21 +380,8 @@ class Fields {
 				></number-control>
 
 				<?php FieldSettings::field_attrs(); ?>
-			</div>
-		</script>
 
-
-		<script type="text/x-template" id="puppyfw-field-edit-tab-tpl">
-			<div class="field__edit">
-				<?php FieldSettings::field_type(); ?>
-
-				<?php FieldSettings::field_id(); ?>
-
-				<?php FieldSettings::field_title(); ?>
-
-				<?php FieldSettings::field_desc(); ?>
-
-				<?php FieldSettings::child_fields_builder(); ?>
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 
@@ -364,6 +399,8 @@ class Fields {
 				<?php FieldSettings::field_default(); ?>
 
 				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
 			</div>
 		</script>
 		<?php

@@ -173,6 +173,7 @@ class BuilderMetaBox {
 					v-for="field in fields"
 					:key="field.baseId"
 					:field="field"
+					:tabs="tabs"
 					@removeField="removeField(field)"
 					@cloneField="cloneField(field)"
 				></field-item>
@@ -190,7 +191,12 @@ class BuilderMetaBox {
 					@cloneField="$emit('cloneField')"
 				></field-item-heading>
 
-				<component :is="puppyfw.helper.getTypeEditComponent(field.type)" :field="field" v-show="editing"></component>
+				<component
+					:is="puppyfw.helper.getTypeEditComponent(field.type)"
+					:field="field"
+					:tabs="tabs"
+					v-show="editing"
+				></component>
 			</div>
 		</script>
 

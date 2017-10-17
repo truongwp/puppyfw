@@ -64,7 +64,7 @@ class Controls {
 			<div class="t-field t-field--inline">
 				<label :for="id" class="t-label">{{ label }}</label>
 				<select :id="id" class="t-control" :value="value" @input="$emit('changeValue', $event.target.value)">
-					<option v-for="(value, key) in options" :key="key" :value="key">{{ value }}</option>
+					<option v-for="(option, index) in stateOptions" :key="option.baseId" :value="option.key">{{ option.value }}</option>
 				</select>
 			</div>
 		</script>

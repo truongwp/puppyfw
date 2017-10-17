@@ -17,7 +17,10 @@
 		data_source: 'options',
 		post_type: 'post',
 		taxonomy: 'category',
-		none_option: ''
+		none_option: '',
+		tabs: [],
+		parentTabs: [],
+		tab: ''
 	};
 	builder.types = {};
 	builder.mapping = {};
@@ -122,6 +125,10 @@
 			field: {
 				type: Object,
 				required: true
+			},
+			tabs: {
+				type: Object,
+				default: []
 			}
 		}
 	};
@@ -163,10 +170,6 @@
 				},
 				supportNoneOption: false
 			};
-		},
-
-		beforeMount: function() {
-
 		}
 	};
 

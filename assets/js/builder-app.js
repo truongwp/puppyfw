@@ -23,6 +23,13 @@
 
 		mixins: [ builder.mixins.HasFieldProp ],
 
+		props: {
+			tabs: {
+				type: Array,
+				default: []
+			}
+		},
+
 		data: function() {
 			return {
 				editing: false
@@ -52,6 +59,10 @@
 			fields: {
 				type: Array,
 				required: true
+			},
+			tabs: {
+				type: Array,
+				default: []
 			}
 		},
 
@@ -83,7 +94,9 @@
 			},
 
 			addField: function() {
-				this.fields.push( puppyfw.helper.getDefaultField() );
+				var field = puppyfw.helper.getDefaultField();
+				field.parentTabs = this.tabs;
+				this.fields.push( field );
 			},
 
 			moveField: function( start, end ) {

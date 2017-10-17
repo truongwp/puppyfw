@@ -188,8 +188,40 @@
 				type: String
 			},
 			options: {
-				type: Array,
+				type: Object,
 				required: true
+			}
+		},
+
+		data: function() {
+			return {
+				stateOptions: []
+			};
+		},
+
+		beforeMount: function() {
+			this.stateOptions = this.options;
+			this.transform();
+			this.normalize();
+		},
+
+		methods: {
+			generateBaseId: function() {
+				return 'option-' + puppyfw.helper.getRandomString();
+			},
+
+			transform: function() {
+				if ( puppyfw.helper.isNonEmptyObject( this.stateOptions ) ) {
+					this.stateOptions = puppyfw.helper.objectToArray( this.stateOptions );
+				}
+			},
+
+			normalize: function() {
+				for ( var i = 0; i < this.stateOptions.length; i++ ) {
+					if ( ! this.stateOptions[ i ].baseId ) {
+						this.stateOptions[ i ].baseId = this.generateBaseId();
+					}
+				}
 			}
 		}
 	});
