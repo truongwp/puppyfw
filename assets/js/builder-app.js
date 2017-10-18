@@ -36,10 +36,14 @@
 			};
 		},
 
+		mounted: function() {
+			this.editing = this.field.editing;
+			Vue.delete( this.field, 'editing' );
+		},
+
 		methods: {
 			toggleEditing: function() {
 				this.editing = ! this.editing;
-
 				this.editing ? $( document ).trigger( 'puppyfw_edit_field' ) : $( document ).trigger( 'puppyfw_close_edit_field' );
 			}
 		}
@@ -95,7 +99,7 @@
 
 			addField: function() {
 				var field = puppyfw.helper.getDefaultField();
-				field.parentTabs = this.tabs;
+				field.editing = true;
 				this.fields.push( field );
 			},
 
