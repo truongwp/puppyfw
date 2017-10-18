@@ -105,7 +105,7 @@ class Controls {
 							<input type="text" placeholder="key" v-model="rule.key">
 
 							<select v-model="rule.operator">
-								<option value="=">=</option>
+								<option value="==">==</option>
 								<option value="!=">!=</option>
 								<option value="<">&lt;</option>
 								<option value=">">&gt;</option>

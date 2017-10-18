@@ -54,6 +54,10 @@
 			 * @return {Object}           Parsed dependency object.
 			 */
 			parseDependency: function( dependency ) {
+				if ( dependency.key ) {
+					return dependency;
+				}
+
 				return {
 					key: dependency[0],
 					operator: dependency[1],

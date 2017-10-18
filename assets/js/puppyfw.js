@@ -62,6 +62,7 @@
 				arr[ i ].baseId = helper.generateBaseId();
 			}
 		}
+		return arr;
 	};
 
 })( window );

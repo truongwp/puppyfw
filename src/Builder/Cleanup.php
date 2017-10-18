@@ -27,6 +27,7 @@ class Cleanup {
 			$this->clean_key_value_data( $field, 'js_options' );
 			$this->normalize_image_default( $field );
 			$this->normalize_images_default( $field );
+			$this->normalize_dependency( $field );
 
 			if ( ! empty( $field['fields'] ) ) {
 				$field['fields'] = $this->clean( $field['fields'] );
@@ -126,6 +127,61 @@ class Cleanup {
 		if ( isset( $field['tabs'] ) ) {
 			unset( $field['tabs'] );
 		}
+	}
+
+	/**
+	 * Normalize field dependency.
+	 *
+	 * @param array $field Field data.
+	 */
+	protected function normalize_dependency( &$field ) {
+		if ( empty( $field['dependency'] ) || ! is_array( $field['dependency'] ) ) {
+			$field['dependency'] = array();
+			return;
+		}
+
+		foreach ( $field['dependency'] as $index => $rule ) {
+			if ( empty( $rule['key'] ) ) {
+				unset( $field['dependency'][ $index ] );
+				continue;
+			}
+
+			if ( empty( $rule['value'] ) ) {
+				$field['dependency'][ $index ]['value'] = '';
+				continue;
+			}
+
+			$field['dependency'][ $index ]['value'] = $this->normalize_dependency_rule_value( $rule['value'] );
+		}
+
+		$field['dependency'] = array_values( $field['dependency'] );
+	}
+
+	/**
+	 * Normalizes dependency rule value.
+	 *
+	 * @param  string $value Dependency rule value.
+	 * @return mixed
+	 */
+	protected function normalize_dependency_rule_value( $value ) {
+		$value = trim( $value );
+
+		if ( '{{{true}}}' === $value ) {
+			return true;
+		}
+
+		if ( '{{{false}}}' === $value ) {
+			return false;
+		}
+
+		if ( false === strpos( $value, '|||' ) ) {
+			return $value;
+		}
+
+		$value = explode( '|||', $value );
+		$value = array_map( array( $this, 'normalize_dependency_rule_value' ), $value );
+
+		return $value;
 	}
 
 	/**

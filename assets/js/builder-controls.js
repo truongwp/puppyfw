@@ -53,7 +53,7 @@
 				this.stateRules = puppyfw.helper.injectBaseId( this.stateRules );
 				this.stateRules.map( function( rule ) {
 					if ( ! rule.operator ) {
-						rule.operator = '=';
+						rule.operator = '==';
 					}
 				});
 			}
