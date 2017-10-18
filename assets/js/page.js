@@ -55,7 +55,7 @@
 			 */
 			parseDependency: function( dependency ) {
 				return {
-					id: dependency[0],
+					key: dependency[0],
 					operator: dependency[1],
 					value: dependency[2]
 				};
@@ -81,7 +81,7 @@
 					}
 
 					// Handle visibility on first load.
-					var fieldVal = puppyfw.app.getValueFromIdAttr( 'puppyfw-' + dependency.id );
+					var fieldVal = puppyfw.app.getValueFromIdAttr( 'puppyfw-' + dependency.key );
 					var visible = _this.isVisible( dependency, fieldVal );
 
 					// Combine with other dependencies.
@@ -110,7 +110,7 @@
 						return;
 					}
 
-					puppyfw.app.$on( 'puppyfw_changed_puppyfw-' + dependency.id, function( newVal ) {
+					puppyfw.app.$on( 'puppyfw_changed_puppyfw-' + dependency.key, function( newVal ) {
 						var visible = _this.isVisible( dependency, newVal );
 
 						// Combine with other dependencies.
