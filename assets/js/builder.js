@@ -20,7 +20,8 @@
 		none_option: '',
 		tabs: [],
 		tab: '',
-		repeatable: false
+		repeatable: false,
+		dependency: []
 	};
 	builder.types = {};
 	builder.mapping = {};

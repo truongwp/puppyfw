@@ -19,24 +19,57 @@
 		}
 	});
 
-	/*builder.api.registerControl( 'choice-control', {
-		template: '#puppyfw-choice-control-tpl',
+	builder.api.registerControl( 'dependency-control', {
+		template: '#puppyfw-dependency-control-tpl',
 		props: {
-			id: {
-				type: String
-			},
 			label: {
 				type: String
 			},
-			value: {
+			addLabel: {
 				type: String
 			},
-			options: {
+			rules: {
 				type: Array,
 				default: []
 			}
+		},
+
+		data: function() {
+			return {
+				stateRules: []
+			}
+		},
+
+		watch: {
+			stateRules: function( newVal ) {
+				this.$emit( 'changeValue', newVal );
+			}
+		},
+
+		beforeMount: function() {
+			this.stateRules = this.rules;
+
+			if ( this.stateRules.length ) {
+				this.stateRules = puppyfw.helper.injectBaseId( this.stateRules );
+				this.stateRules.map( function( rule ) {
+					if ( ! rule.operator ) {
+						rule.operator = '=';
+					}
+				});
+			}
+		},
+
+		methods: {
+			addRule: function() {
+				this.stateRules.push({
+					baseId: puppyfw.helper.generateBaseId(),
+					key: '',
+					value: '',
+					operator: '='
+				});
+			}
 		}
-	});*/
+	});
 
 	builder.api.registerControl( 'email-control', {
 		template: '#puppyfw-email-control-tpl',

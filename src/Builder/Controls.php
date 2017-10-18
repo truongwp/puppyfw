@@ -91,8 +91,40 @@ class Controls {
 						</div>
 					</div>
 
-					<!-- <button type="button" class="button" @click="$emit('addItem')">{{ addLabel }}</button> -->
 					<button type="button" class="button" @click="addItem">{{ addLabel }}</button>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/x-template" id="puppyfw-dependency-control-tpl">
+			<div class="t-field t-field--inline">
+				<label class="t-label">{{ label }}</label>
+				<div>
+					<div class="key-value-items">
+						<div v-for="(rule, index) in stateRules" :key="rule.baseId" class="key-value-rule t-control-group t-control-group--inline">
+							<input type="text" placeholder="key" v-model="rule.key">
+
+							<select v-model="rule.operator">
+								<option value="=">=</option>
+								<option value="!=">!=</option>
+								<option value="<">&lt;</option>
+								<option value=">">&gt;</option>
+								<option value="<=">&lt;=</option>
+								<option value=">=">&gt;=</option>
+								<option value="CONTAIN">CONTAIN</option>
+								<option value="NOT CONTAIN">NOT CONTAIN</option>
+								<option value="EMPTY">EMPTY</option>
+								<option value="NOT EMPTY">NOT EMPTY</option>
+								<option value="IN">IN</option>
+								<option value="NOT IN">NOT IN</option>
+							</select>
+
+							<input type="text" placeholder="value" v-model="rule.value">
+							<a href="#" @click.prevent="removeRule(index)">{{ puppyfw.i18n.builder.labels.remove }}</a>
+						</div>
+					</div>
+
+					<button type="button" class="button" @click="addRule">{{ addLabel }}</button>
 				</div>
 			</div>
 		</script>

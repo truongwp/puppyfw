@@ -149,6 +149,7 @@ class Builder {
 				'addAttribute' => _x( '+ Add attribute', 'field setting label', 'puppyfw' ),
 				'addOption'    => _x( '+ Add option', 'field setting label', 'puppyfw' ),
 				'addTab'       => _x( '+ Add tab', 'field setting label', 'puppyfw' ),
+				'addRule'      => _x( '+ Add rule', 'field setting label', 'puppyfw' ),
 				'inline'       => _x( 'Inline', 'field setting label', 'puppyfw' ),
 				'dataSource'   => _x( 'Data source', 'field setting label', 'puppyfw' ),
 				'post'         => _x( 'Post', 'field setting label', 'puppyfw' ),
@@ -157,6 +158,7 @@ class Builder {
 				'taxonomy'     => _x( 'Taxonomy', 'field setting label', 'puppyfw' ),
 				'noneOption'   => _x( 'None option', 'field setting label', 'puppyfw' ),
 				'repeatable'   => _x( 'Repeatable', 'field setting label', 'puppyfw' ),
+				'dependency'   => _x( 'Dependency', 'field setting label', 'puppyfw' ),
 			),
 		);
 

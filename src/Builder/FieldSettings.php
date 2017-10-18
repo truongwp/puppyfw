@@ -154,6 +154,20 @@ class FieldSettings {
 	}
 
 	/**
+	 * Field dependency setting.
+	 */
+	public static function field_dependency() {
+		?>
+		<dependency-control
+			:label="puppyfw.i18n.builder.labels.dependency"
+			:addLabel="puppyfw.i18n.builder.labels.addRule"
+			:rules="field.dependency"
+			@changeValue="value => field.dependency = value"
+		></dependency-control>
+		<?php
+	}
+
+	/**
 	 * Child fields builder setting.
 	 */
 	public static function child_fields_builder() {

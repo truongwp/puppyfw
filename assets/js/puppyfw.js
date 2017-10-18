@@ -34,8 +34,12 @@
 		return str;
 	};
 
+	helper.generateBaseId = function() {
+		return 'base-id_' + helper.getRandomString();
+	};
+
 	helper.convertObjectToArray = function( obj ) {
-		if ( ! puppyfw.helper.isNonEmptyObject( obj ) ) {
+		if ( ! helper.isNonEmptyObject( obj ) ) {
 			return obj;
 		}
 
@@ -43,13 +47,21 @@
 
 		for ( var i in obj ) {
 			arr.push({
-				baseId: 'base-id_' + puppyfw.helper.getRandomString(),
+				baseId: helper.generateBaseId(),
 				key: i,
 				value: obj[ i ]
 			});
 		}
 
 		return arr;
+	};
+
+	helper.injectBaseId = function( arr ) {
+		for ( var i = 0; i < arr.length; i++ ) {
+			if ( ! arr[ i ].baseId ) {
+				arr[ i ].baseId = helper.generateBaseId();
+			}
+		}
 	};
 
 })( window );
