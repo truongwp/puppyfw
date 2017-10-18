@@ -54,6 +54,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -118,6 +120,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -139,6 +143,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -160,6 +166,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -200,6 +208,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -226,6 +236,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -241,6 +253,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 
 				<?php FieldSettings::child_fields_builder(); ?>
 			</div>
@@ -267,6 +281,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -286,6 +302,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -303,6 +321,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -332,6 +352,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -358,6 +380,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
@@ -382,6 +406,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 
 				<?php FieldSettings::child_fields_builder(); ?>
 			</div>
@@ -410,6 +436,8 @@ class Fields {
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
 
