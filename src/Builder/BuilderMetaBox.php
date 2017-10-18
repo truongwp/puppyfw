@@ -77,8 +77,6 @@ class BuilderMetaBox {
 		<input type="hidden" id="field-data" value="<?php echo esc_attr( wp_json_encode( $fields ) ); ?>">
 
 		<div id="puppyfw-builder">
-			{{ fields }}
-
 			<input type="hidden" name="puppyfw_fields" :value="JSON.stringify(fields)">
 
 			<fields-builder
