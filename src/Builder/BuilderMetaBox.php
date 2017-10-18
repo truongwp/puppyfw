@@ -61,7 +61,7 @@ class BuilderMetaBox {
 			__( 'Fields builder', 'puppyfw' ),
 			array( $this, 'render' ),
 			$post_type,
-			'advanced'
+			'normal'
 		);
 	}
 

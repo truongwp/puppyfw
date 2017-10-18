@@ -60,7 +60,8 @@ class PageMetaBox {
 			__( 'Page settings', 'puppyfw' ),
 			array( $this, 'render' ),
 			$post_type,
-			'side'
+			'side',
+			'high'
 		);
 	}
 
