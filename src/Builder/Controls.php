@@ -100,6 +100,19 @@ class Controls {
 			<div class="t-field t-field--inline">
 				<label class="t-label">{{ label }}</label>
 				<div>
+					<p>
+						<?php
+						printf(
+							esc_html__( 'Use %s for %s, %s for %s and %s for array separator.', 'puppyfw' ),
+							'<code>{{\'{{{\'}}true}}}</code>',
+							'<code>true</code>',
+							'<code>{{\'{{{\'}}false}}}</code>',
+							'<code>false</code>',
+							'<code>|||</code>'
+						);
+						?>
+					</p>
+
 					<div class="key-value-items">
 						<div v-for="(rule, index) in stateRules" :key="rule.baseId" class="key-value-rule t-control-group t-control-group--inline">
 							<input type="text" placeholder="key" v-model="rule.key">
