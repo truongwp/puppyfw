@@ -127,6 +127,7 @@ class Builder {
 				'tab'          => _x( 'Tab', 'field type', 'puppyfw' ),
 				'tel'          => _x( 'Tel', 'field type', 'puppyfw' ),
 				'text'         => _x( 'Text', 'field type', 'puppyfw' ),
+				'textarea'     => _x( 'Textarea', 'field type', 'puppyfw' ),
 			),
 			'labels' => array(
 				'id'          => _x( 'Field ID', 'field setting label', 'puppyfw' ),

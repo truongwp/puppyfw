@@ -159,4 +159,11 @@
 		mixins: [ builder.mixins.HasAttrs ]
 	});
 
+
+	builder.api.registerFieldType( 'textarea', puppyfw.i18n.builder.types.textarea );
+	builder.api.registerTemplate( 'textarea', {
+		template: '#puppyfw-field-edit-textarea-tpl',
+		mixins: [ builder.mixins.HasAttrs ]
+	});
+
 })( window.puppyfw );

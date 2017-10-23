@@ -463,6 +463,34 @@ class Fields {
 				<?php FieldSettings::field_dependency(); ?>
 			</div>
 		</script>
+
+
+		<script type="text/x-template" id="puppyfw-field-edit-textarea-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<textarea-control
+					:id="field.baseId + '-default'"
+					:label="puppyfw.i18n.builder.labels.default"
+					:value="field.default"
+					@changeValue="value => field.default = value"
+				></textarea-control>
+
+				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_repeatable(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
+			</div>
+		</script>
 		<?php
 	}
 }
