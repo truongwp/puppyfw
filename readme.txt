@@ -5,21 +5,21 @@ Tags: framework, theme-options, theme-framework, plugin-framework, theme-setting
 Requires at least: 4.8
 Requires PHP: 5.3
 Tested up to: 4.8.1
-Stable tag: 0.1.0
+Stable tag: 0.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-PuppyFW is a lightweight but powerful options framework for WordPress themes and plugins which supports tab, group, repeatable, field dependencies.
+PuppyFW is a lightweight but powerful options framework for WordPress themes and plugins which supports tab, group, repeatable, field dependencies. It comes with Options Page Builder so doesn't require coding skills to use.
 
 == Description ==
 
-This plugin allows you add options pages simply. It's free but supports premium features: tab, group field, repeatable field, field dependencies. It's powerful but lightweight and fast.
+This plugin allows you add options pages simply via Options Page Builder. It's free but supports premium features: tab, group field, repeatable field, field dependencies. It's powerful but lightweight and fast.
 
 Beside built-in fields, PuppyFW also allows you can create your own fields easily.
 
 Checkout the short video below to have a first look about this plugin:
 
-https://youtu.be/b7g5cdUrT9s
+https://youtu.be/6Ae819U1phI
 
 = More Information =
 
@@ -35,10 +35,6 @@ https://youtu.be/b7g5cdUrT9s
 3. Follow [the documentation](https://github.com/truongwp/puppyfw).
 
 == Frequently Asked Questions ==
-
-= How to retrieve setting value? =
-
-PuppyFW doesn't have a built-in method to get setting. If you specify an option name, you can use `get_option( 'your_option_name' )` to retrieve all options. Otherwise, each setting is corresponding with an option, you can use `get_option( 'setting name' )`.
 
 = Does it support nested tabs =
 
