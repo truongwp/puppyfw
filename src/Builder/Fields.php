@@ -203,6 +203,13 @@ class Fields {
 					@changeValue="value => field.tinymce = value"
 				></checkbox-control>
 
+				<checkbox-control
+					:id="field.baseId + '-media_buttons'"
+					:label="puppyfw.i18n.builder.labels.mediaButtons"
+					:value="field.media_buttons"
+					@changeValue="value => field.media_buttons = value"
+				></checkbox-control>
+
 				<?php FieldSettings::field_attrs(); ?>
 
 				<?php FieldSettings::field_repeatable(); ?>

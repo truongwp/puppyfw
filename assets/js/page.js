@@ -727,7 +727,8 @@
 			setTimeout( function() {
 				wp.editor.initialize( _this.field.id_attr, {
 					tinymce: _this.field.tinymce,
-					quicktags: _this.field.quicktags
+					quicktags: _this.field.quicktags,
+					mediaButtons: _this.field.media_buttons
 				} );
 			}, 600 );
 		}

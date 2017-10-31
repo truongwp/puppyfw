@@ -20,6 +20,9 @@
 		none_option: '',
 		tabs: [],
 		tab: '',
+		quicktags: true,
+		tinymce: false,
+		media_buttons: false,
 		repeatable: false,
 		dependency: []
 	};

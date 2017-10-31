@@ -49,6 +49,10 @@
 			if ( typeof this.field.tinymce == 'undefined' ) {
 				Vue.set( this.field, 'tinymce', false );
 			}
+
+			if ( typeof this.field.media_buttons == 'undefined' ) {
+				Vue.set( this.field, 'media_buttons', false );
+			}
 		}
 	});
 
