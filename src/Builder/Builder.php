@@ -29,6 +29,9 @@ class Builder {
 			$builder_meta_box = new BuilderMetaBox();
 			$builder_meta_box->init();
 
+			$tools_meta_box = new ToolsMetaBox();
+			$tools_meta_box->init();
+
 			$controls = new Controls();
 			$controls->init();
 

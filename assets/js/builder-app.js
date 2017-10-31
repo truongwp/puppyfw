@@ -143,6 +143,12 @@
 			fields: []
 		},
 
+		watch: {
+			fields: function( newVal ) {
+				this.$emit( 'change_fields', newVal );
+			}
+		},
+
 		beforeMount: function() {
 			var fields = document.getElementById( 'field-data' ).value;
 

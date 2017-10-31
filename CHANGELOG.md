@@ -1,6 +1,7 @@
 ## [Unreleased]
 ### Added
-- Support media buttons in editor field (requires WordPress 4.9).
+- Support media buttons in editor field (requires WordPress 4.9)
+- Hook `puppyfw_builder_assets`
 
 ## [0.3.0]
 ### Added

@@ -61,7 +61,8 @@ class BuilderMetaBox {
 			__( 'Fields builder', 'puppyfw' ),
 			array( $this, 'render' ),
 			$post_type,
-			'normal'
+			'normal',
+			'high'
 		);
 	}
 
@@ -141,6 +142,13 @@ class BuilderMetaBox {
 		do_action( 'puppyfw_builder_fields_assets' );
 
 		wp_enqueue_script( 'puppyfw-builder-app', PUPPYFW_URL . 'assets/js/builder-app.js', array( 'puppyfw-builder', 'vue' ), '0.3.0', true );
+
+		/**
+		 * Fires after enqueuing builder app assets.
+		 *
+		 * @since 0.4.0
+		 */
+		do_action( 'puppyfw_builder_assets' );
 	}
 
 	/**
