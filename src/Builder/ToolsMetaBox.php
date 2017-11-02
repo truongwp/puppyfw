@@ -68,11 +68,30 @@ class ToolsMetaBox {
 			<div class="t-field t-field--inline">
 				<label class="t-label"><?php esc_html_e( 'Export', 'puppyfw' ); ?></label>
 				<div class="t-control">
-					<button type="button" class="button" id="puppyfw-copy-code" data-alt-text="<?php esc_html_e( 'Copied!', 'puppyfw' ); ?>"><?php esc_html_e( 'Copy code', 'puppyfw' ); ?></button>
-					<a href="<?php echo esc_url( $export_url ); ?>" class="button" target="_blank"><?php esc_html_e( 'Download export file', 'puppyfw' ); ?></a>
-					<br>
-					<span class="description"><?php esc_html_e( 'You must save options page before exporting.', 'puppyfw' ); ?></span>
-					<input type="hidden" id="puppyfw-exported-code" :value="JSON.stringify( $data )">
+					<p class="description"><?php esc_html_e( 'You must save changes before exporting.', 'puppyfw' ); ?></p>
+
+					<p>
+						<textarea id="puppyfw-export-data" rows="10" class="widefat"></textarea>
+					</p>
+
+					<p>
+						<button type="button" class="button" id="puppyfw-copy-data" data-alt-text="<?php esc_html_e( 'Copied!', 'puppyfw' ); ?>"><?php esc_html_e( 'Copy', 'puppyfw' ); ?></button>
+						<a href="<?php echo esc_url( $export_url ); ?>" class="button" target="_blank"><?php esc_html_e( 'Download export file', 'puppyfw' ); ?></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="t-field t-field--inline">
+				<label class="t-label"><?php esc_html_e( 'Import', 'puppyfw' ); ?></label>
+				<div class="t-control">
+					<p>
+						<textarea id="puppyfw-import-data" rows="10" class="widefat" placeholder="<?php esc_attr_e( 'Paste import data here', 'puppyfw' ); ?>"></textarea>
+					</p>
+					<p>
+						<button type="button" id="puppyfw-import-data-btn" class="button"><?php esc_html_e( 'Import' ); ?></button>
+						<button type="button" id="puppyfw-import-file-btn" class="button"><?php esc_html_e( 'Load from file', 'puppyfw' ); ?></button>
+						<input type="file" id="puppyfw-import-file" accept="application/json" style="display: none;">
+					</p>
 				</div>
 			</div>
 		</div>
@@ -100,6 +119,10 @@ class ToolsMetaBox {
 			return;
 		}
 
+		$data = array();
+		$data['fields'] = $post->post_content ? json_decode( html_entity_decode( $post->post_content ) ) : array();
+		$data['page'] = $post->post_excerpt ? json_decode( html_entity_decode( $post->post_excerpt ) ) : array();
+
 		$filename = sprintf(
 			'puppyfw-builder-%s-%s.json',
 			$post->post_name,
@@ -107,7 +130,7 @@ class ToolsMetaBox {
 		);
 		header( 'Content-disposition: attachment; filename=' . $filename );
 		header( 'Content-type: application/json' );
-		echo $post->post_content; // WPCS: xss ok.
+		echo wp_json_encode( $data ); // WPCS: xss ok.
 		exit;
 	}
 }

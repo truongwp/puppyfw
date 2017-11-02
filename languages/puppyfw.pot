@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 05:55+0000\n"
+"POT-Creation-Date: 2017-11-02 04:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -102,312 +102,353 @@ msgstr ""
 msgid "Fields builder"
 msgstr ""
 
-#: src/Builder/BuilderMetaBox.php:179
+#: src/Builder/BuilderMetaBox.php:187
 msgid "+ Add field"
 msgstr ""
 
-#: src/Builder/BuilderMetaBox.php:215
+#: src/Builder/BuilderMetaBox.php:223
 msgid "Edit"
 msgstr ""
 
-#: src/Builder/BuilderMetaBox.php:216
+#: src/Builder/BuilderMetaBox.php:224
 msgid "Clone"
 msgstr ""
 
-#: src/Builder/BuilderMetaBox.php:217
+#: src/Builder/BuilderMetaBox.php:225
 msgid "Delete"
 msgstr ""
 
-#: src/Builder/Builder.php:45 src/Builder/Builder.php:56
+#: src/Builder/ToolsMetaBox.php:47
+msgid "Tools"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:69
+msgid "Export"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:71
+msgid "You must save changes before exporting."
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:78
+msgid "Copied!"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:78
+msgid "Copy"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:79
+msgid "Download export file"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:85
+msgid "Import"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:88
+msgid "Paste import data here"
+msgstr ""
+
+#: src/Builder/ToolsMetaBox.php:92
+msgid "Load from file"
+msgstr ""
+
+#: src/Builder/Builder.php:48 src/Builder/Builder.php:59
 msgid "Options pages"
 msgstr ""
 
-#: src/Builder/Builder.php:46
+#: src/Builder/Builder.php:49
 msgid "Options page"
 msgstr ""
 
-#: src/Builder/Builder.php:47
+#: src/Builder/Builder.php:50
 msgctxt "puppyfw"
 msgid "Add New"
 msgstr ""
 
-#: src/Builder/Builder.php:48
+#: src/Builder/Builder.php:51
 msgid "Add New Options page"
 msgstr ""
 
-#: src/Builder/Builder.php:49
+#: src/Builder/Builder.php:52
 msgid "Edit Options page"
 msgstr ""
 
-#: src/Builder/Builder.php:50
+#: src/Builder/Builder.php:53
 msgid "New Options page"
 msgstr ""
 
-#: src/Builder/Builder.php:51
+#: src/Builder/Builder.php:54
 msgid "View Options page"
 msgstr ""
 
-#: src/Builder/Builder.php:52
+#: src/Builder/Builder.php:55
 msgid "Search Options pages"
 msgstr ""
 
-#: src/Builder/Builder.php:53
+#: src/Builder/Builder.php:56
 msgid "No Options pages found"
 msgstr ""
 
-#: src/Builder/Builder.php:54
+#: src/Builder/Builder.php:57
 msgid "No Options pages found in Trash"
 msgstr ""
 
-#: src/Builder/Builder.php:55
+#: src/Builder/Builder.php:58
 msgid "Parent Options page:"
 msgstr ""
 
-#: src/Builder/Builder.php:62
+#: src/Builder/Builder.php:65
 msgid "PuppyFW options page"
-msgstr ""
-
-#: src/Builder/Builder.php:112
-msgctxt "field type"
-msgid "Checkbox"
-msgstr ""
-
-#: src/Builder/Builder.php:113
-msgctxt "field type"
-msgid "Checkbox list"
-msgstr ""
-
-#: src/Builder/Builder.php:114
-msgctxt "field type"
-msgid "Colorpicker"
 msgstr ""
 
 #: src/Builder/Builder.php:115
 msgctxt "field type"
-msgid "Datepicker"
+msgid "Checkbox"
 msgstr ""
 
 #: src/Builder/Builder.php:116
 msgctxt "field type"
-msgid "Editor"
+msgid "Checkbox list"
 msgstr ""
 
 #: src/Builder/Builder.php:117
 msgctxt "field type"
-msgid "Email"
+msgid "Colorpicker"
 msgstr ""
 
 #: src/Builder/Builder.php:118
 msgctxt "field type"
-msgid "Group"
+msgid "Datepicker"
 msgstr ""
 
 #: src/Builder/Builder.php:119
 msgctxt "field type"
-msgid "Html"
+msgid "Editor"
 msgstr ""
 
 #: src/Builder/Builder.php:120
 msgctxt "field type"
-msgid "Image"
+msgid "Email"
 msgstr ""
 
 #: src/Builder/Builder.php:121
 msgctxt "field type"
-msgid "Images"
+msgid "Group"
 msgstr ""
 
 #: src/Builder/Builder.php:122
 msgctxt "field type"
-msgid "Map"
+msgid "Html"
 msgstr ""
 
 #: src/Builder/Builder.php:123
 msgctxt "field type"
-msgid "Number"
+msgid "Image"
 msgstr ""
 
 #: src/Builder/Builder.php:124
 msgctxt "field type"
-msgid "Radio"
+msgid "Images"
 msgstr ""
 
 #: src/Builder/Builder.php:125
 msgctxt "field type"
-msgid "Repeatable"
+msgid "Map"
 msgstr ""
 
 #: src/Builder/Builder.php:126
 msgctxt "field type"
-msgid "Select"
+msgid "Number"
 msgstr ""
 
 #: src/Builder/Builder.php:127
 msgctxt "field type"
-msgid "Tab"
+msgid "Radio"
 msgstr ""
 
 #: src/Builder/Builder.php:128
 msgctxt "field type"
-msgid "Tel"
+msgid "Repeatable"
 msgstr ""
 
 #: src/Builder/Builder.php:129
 msgctxt "field type"
-msgid "Text"
+msgid "Select"
 msgstr ""
 
 #: src/Builder/Builder.php:130
 msgctxt "field type"
-msgid "Textarea"
+msgid "Tab"
+msgstr ""
+
+#: src/Builder/Builder.php:131
+msgctxt "field type"
+msgid "Tel"
+msgstr ""
+
+#: src/Builder/Builder.php:132
+msgctxt "field type"
+msgid "Text"
 msgstr ""
 
 #: src/Builder/Builder.php:133
-msgctxt "field setting label"
-msgid "Field ID"
-msgstr ""
-
-#: src/Builder/Builder.php:134
-msgctxt "field setting label"
-msgid "Field title"
-msgstr ""
-
-#: src/Builder/Builder.php:135
-msgctxt "field setting label"
-msgid "Field description"
+msgctxt "field type"
+msgid "Textarea"
 msgstr ""
 
 #: src/Builder/Builder.php:136
 msgctxt "field setting label"
-msgid "Field type"
+msgid "Field ID"
 msgstr ""
 
 #: src/Builder/Builder.php:137
 msgctxt "field setting label"
-msgid "Field attributes"
+msgid "Field title"
 msgstr ""
 
 #: src/Builder/Builder.php:138
 msgctxt "field setting label"
-msgid "Default"
+msgid "Field description"
 msgstr ""
 
 #: src/Builder/Builder.php:139
 msgctxt "field setting label"
-msgid "Options"
+msgid "Field type"
 msgstr ""
 
 #: src/Builder/Builder.php:140
 msgctxt "field setting label"
-msgid "Tabs"
+msgid "Field attributes"
 msgstr ""
 
 #: src/Builder/Builder.php:141
 msgctxt "field setting label"
-msgid "Tab"
+msgid "Default"
 msgstr ""
 
 #: src/Builder/Builder.php:142
 msgctxt "field setting label"
-msgid "Javascript Options"
+msgid "Options"
 msgstr ""
 
 #: src/Builder/Builder.php:143
 msgctxt "field setting label"
-msgid "Quicktags"
+msgid "Tabs"
 msgstr ""
 
 #: src/Builder/Builder.php:144
 msgctxt "field setting label"
-msgid "Tinymce"
+msgid "Tab"
 msgstr ""
 
 #: src/Builder/Builder.php:145
 msgctxt "field setting label"
-msgid "Fields"
+msgid "Javascript Options"
 msgstr ""
 
 #: src/Builder/Builder.php:146
 msgctxt "field setting label"
-msgid "Content"
+msgid "Quicktags"
 msgstr ""
 
 #: src/Builder/Builder.php:147
 msgctxt "field setting label"
-msgid "Key"
+msgid "Tinymce"
 msgstr ""
 
 #: src/Builder/Builder.php:148
 msgctxt "field setting label"
-msgid "Value"
+msgid "Media buttons"
 msgstr ""
 
 #: src/Builder/Builder.php:149
 msgctxt "field setting label"
-msgid "Remove"
+msgid "Fields"
 msgstr ""
 
 #: src/Builder/Builder.php:150
 msgctxt "field setting label"
-msgid "+ Add attribute"
+msgid "Content"
 msgstr ""
 
 #: src/Builder/Builder.php:151
 msgctxt "field setting label"
-msgid "+ Add option"
+msgid "Key"
 msgstr ""
 
 #: src/Builder/Builder.php:152
 msgctxt "field setting label"
-msgid "+ Add tab"
+msgid "Value"
 msgstr ""
 
 #: src/Builder/Builder.php:153
 msgctxt "field setting label"
-msgid "+ Add rule"
+msgid "Remove"
 msgstr ""
 
 #: src/Builder/Builder.php:154
 msgctxt "field setting label"
-msgid "Inline"
+msgid "+ Add attribute"
 msgstr ""
 
 #: src/Builder/Builder.php:155
 msgctxt "field setting label"
-msgid "Data source"
+msgid "+ Add option"
 msgstr ""
 
 #: src/Builder/Builder.php:156
 msgctxt "field setting label"
-msgid "Post"
+msgid "+ Add tab"
 msgstr ""
 
 #: src/Builder/Builder.php:157
 msgctxt "field setting label"
-msgid "Post type"
+msgid "+ Add rule"
 msgstr ""
 
 #: src/Builder/Builder.php:158
 msgctxt "field setting label"
-msgid "Term"
+msgid "Inline"
 msgstr ""
 
 #: src/Builder/Builder.php:159
 msgctxt "field setting label"
-msgid "Taxonomy"
+msgid "Data source"
 msgstr ""
 
 #: src/Builder/Builder.php:160
 msgctxt "field setting label"
-msgid "None option"
+msgid "Post"
 msgstr ""
 
 #: src/Builder/Builder.php:161
 msgctxt "field setting label"
-msgid "Repeatable"
+msgid "Post type"
 msgstr ""
 
 #: src/Builder/Builder.php:162
+msgctxt "field setting label"
+msgid "Term"
+msgstr ""
+
+#: src/Builder/Builder.php:163
+msgctxt "field setting label"
+msgid "Taxonomy"
+msgstr ""
+
+#: src/Builder/Builder.php:164
+msgctxt "field setting label"
+msgid "None option"
+msgstr ""
+
+#: src/Builder/Builder.php:165
+msgctxt "field setting label"
+msgid "Repeatable"
+msgstr ""
+
+#: src/Builder/Builder.php:166
 msgctxt "field setting label"
 msgid "Dependency"
 msgstr ""

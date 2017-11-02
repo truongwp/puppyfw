@@ -1,6 +1,7 @@
 ## [Unreleased]
 ### Added
 - Support media buttons in editor field (requires WordPress 4.9)
+- Add import/export feature for options page builder
 - Hook `puppyfw_builder_assets`
 
 ## [0.3.0]
