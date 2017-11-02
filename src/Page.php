@@ -49,7 +49,7 @@ class Page {
 	 */
 	public function __construct( $data ) {
 		if ( empty( $data['menu_slug'] ) ) {
-			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), esc_html( PUPPYFW_VERSION ) );
+			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), null );
 			return;
 		}
 
