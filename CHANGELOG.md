@@ -1,4 +1,6 @@
 ## [Unreleased]
+
+## [0.4.0]
 ### Added
 - Support media buttons in editor field (requires WordPress 4.9)
 - Added import/export feature for options page builder
@@ -53,7 +55,8 @@
 ## [0.1.0] - 2017-09-19
 - First release
 
-[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/truongwp/puppyfw/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/truongwp/puppyfw/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/truongwp/puppyfw/compare/0.1.2...0.2.0
 [0.1.2]: https://github.com/truongwp/puppyfw/compare/0.1.1...0.1.2

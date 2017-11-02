@@ -2,12 +2,12 @@
 /**
  * Plugin Name:     PuppyFW
  * Plugin URI:      https://puppyfw.com/
- * Description:     A framework for WordPress use Vuejs.
+ * Description:     PuppyFW is a lightweight but powerful options framework for WordPress themes and plugins which supports tab, group, repeatable, field dependencies. It comes with Options Page Builder so doesn't require coding skills to use.
  * Author:          Truong Giang
  * Author URI:      https://truongwp.com/
  * Text Domain:     puppyfw
  * Domain Path:     /languages
- * Version:         0.3.0
+ * Version:         0.4.0
  *
  * @package         PuppyFW
  */

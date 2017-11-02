@@ -103,7 +103,8 @@ class Controls {
 					<p>
 						<?php
 						printf(
-							esc_html__( 'Use %s for %s, %s for %s and %s for array separator.', 'puppyfw' ),
+							/* translators: 1: {{{true}}}, 2: true, 3: {{{false}}}, 4: false, 5: ||| */
+							esc_html__( 'Use %1$s for %2$s, %3$s for %4$s and %5$s for array separator.', 'puppyfw' ),
 							'<code>{{\'{{{\'}}true}}}</code>',
 							'<code>true</code>',
 							'<code>{{\'{{{\'}}false}}}</code>',
