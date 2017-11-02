@@ -21,6 +21,8 @@ class Builder {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'puppyfw_init', array( $this, 'register_pages' ), 0 );
 		add_action( 'puppyfw_i18n', array( $this, 'register_i18n' ) );
+		add_filter( 'manage_puppyfw_page_posts_columns', array( $this, 'post_columns' ) );
+		add_action( 'manage_puppyfw_page_posts_custom_column', array( $this, 'post_columns_data' ), 10, 2 );
 
 		if ( is_admin() ) {
 			$page_meta_box = new PageMetaBox();
@@ -169,4 +171,63 @@ class Builder {
 
 		return $i18n;
 	}
+
+	/**
+	 * Adds posts list table custom columns.
+	 *
+	 * @param  array $columns Posts list table columns.
+	 * @return array
+	 */
+	public function post_columns( $columns ) {
+		unset( $columns['date'] );
+
+		$columns['menu_slug'] = __( 'Menu slug', 'puppyfw' );
+		$columns['menu_title'] = __( 'Menu title', 'puppyfw' );
+		$columns['parent_slug'] = __( 'Parent slug', 'puppyfw' );
+		$columns['capability'] = __( 'Capability', 'puppyfw' );
+		$columns['option_name'] = __( 'Option name', 'puppyfw' );
+
+		return $columns;
+	}
+
+	/**
+	 * Shows posts list table custom columns data.
+	 *
+	 * @param string $column  Column name.
+	 * @param int    $post_id Post ID.
+	 */
+	public function post_columns_data( $column, $post_id ) {
+		$post = get_post( $post_id );
+		$page = $post->post_excerpt ? json_decode( html_entity_decode( $post->post_excerpt ), true ) : array();
+
+		switch ( $column ) {
+			case 'menu_slug':
+				if ( ! empty( $page['menu_slug'] ) ) {
+					echo esc_html( $page['menu_slug'] );
+				}
+				break;
+
+			case 'menu_title':
+				if ( ! empty( $page['menu_title'] ) ) {
+					echo esc_html( $page['menu_title'] );
+				}
+				break;
+			case 'parent_slug':
+				if ( ! empty( $page['parent_slug'] ) ) {
+					echo esc_html( $page['parent_slug'] );
+				}
+				break;
+			case 'capability':
+				if ( ! empty( $page['capability'] ) ) {
+					echo esc_html( $page['capability'] );
+				}
+				break;
+			case 'option_name':
+				if ( ! empty( $page['option_name'] ) ) {
+					echo esc_html( $page['option_name'] );
+				}
+				break;
+		}
+	}
+
 }
