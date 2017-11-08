@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/truongwp
 Tags: framework, theme-options, theme-framework, plugin-framework, theme-settings
 Requires at least: 4.8
 Requires PHP: 5.3
-Tested up to: 4.8.1
-Stable tag: 0.3.0
+Tested up to: 4.9-RC1
+Stable tag: 0.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,7 +32,8 @@ https://youtu.be/6Ae819U1phI
 
 1. Upload the plugin files to the `/wp-content/plugins/puppyfw` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Follow [the documentation](https://github.com/truongwp/puppyfw).
+3. Go to `Options pages > Add New` to add an options page.
+4. Follow [the documentation](https://truongwp.blog/puppyfw-documentation/) for more detail.
 
 == Frequently Asked Questions ==
 
@@ -56,7 +57,15 @@ At the moment, it can't. But they will be supported in the future.
 
 == Changelog ==
 
-= 0.1.0 =
+= 0.4.0 =
+- Support media buttons in editor field (requires WordPress 4.9)
+- Added import/export feature for options page builder
+- Hook `puppyfw_builder_assets`
+- Show options page data in posts list table
+- Removed `PUPPYFW_VERSION` constant
+- Check the existing of function `puppyfw()` to load plugin instead of `PUPPYFW_VERSION` constant which be removed
+
+= 0.3.0 =
 * First release
 
 == Upgrade Notice ==
