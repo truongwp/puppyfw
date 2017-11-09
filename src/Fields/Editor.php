@@ -29,16 +29,6 @@ class Editor extends Field {
 			$field_data['quicktags'] = true;
 		}
 
-		if ( ! isset( $field_data['attrs']['rows'] ) ) {
-			$field_data['attrs']['rows'] = 8;
-		}
-
-		if ( isset( $field_data['attrs']['class'] ) ) {
-			$field_data['attrs']['class'] .= ' wp-editor-area';
-		} else {
-			$field_data['attrs']['class'] = 'wp-editor-area';
-		}
-
 		return $field_data;
 	}
 
@@ -53,7 +43,7 @@ class Editor extends Field {
 
 				<div class="puppyfw-field__control">
 					<div :class="{ 'wp-editor-container': !field.tinymce }">
-						<textarea v-bind="field.attrs" :id="field.id_attr" :value="field.value" @input="field.value = $event.target.value"></textarea>
+						<textarea class="wp-editor-area" v-bind="field.attrs" :id="field.id_attr" :value="field.value" @input="field.value = $event.target.value"></textarea>
 					</div>
 
 					<div class="puppyfw-field__desc" v-if="field.desc">{{ field.desc }}</div>

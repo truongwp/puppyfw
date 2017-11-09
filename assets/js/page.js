@@ -4,7 +4,12 @@
 	var components = puppyfw.components = puppyfw.components || {};
 
 	var Field = components.Field = {
-		props: ['field'],
+		props: {
+			field: {
+				type: Object,
+				required: true
+			}
+		},
 
 		computed: {
 			value: function() {
@@ -19,6 +24,22 @@
 				}
 				puppyfw.app.$emit( 'puppyfw_changed_' + this.field.id_attr, newVal, oldVal );
 			}
+		},
+
+		beforeMount: function() {
+			if ( typeof this.field.attrs !== 'object' ) {
+				Vue.set( this.field, 'attrs', [] );
+			}
+			if ( this.field.attrs[0] ) {
+				// Convert array to object.
+				var attrs = {};
+				for ( var i = 0; i < this.field.attrs.length; i++ ) {
+					attrs[ this.field.attrs[ i ].key ] = this.field.attrs[ i ].value;
+				}
+				Vue.set( this.field, 'attrs', attrs );
+			}
+
+			this.dependency();
 		},
 
 		methods: {
@@ -199,10 +220,6 @@
 
 				return true;
 			}
-		},
-
-		beforeMount: function() {
-			this.dependency();
 		}
 	};
 

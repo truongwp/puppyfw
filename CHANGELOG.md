@@ -1,5 +1,9 @@
 ## [Unreleased]
 ### Changed
+- Fix field attributes doesn't work
+
+## [0.4.1]
+### Changed
 - Fix Vietnamese text encoding
 
 ## [0.4.0]
@@ -57,7 +61,8 @@
 ## [0.1.0] - 2017-09-19
 - First release
 
-[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.1...HEAD
+[0.4.0]: https://github.com/truongwp/puppyfw/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/truongwp/puppyfw/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/truongwp/puppyfw/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/truongwp/puppyfw/compare/0.1.2...0.2.0
