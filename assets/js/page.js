@@ -593,11 +593,16 @@
 		},
 
 		beforeMount: function() {
-			if ( typeof this.field.value === 'undefined' || this.field.value === null ) {
-				this.field.value = {
+			if ( typeof this.field.value == 'string' ) {
+				Vue.set( this.field, 'value', {
+					id: '',
+					url: this.field.value
+				});
+			} else if ( typeof this.field.value != 'object' ) {
+				Vue.set( this.field, 'value', {
 					id: '',
 					url: ''
-				};
+				});
 			}
 		}
 	});

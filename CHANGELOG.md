@@ -1,6 +1,7 @@
 ## [Unreleased]
 ### Changed
 - Fix field attributes doesn't work
+- Fix image field doesn't work when use URL
 
 ## [0.4.1]
 ### Changed
