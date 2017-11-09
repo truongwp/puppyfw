@@ -75,7 +75,7 @@ class BuilderMetaBox {
 		wp_nonce_field( 'puppyfw_builder_meta_box', 'puppyfw_builder_meta_box_nonce' );
 		$fields = $post->post_content ? json_decode( html_entity_decode( $post->post_content ), true ) : array();
 		?>
-		<input type="hidden" id="field-data" value="<?php echo esc_attr( wp_json_encode( $fields ) ); ?>">
+		<input type="hidden" id="field-data" value="<?php echo esc_attr( wp_json_encode( $fields, JSON_UNESCAPED_UNICODE ) ); ?>">
 
 		<div id="puppyfw-builder">
 			<input type="hidden" id="puppyfw-field-save-data" name="puppyfw_fields" :value="JSON.stringify(fields)">

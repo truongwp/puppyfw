@@ -161,7 +161,7 @@ class PageMetaBox {
 
 		$page_data = wp_unslash( $_POST['puppyfw_page'] ); // WPCS: sanitization ok.
 		$page_data = Helpers::normalize_page( $page_data );
-		$page_data = wp_json_encode( $page_data );
+		$page_data = wp_json_encode( $page_data, JSON_UNESCAPED_UNICODE );
 
 		wp_update_post( array(
 			'ID'           => $post_id,

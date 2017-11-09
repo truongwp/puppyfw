@@ -130,7 +130,7 @@ class ToolsMetaBox {
 		);
 		header( 'Content-disposition: attachment; filename=' . $filename );
 		header( 'Content-type: application/json' );
-		echo wp_json_encode( $data ); // WPCS: xss ok.
+		echo wp_json_encode( $data, JSON_UNESCAPED_UNICODE ); // WPCS: xss ok.
 		exit;
 	}
 }
