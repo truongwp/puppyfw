@@ -1,4 +1,6 @@
 ## [Unreleased]
+### Changed
+- Fix Vietnamese text encoding
 
 ## [0.4.0]
 ### Added
