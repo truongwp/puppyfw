@@ -2,6 +2,7 @@
 ### Changed
 - Fix field attributes doesn't work
 - Fix image field doesn't work when use URL
+- Fix slashes issue when save fields
 
 ## [0.4.1]
 ### Changed

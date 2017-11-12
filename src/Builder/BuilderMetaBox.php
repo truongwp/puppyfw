@@ -279,7 +279,7 @@ class BuilderMetaBox {
 
 		wp_update_post( array(
 			'ID'           => $post_id,
-			'post_content' => wp_json_encode( $fields, JSON_UNESCAPED_UNICODE ),
+			'post_content' => wp_slash( wp_json_encode( $fields, JSON_UNESCAPED_UNICODE ) ),
 		) );
 
 		$this->add_save_handle();
