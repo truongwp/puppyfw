@@ -5,7 +5,7 @@ Tags: framework, theme-options, theme-framework, plugin-framework, theme-setting
 Requires at least: 4.8
 Requires PHP: 5.3
 Tested up to: 4.9-RC2
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -56,6 +56,14 @@ At the moment, it can't. But they will be supported in the future.
 3. Advanced fields
 
 == Changelog ==
+
+= 0.4.2 =
+- Fix field attributes doesn't work
+- Fix image field doesn't work when use URL
+- Fix slashes issue when save fields
+
+= 0.4.1 =
+- Fix Vietnamese text encoding
 
 = 0.4.0 =
 - Support media buttons in editor field (requires WordPress 4.9)
