@@ -279,7 +279,7 @@ class Page {
 
 		wp_enqueue_style( 'puppyfw-jquery-ui', PUPPYFW_URL . 'assets/lib/jquery-ui/jquery-ui.min.css', array(), '0.1.0' );
 
-		wp_enqueue_style( 'puppyfw', PUPPYFW_URL . 'assets/css/puppyfw.css', array(), '0.1.0' );
+		wp_enqueue_style( 'puppyfw', PUPPYFW_URL . 'assets/css/puppyfw.css', array(), '0.4.3' );
 
 		wp_enqueue_editor();
 		wp_enqueue_media();
@@ -305,7 +305,7 @@ class Page {
 				'wp-color-picker-alpha',
 				'puppyfw-components',
 			),
-			'0.1.0',
+			'0.4.3',
 			true
 		);
 

@@ -123,7 +123,7 @@ class BuilderMetaBox {
 				'puppyfw',
 				'puppyfw-components',
 			),
-			'0.3.0',
+			'0.4.3',
 			true
 		);
 

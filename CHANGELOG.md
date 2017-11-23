@@ -1,6 +1,9 @@
 ## [Unreleased]
 
 ## [0.4.3]
+### Added
+- Added alpha channel option for colorpicker field
+
 ### Changed
 - Fix colorpicker not show in WordPress 4.9
 

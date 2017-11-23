@@ -58,6 +58,10 @@ At the moment, it can't. But they will be supported in the future.
 == Changelog ==
 
 = 0.4.2 =
+- Added alpha channel option for colorpicker field
+- Fix colorpicker attributes doesn't work with WordPress 4.9
+
+= 0.4.2 =
 - Fix field attributes doesn't work
 - Fix image field doesn't work when use URL
 - Fix slashes issue when save fields
