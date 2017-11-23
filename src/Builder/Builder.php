@@ -158,6 +158,7 @@ class Builder {
 				'addTab'       => _x( '+ Add tab', 'field setting label', 'puppyfw' ),
 				'addRule'      => _x( '+ Add rule', 'field setting label', 'puppyfw' ),
 				'inline'       => _x( 'Inline', 'field setting label', 'puppyfw' ),
+				'alpha'        => _x( 'Alpha', 'field setting label', 'puppyfw' ),
 				'dataSource'   => _x( 'Data source', 'field setting label', 'puppyfw' ),
 				'post'         => _x( 'Post', 'field setting label', 'puppyfw' ),
 				'postType'     => _x( 'Post type', 'field setting label', 'puppyfw' ),

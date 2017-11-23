@@ -18,6 +18,7 @@
 		post_type: 'post',
 		taxonomy: 'category',
 		none_option: '',
+		alpha: false,
 		tabs: [],
 		tab: '',
 		quicktags: true,

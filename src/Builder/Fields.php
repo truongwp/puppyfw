@@ -138,6 +138,13 @@ class Fields {
 
 				<?php FieldSettings::field_default(); ?>
 
+				<checkbox-control
+					:id="field.baseId + '-alpha'"
+					:label="puppyfw.i18n.builder.labels.alpha"
+					:value="field.alpha"
+					@changeValue="value => field.alpha = value"
+				></checkbox-control>
+
 				<?php FieldSettings::field_attrs(); ?>
 
 				<?php FieldSettings::field_repeatable(); ?>

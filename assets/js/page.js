@@ -775,7 +775,7 @@
 			var _this = this;
 			$( this.$el ).find( '.puppyfw-colorpicker-input' ).wpColorPicker({
 				change: function( event, ui ) {
-					Vue.set( _this.field, 'value', event.target.value );
+					Vue.set( _this.field, 'value', ui.color.toString() );
 				},
 				clear: function() {
 					Vue.set( _this.field, 'value', '' );

@@ -284,7 +284,7 @@ class Page {
 		wp_enqueue_editor();
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'wp-color-picker-alpha', PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '1.2.2', true );
+		wp_enqueue_script( 'wp-color-picker-alpha', PUPPYFW_URL . 'assets/js/lib/wp-color-picker-alpha.min.js', array( 'wp-color-picker' ), '2.1.2', true );
 
 		wp_enqueue_script( 'jquery-ui-sortable' );
 		wp_enqueue_script( 'vue' );

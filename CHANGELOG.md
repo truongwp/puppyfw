@@ -1,4 +1,10 @@
 ## [Unreleased]
+
+## [0.4.3]
+### Changed
+- Fix colorpicker not show in WordPress 4.9
+
+## [0.4.2]
 ### Changed
 - Fix field attributes doesn't work
 - Fix image field doesn't work when use URL
@@ -63,7 +69,9 @@
 ## [0.1.0] - 2017-09-19
 - First release
 
-[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.1...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.3...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.2...0.4.3
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.1...0.4.2
 [0.4.0]: https://github.com/truongwp/puppyfw/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/truongwp/puppyfw/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/truongwp/puppyfw/compare/0.2.0...0.3.0

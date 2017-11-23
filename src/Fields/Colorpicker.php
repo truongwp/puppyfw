@@ -23,7 +23,7 @@ class Colorpicker extends Field {
 				<label :for="field.id_attr" class="puppyfw-field__label">{{ field.title }}</label>
 
 				<div class="puppyfw-field__control">
-					<input v-bind="field.attrs" class="puppyfw-colorpicker-input" :data-alpha="field.alpha" :id="field.id_attr" type="text" :value="field.value" @input="field.value = $event.target.value">
+					<input v-bind="field.attrs" class="puppyfw-colorpicker-input" :data-alpha="field.alpha" :id="field.id_attr" type="text" :value="field.value">
 
 					<div class="puppyfw-field__desc" v-if="field.desc">{{ field.desc }}</div>
 				</div>

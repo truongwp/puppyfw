@@ -95,11 +95,6 @@
   margin-top: 0.5em;
 }
 
-.puppyfw-field .wp-picker-container * {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-}
-
 .puppyfw-checkbox .puppyfw-field__label,
 .puppyfw-checkbox-list .puppyfw-field__label {
   line-height: 18px;
