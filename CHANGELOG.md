@@ -1,4 +1,7 @@
 ## [Unreleased]
+## [0.4.4]
+### Changed
+- Fix missing removeRule() method in options page builder
 
 ## [0.4.3]
 ### Added
@@ -72,7 +75,8 @@
 ## [0.1.0] - 2017-09-19
 - First release
 
-[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.3...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.4...HEAD
+[Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.3...0.4.4
 [Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.2...0.4.3
 [Unreleased]: https://github.com/truongwp/puppyfw/compare/0.4.1...0.4.2
 [0.4.0]: https://github.com/truongwp/puppyfw/compare/0.4.0...0.4.1

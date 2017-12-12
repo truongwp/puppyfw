@@ -57,7 +57,10 @@ At the moment, it can't. But they will be supported in the future.
 
 == Changelog ==
 
-= 0.4.2 =
+= 0.4.4 =
+- Fix missing removeRule() method in options page builder
+
+= 0.4.3 =
 - Added alpha channel option for colorpicker field
 - Fix colorpicker attributes doesn't work with WordPress 4.9
 
