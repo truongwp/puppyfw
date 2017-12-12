@@ -67,6 +67,10 @@
 					value: '',
 					operator: '='
 				});
+			},
+
+			removeRule: function( index ) {
+				Vue.delete( this.stateRules, index );
 			}
 		}
 	});
