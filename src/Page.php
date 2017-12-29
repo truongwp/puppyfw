@@ -48,11 +48,6 @@ class Page {
 	 * @param array $data Page data.
 	 */
 	public function __construct( $data ) {
-		if ( empty( $data['menu_slug'] ) ) {
-			_doing_it_wrong( __METHOD__, esc_html__( 'Menu slug must not be empty.', 'puppyfw' ), null );
-			return;
-		}
-
 		if ( ! empty( $data['fields'] ) ) {
 			$fields = $data['fields'];
 			unset( $data['fields'] );
@@ -66,6 +61,17 @@ class Page {
 				$this->add_field( $field );
 			}
 		}
+	}
+
+	/**
+	 * Gets page identity.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_id() {
+		return $this->data['menu_slug'];
 	}
 
 	/**
@@ -123,9 +129,16 @@ class Page {
 	}
 
 	/**
-	 * Registers page.
+	 * Adds hook for registering page.
 	 */
 	public function register() {
+		add_action( 'admin_menu', array( $this, 'register_page' ) );
+	}
+
+	/**
+	 * Registers page.
+	 */
+	public function register_page() {
 		if ( ! $this->data['parent_slug'] ) {
 			$this->page_hook = add_menu_page(
 				$this->data['page_title'],
@@ -170,8 +183,6 @@ class Page {
 
 	/**
 	 * Fetches fields array.
-	 *
-	 * @return array
 	 */
 	public function fetch_fields_array() {
 		foreach ( $this->fields as $field ) {
@@ -213,7 +224,7 @@ class Page {
 	public function render() {
 		?>
 		<div class="wrap">
-			<div id="puppyfw-app" class="puppyfw-page-<?php echo esc_attr( $this->data['menu_slug'] ); ?>">
+			<div id="puppyfw-app" class="puppyfw-page-<?php echo esc_attr( $this->get_id() ); ?>">
 				<form>
 					<div class="puppyfw">
 						<div class="puppyfw__header">

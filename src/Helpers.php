@@ -90,7 +90,12 @@ class Helpers {
 	 * @return array
 	 */
 	public static function normalize_page( $page_data ) {
-		return wp_parse_args( $page_data, array(
+		$type = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
+		if ( is_callable( array( __CLASS__, 'normalize_' . $type ) ) ) {
+			return call_user_func( array( __CLASS__, 'normalize_' . $type ), $page_data );
+		}
+
+		$page_data = wp_parse_args( $page_data, array(
 			'parent_slug' => '',
 			'page_title'  => '',
 			'menu_title'  => '',
@@ -100,6 +105,50 @@ class Helpers {
 			'position'    => 100,
 			'option_name' => '',
 		) );
+
+		if ( ! $page_data['menu_slug'] ) {
+			$page_data['menu_slug'] = self::generate_page_id();
+		}
+
+		return $page_data;
+	}
+
+	/**
+	 * Normalizes meta box data.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  array $page_data Page data.
+	 * @return array
+	 */
+	public static function normalize_meta_box( $page_data ) {
+		$page_data = wp_parse_args( $page_data, array(
+			'id'            => '',
+			'title'         => '',
+			'screen'        => 'post',
+			'context'       => 'advanced',
+			'priority'      => 'default',
+			'callback_args' => array(),
+			'option_name'   => '',
+		) );
+
+		$page_data['screen'] = (array) $page_data['screen'];
+		if ( ! $page_data['id'] ) {
+			$page_data['id'] = self::generate_page_id();
+		}
+
+		return $page_data;
+	}
+
+	/**
+	 * Generates a random page ID.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public static function generate_page_id() {
+		return 'puppyfw-' . mt_rand( 100, 999 );
 	}
 
 	/**

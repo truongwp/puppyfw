@@ -26,12 +26,9 @@ class Framework extends Singleton {
 	 * @return Page|false
 	 */
 	public function add_page( $page_data ) {
-		if ( empty( $page_data['menu_slug'] ) ) {
-			return false;
-		}
-
-		$page = new Page( $page_data );
-		$this->pages[ $page_data['menu_slug'] ] = $page;
+		$page_class = $this->get_page_class( $page_data );
+		$page = new $page_class( $page_data );
+		$this->pages[ $page->get_id() ] = $page;
 		return $page;
 	}
 
@@ -52,7 +49,7 @@ class Framework extends Singleton {
 	 * Framework initialize.
 	 */
 	public function init() {
-		add_action( 'admin_menu', array( $this, 'register_pages' ) );
+		$this->register_pages();
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
@@ -89,5 +86,32 @@ class Framework extends Singleton {
 				'errorSaving' => __( 'Some errors occur when save data.', 'puppyfw' ),
 			) ),
 		) );
+	}
+
+	/**
+	 * Gets page class.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param  array $page_data Page data.
+	 * @return string
+	 */
+	protected function get_page_class( $page_data ) {
+		$page_class = '\\PuppyFW\\Page';
+		$type = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
+		$type_class = Helpers::to_camel_case( $type );
+		if ( class_exists( "\\PuppyFW\\{$type_class}" ) ) {
+			$page_class = "\\PuppyFW\\{$type_class}";
+		}
+
+		/**
+		 * Filters page class.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $page_class Page class.
+		 * @param array  $page_data  Page data.
+		 */
+		return apply_filters( 'puppyfw_page_class', $page_class, $page_data );
 	}
 }

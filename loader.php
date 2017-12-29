@@ -57,7 +57,7 @@ function puppyfw_init() {
 	 */
 	do_action( 'puppyfw_after_init', $framework );
 }
-add_action( 'plugins_loaded', 'puppyfw_init' );
+add_action( 'init', 'puppyfw_init' );
 
 
 /**
