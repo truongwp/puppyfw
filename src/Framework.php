@@ -28,21 +28,27 @@ class Framework extends Singleton {
 	public function add_page( $page_data ) {
 		$page_class = $this->get_page_class( $page_data );
 		$page = new $page_class( $page_data );
-		$this->pages[ $page->get_id() ] = $page;
+		if ( ! isset( $this->pages[ $page->type ] ) || ! is_array( $this->pages[ $page->type ] ) ) {
+			$this->pages[ $page->type ] = array();
+		}
+		$this->pages[ $page->type ][ $page->get_id() ] = $page;
 		return $page;
 	}
 
 	/**
 	 * Gets page instance.
 	 *
-	 * @param  string $page_slug Page slug.
+	 * @param  string $page_id Page id.
 	 * @return Page
 	 */
-	public function get_page( $page_slug ) {
-		if ( ! isset( $this->pages[ $page_slug ] ) ) {
+	public function get_page( $page_id, $type = 'options_page' ) {
+		if ( ! isset( $this->pages[ $type ] ) ) {
 			return false;
 		}
-		return $this->pages[ $page_slug ];
+		if ( ! isset( $this->pages[ $type ][ $page_id ] ) ) {
+			return false;
+		}
+		return $this->pages[ $type ][ $page_id ];
 	}
 
 	/**
@@ -57,8 +63,10 @@ class Framework extends Singleton {
 	 * Registers options pages.
 	 */
 	public function register_pages() {
-		foreach ( $this->pages as $page ) {
-			$page->register();
+		foreach ( $this->pages as $pages ) {
+			foreach ( $pages as $page ) {
+				$page->register();
+			}
 		}
 	}
 

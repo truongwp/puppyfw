@@ -90,9 +90,9 @@ class Helpers {
 	 * @return array
 	 */
 	public static function normalize_page( $page_data ) {
-		$type = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
-		if ( is_callable( array( __CLASS__, 'normalize_' . $type ) ) ) {
-			return call_user_func( array( __CLASS__, 'normalize_' . $type ), $page_data );
+		$page_data['type'] = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
+		if ( is_callable( array( __CLASS__, 'normalize_' . $page_data['type'] ) ) ) {
+			return call_user_func( array( __CLASS__, 'normalize_' . $page_data['type'] ), $page_data );
 		}
 
 		$page_data = wp_parse_args( $page_data, array(

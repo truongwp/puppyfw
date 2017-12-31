@@ -12,6 +12,13 @@ namespace PuppyFW;
  * MetaBox class
  */
 class MetaBox extends Page {
+	
+	/**
+	 * Page type.
+	 *
+	 * @var string
+	 */
+	public $type = 'meta_box';
 
 	/**
 	 * Gets meta box identity.
@@ -73,6 +80,8 @@ class MetaBox extends Page {
 						<template v-for="field in fields">
 							<component :is="getComponentName(field.type)" :field="field" :key="field" v-show="field.visible"></component>
 						</template>
+
+						<input type="hidden" name="puppyfw_save_data" :value="JSON.stringify(getSaveData())">
 					</div>
 				</div>
 			</form>
@@ -88,6 +97,8 @@ class MetaBox extends Page {
 			return;
 		}
 		parent::load();
+		
+		add_action( 'save_post', array( $this, 'save' ) );
 	}
 
 	/**
@@ -97,5 +108,9 @@ class MetaBox extends Page {
 	 */
 	public function is_screen() {
 		return in_array( get_current_screen()->id, $this->data['screen'] );
+	}
+	
+	public function save( $post_id ) {
+		
 	}
 }

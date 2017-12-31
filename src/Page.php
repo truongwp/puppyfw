@@ -13,6 +13,15 @@ use PuppyFW\Fields\Field;
  * Class Page
  */
 class Page {
+	
+	/**
+	 * Page type.
+	 * 
+	 * @since 1.0.0
+	 * 
+	 * @var string
+	 */
+	public $type = 'options_page';
 
 	/**
 	 * Page data.
