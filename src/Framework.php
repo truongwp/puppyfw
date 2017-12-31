@@ -20,6 +20,20 @@ class Framework extends Singleton {
 	protected $pages = array();
 
 	/**
+	 * Plugin helper.
+	 *
+	 * @var Helper
+	 */
+	public $helper;
+
+	/**
+	 * Constructor.
+	 */
+	protected function __construct() {
+		$this->helper = new Helper();
+	}
+
+	/**
 	 * Adds page.
 	 *
 	 * @param array $page_data Page data.
