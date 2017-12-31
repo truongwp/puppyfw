@@ -111,7 +111,7 @@ class BuilderMetaBox {
 		wp_enqueue_script( 'vue' );
 		wp_enqueue_script( 'puppyfw' );
 
-		Helpers::enqueue_components();
+		puppyfw()->helper->enqueue_components();
 
 		wp_enqueue_script(
 			'puppyfw-builder',

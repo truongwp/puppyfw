@@ -177,7 +177,7 @@ abstract class Field {
 	 */
 	public function render() {
 		// Don't print template for rendered field types.
-		$mapped_type = Helpers::get_mapped_type( $this->data['type'] );
+		$mapped_type = puppyfw()->helper->get_mapped_type( $this->data['type'] );
 		$rendered_fields = StaticCache::get( 'rendered_fields' );
 
 		if ( ! in_array( $mapped_type, $rendered_fields ) ) {

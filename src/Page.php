@@ -13,12 +13,12 @@ use PuppyFW\Fields\Field;
  * Class Page
  */
 class Page {
-	
+
 	/**
 	 * Page type.
-	 * 
+	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @var string
 	 */
 	public $type = 'options_page';
@@ -90,7 +90,7 @@ class Page {
 	 * @return array
 	 */
 	protected function normalize( $page_data ) {
-		return Helpers::normalize_page( $page_data );
+		return puppyfw()->helper->normalize_page( $page_data );
 	}
 
 	/**
@@ -310,7 +310,7 @@ class Page {
 		wp_enqueue_script( 'vue' );
 		wp_enqueue_script( 'puppyfw' );
 
-		Helpers::enqueue_components();
+		puppyfw()->helper->enqueue_components();
 
 		wp_enqueue_script(
 			'puppyfw-page',

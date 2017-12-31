@@ -95,7 +95,7 @@ class Framework extends Singleton {
 		wp_register_script( 'puppyfw', PUPPYFW_URL . 'assets/js/puppyfw.js', array(), '0.3.0', true );
 
 		wp_localize_script( 'puppyfw', 'puppyfw', array(
-			'mapping' => Helpers::field_vue_component_mapping(),
+			'mapping' => puppyfw()->helper->field_vue_component_mapping(),
 
 			/**
 			 * Filters i18n data.
@@ -121,7 +121,7 @@ class Framework extends Singleton {
 	protected function get_page_class( $page_data ) {
 		$page_class = '\\PuppyFW\\Page';
 		$type = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
-		$type_class = Helpers::to_camel_case( $type );
+		$type_class = puppyfw()->helper->to_camel_case( $type );
 		if ( class_exists( "\\PuppyFW\\{$type_class}" ) ) {
 			$page_class = "\\PuppyFW\\{$type_class}";
 		}

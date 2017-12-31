@@ -35,8 +35,8 @@ class FieldFactory {
 	 */
 	public static function get_field_class( $field_data ) {
 		$type = ! empty( $field_data['type'] ) ? $field_data['type'] : 'input';
-		$mapped_type = Helpers::get_mapped_type( $type );
-		$class_name = '\\PuppyFW\\Fields\\' . Helpers::to_camel_case( $mapped_type );
+		$mapped_type = puppyfw()->helper->get_mapped_type( $type );
+		$class_name = '\\PuppyFW\\Fields\\' . puppyfw()->helper->to_camel_case( $mapped_type );
 
 		if ( ! class_exists( $class_name ) ) {
 			$class_name = '\\PuppyFW\\Fields\\Input';

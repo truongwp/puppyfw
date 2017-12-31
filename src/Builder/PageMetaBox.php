@@ -73,7 +73,7 @@ class PageMetaBox {
 	public function render( $post ) {
 		wp_nonce_field( 'puppyfw_page_meta_box', 'puppyfw_page_meta_box_nonce' );
 		$page_data = $post->post_excerpt ? json_decode( html_entity_decode( $post->post_excerpt ), true ) : array();
-		$page_data = Helpers::normalize_page( $page_data );
+		$page_data = puppyfw()->helper->normalize_page( $page_data );
 		?>
 		<p>
 			<label for="puppyfw-page-title"><?php esc_html_e( 'Page title', 'puppyfw' ); ?></label>
@@ -160,7 +160,7 @@ class PageMetaBox {
 		$this->remove_save_handle();
 
 		$page_data = wp_unslash( $_POST['puppyfw_page'] ); // WPCS: sanitization ok.
-		$page_data = Helpers::normalize_page( $page_data );
+		$page_data = puppyfw()->helper->normalize_page( $page_data );
 		$page_data = wp_json_encode( $page_data, JSON_UNESCAPED_UNICODE );
 
 		wp_update_post( array(
