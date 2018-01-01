@@ -26,14 +26,17 @@ add_filter( 'puppyfw_save_checkbox_value', 'puppyfw_filter_checkbox_save_value' 
  *
  * @param array $page_data Page data.
  * @param array $save_data Save data.
+ * @param array $args      Custom arguments.
  */
-function puppyfw_save_options_page( $page_data, $save_data ) {
+function puppyfw_save_option( $page_data, $save_data, $args = array() ) {
+	$page = puppyfw()->factory->create_page( $page_data );
+	$check = $page->check_permission();
+	if ( is_wp_error( $check ) ) {
+		return $check;
+	}
+
 	$option_name = ! empty( $page_data['option_name'] ) ? $page_data['option_name'] : '';
 	$option_value = array();
-
-	if ( ! current_user_can( $page_data['capability'] ) ) {
-		return new WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
-	}
 
 	foreach ( $save_data as $field_data ) {
 		if ( empty( $field_data['id'] ) ) {
@@ -57,9 +60,9 @@ function puppyfw_save_options_page( $page_data, $save_data ) {
 		// Save in separate rows.
 		if ( ! $option_name ) {
 			if ( is_null( $value ) ) {
-				delete_option( $id );
+				$page->storage->delete( $id );
 			} else {
-				update_option( $id, $value );
+				$page->storage->update( $id, $value );
 			}
 
 			continue;
@@ -72,7 +75,7 @@ function puppyfw_save_options_page( $page_data, $save_data ) {
 	}
 
 	if ( $option_name ) {
-		update_option( $option_name, $option_value );
+		$page->storage->update( $option_name, $option_value );
 	}
 }
-add_action( 'puppyfw_save_option_options_page', 'puppyfw_save_options_page', 10, 2 );
+add_action( 'puppyfw_save_option', 'puppyfw_save_option', 10, 3 );

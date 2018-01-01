@@ -24,6 +24,13 @@ class Page {
 	public $type = 'options_page';
 
 	/**
+	 * Storage.
+	 *
+	 * @var Storages\Storage
+	 */
+	public $storage;
+
+	/**
 	 * Page data.
 	 *
 	 * @var array
@@ -70,6 +77,8 @@ class Page {
 				$this->add_field( $field );
 			}
 		}
+
+		$this->storage = new Storages\Option();
 	}
 
 	/**
@@ -225,6 +234,17 @@ class Page {
 		 * @param Page   $page      Option page instance.
 		 */
 		return apply_filters( 'puppyfw_get_option', $value, $option_id, $this );
+	}
+
+	/**
+	 * Checks permission when save.
+	 *
+	 * @return true|WP_Error Return true on success, WP_Error object on failure.
+	 */
+	public function check_permission() {
+		if ( ! current_user_can( $this->data['capability'] ) ) {
+			return new WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
+		}
 	}
 
 	/**

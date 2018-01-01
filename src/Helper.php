@@ -81,6 +81,31 @@ class Helper {
 	}
 
 	/**
+	 * Gets page class.
+	 *
+	 * @param  array $page_data Page data.
+	 * @return string
+	 */
+	public function get_page_class( $page_data ) {
+		$page_class = '\\PuppyFW\\Page';
+		$type = ! empty( $page_data['type'] ) ? $page_data['type'] : 'options_page';
+		$type_class = $this->to_camel_case( $type );
+		if ( class_exists( "\\PuppyFW\\{$type_class}" ) ) {
+			$page_class = "\\PuppyFW\\{$type_class}";
+		}
+
+		/**
+		 * Filters page class.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $page_class Page class.
+		 * @param array  $page_data  Page data.
+		 */
+		return apply_filters( 'puppyfw_page_class', $page_class, $page_data );
+	}
+
+	/**
 	 * Normalizes page data.
 	 *
 	 * @param  array $page_data Page data.

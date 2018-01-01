@@ -51,6 +51,7 @@ class REST {
 
 		$data = $request->get_param( 'field_data' );
 		$page_data = $request->get_param( 'page_data' );
+		$page_data = puppyfw()->helper->normalize_page( $page_data );
 
 		puppyfw()->helper->save_hooks( $page_data, $data );
 
