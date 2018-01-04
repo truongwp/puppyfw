@@ -28,6 +28,13 @@ class MetaBox extends Page {
 	public function get_id() {
 		return $this->data['id'];
 	}
+	
+	/**
+	 * Initializes storage.
+	 */
+	protected function init_storage() {
+		$this->storage = new Storages\PostMeta();
+	}
 
 	/**
 	 * Registers meta box.
@@ -62,8 +69,10 @@ class MetaBox extends Page {
 
 	/**
 	 * Render meta box.
+	 * 
+	 * @param \WP_Post $post Post object.
 	 */
-	public function render() {
+	public function render( $post ) {
 		?>
 		<div id="puppyfw-app" class="puppyfw-page-<?php echo esc_attr( $this->get_id() ); ?>">
 			<form>
@@ -96,9 +105,26 @@ class MetaBox extends Page {
 		if ( ! $this->is_screen() ) {
 			return;
 		}
+		$this->storage->set_post_id( $this->get_post_id() );
 		parent::load();
-		
 		add_action( 'save_post', array( $this, 'save' ) );
+	}
+	
+	/**
+	 * Gets post ID in edit post page.
+	 * This is copy from `wp-admin\post.php` file.
+	 * 
+	 * @return int
+	 */
+	protected function get_post_id() {
+		if ( isset( $_GET['post'] ) ) {
+			$post_id = $post_ID = (int) $_GET['post'];
+		} elseif ( isset( $_POST['post_ID'] ) ) {
+			$post_id = $post_ID = (int) $_POST['post_ID'];
+		} else {
+			$post_id = $post_ID = 0;
+		}
+		return $post_id;
 	}
 
 	/**

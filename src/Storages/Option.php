@@ -18,11 +18,9 @@ class Option implements Storage {
 	 *
 	 * @param string $name  Name.
 	 * @param mixed  $value Value.
-	 * @param array  $args  Custom arguments.
 	 */
-	public function add( $name, $value, $args = array() ) {
-		$autoload = ! empty( $args['autoload'] ) ? 'yes' : '';
-		return add_option( $name, $value, '', $autoload );
+	public function add( $name, $value ) {
+		return add_option( $name, $value );
 	}
 
 	/**
@@ -30,22 +28,19 @@ class Option implements Storage {
 	 *
 	 * @param string $name  Name.
 	 * @param mixed  $value Value.
-	 * @param array  $args  Custom arguments.
 	 */
-	public function update( $name, $value, $args = array() ) {
-		$autoload = ! empty( $args['autoload'] ) ? 'yes' : '';
-		return update_option( $name, $value, $autoload );
+	public function update( $name, $value ) {
+		return update_option( $name, $value );
 	}
 
 	/**
 	 * Gets a value.
 	 *
-	 * @param string $name Name.
-	 * @param array  $args Custom arguments.
-	 * @return mixed       Value.
+	 * @param string $name    Name.
+	 * @param mixed  $default Default value.
+	 * @return mixed          Value.
 	 */
-	public function get( $name, $args = array() ) {
-		$default = ! empty( $args['default'] ) ? $args['default'] : '';
+	public function get( $name, $default = '' ) {
 		return get_option( $name, $default );
 	}
 
@@ -53,9 +48,8 @@ class Option implements Storage {
 	 * Deletes a value.
 	 *
 	 * @param string $name Name.
-	 * @param array  $args Custom arguments.
 	 */
-	public function delete( $name, $args = array() ) {
+	public function delete( $name ) {
 		return delete_option( $name );
 	}
 }

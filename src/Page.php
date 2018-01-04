@@ -64,20 +64,29 @@ class Page {
 	 * @param array $data Page data.
 	 */
 	public function __construct( $data ) {
-		if ( ! empty( $data['fields'] ) ) {
+		$this->init_storage();
+		
+		/*if ( ! empty( $data['fields'] ) ) {
 			$fields = $data['fields'];
 			unset( $data['fields'] );
-		}
+		}*/
 
 		$data = $this->normalize( $data );
 		$this->data = apply_filters( 'puppyfw_normalize_page_data', $data, $this );
 
-		if ( isset( $fields ) ) {
+		/*if ( isset( $fields ) ) {
 			foreach ( $fields as $field ) {
 				$this->add_field( $field );
 			}
-		}
-
+		}*/
+	}
+	
+	/**
+	 * Initializes storage.
+	 * 
+	 * @since 1.0.0
+	 */
+	protected function init_storage() {
 		$this->storage = new Storages\Option();
 	}
 
@@ -185,6 +194,15 @@ class Page {
 	 * Loads page.
 	 */
 	public function load() {
+		$fields = $this->data['fields'];
+		unset( $this->data['fields'] );
+
+		if ( isset( $fields ) ) {
+			foreach ( $fields as $field ) {
+				$this->add_field( $field );
+			}
+		}
+		
 		/**
 		 * Fires before rendering page.
 		 *
@@ -218,10 +236,10 @@ class Page {
 		$default_value = isset( $this->defaults[ $option_id ] ) ? $this->defaults[ $option_id ] : null;
 
 		if ( $this->data['option_name'] ) {
-			$options = get_option( $this->data['option_name'], array() );
+			$options = $this->storage->get( $this->data['option_name'], array() );
 			$value = isset( $options[ $option_id ] ) ? $options[ $option_id ] : $default_value;
 		} else {
-			$value = get_option( $option_id, $default_value );
+			$value = $this->storage->get( $option_id, $default_value );
 		}
 
 		/**

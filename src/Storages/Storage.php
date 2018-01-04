@@ -18,33 +18,30 @@ interface Storage {
 	 *
 	 * @param string $name  Name.
 	 * @param mixed  $value Value.
-	 * @param array  $args  Custom arguments.
 	 */
-	public function add( $name, $value, $args = array() );
+	public function add( $name, $value );
 
 	/**
 	 * Updates a value.
 	 *
 	 * @param string $name  Name.
 	 * @param mixed  $value Value.
-	 * @param array  $args  Custom arguments.
 	 */
-	public function update( $name, $value, $args = array() );
+	public function update( $name, $value );
 
 	/**
 	 * Gets a value.
 	 *
-	 * @param string $name Name.
-	 * @param array  $args Custom arguments.
-	 * @return mixed       Value.
+	 * @param string $name    Name.
+	 * @param mixed  $default Default value.
+	 * @return mixed          Value.
 	 */
-	public function get( $name, $args = array() );
+	public function get( $name, $default = '' );
 
 	/**
 	 * Deletes a value.
 	 *
 	 * @param string $name Name.
-	 * @param array  $args Custom arguments.
 	 */
-	public function delete( $name, $args = array() );
+	public function delete( $name );
 }

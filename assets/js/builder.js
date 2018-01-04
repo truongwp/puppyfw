@@ -1,4 +1,4 @@
-( function( puppyfw, Vue ) {
+( function( puppyfw, Vue, _ ) {
 	"use strict";
 
 	var helper, builder;
@@ -142,4 +142,4 @@
 	};
 
 	puppyfw.builder = builder;
-})( window.puppyfw, Vue );
+})( window.puppyfw, Vue, _ );

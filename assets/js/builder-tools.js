@@ -1,3 +1,4 @@
+/* global Clipboard */
 ( function() {
 	"use strict";
 

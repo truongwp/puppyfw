@@ -1,4 +1,5 @@
-( function( puppyfw, $ ) {
+/* global puppyfwPage */
+( function( puppyfw, Vue, $, _, wp ) {
 	"use strict";
 
 	var components = puppyfw.components = puppyfw.components || {};
@@ -698,8 +699,7 @@
 
 			initSortable: function() {
 				var $preview = $( this.$el ).find( '.puppyfw-images__preview' ),
-					_this = this,
-					value = this.field.value;
+					_this = this;
 
 				$preview.sortable({
 					placeholder: 'puppyfw-images__item-placeholder',
@@ -941,4 +941,4 @@
 
 	puppyfw.app.$mount( '#puppyfw-app' );
 
-})( window.puppyfw, jQuery );
+})( window.puppyfw, Vue, jQuery, _, wp );

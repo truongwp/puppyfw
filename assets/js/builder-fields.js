@@ -1,4 +1,4 @@
-( function( puppyfw ) {
+( function( puppyfw, Vue ) {
 	"use strict";
 
 	var builder = puppyfw.builder;
@@ -170,4 +170,4 @@
 		mixins: [ builder.mixins.HasAttrs ]
 	});
 
-})( window.puppyfw );
+})( window.puppyfw, Vue );
