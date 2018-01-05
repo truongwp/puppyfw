@@ -12,33 +12,33 @@ namespace PuppyFW\Storages;
  * PostMeta class
  */
 class PostMeta implements Storage {
-    
-    /**
-     * Post ID.
-     *
-     * @var int
-     */
-    protected $post_id = 0;
-    
-    /**
-     * PostMeta constructor.
-     * 
-     * @param int $post_id Post ID.
-     */
-    public function __construct( $post_id = '' ) {
-        if ( $post_id ) {
-            $this->set_post_id( $post_id );
-        }
-    }
-    
-    /**
-     * Sets post ID.
-     * 
-     * @param int $post_id Post ID.
-     */
-    public function set_post_id( $post_id ) {
-        $this->post_id = intval( $post_id );
-    }
+
+	/**
+	 * Post ID.
+	 *
+	 * @var int
+	 */
+	protected $post_id = 0;
+
+	/**
+	 * PostMeta constructor.
+	 *
+	 * @param int $post_id Post ID.
+	 */
+	public function __construct( $post_id = '' ) {
+		if ( $post_id ) {
+			$this->set_post_id( $post_id );
+		}
+	}
+
+	/**
+	 * Sets post ID.
+	 *
+	 * @param int $post_id Post ID.
+	 */
+	public function set_post_id( $post_id ) {
+		$this->post_id = intval( $post_id );
+	}
 
 	/**
 	 * Adds a value.
@@ -70,7 +70,7 @@ class PostMeta implements Storage {
 	public function get( $name, $default = '' ) {
 		$value = get_post_meta( $this->post_id, $name, true );
 		if ( ! $this->post_id || '' === $value ) {
-		    $value = $default;
+			$value = $default;
 		}
 		return $value;
 	}

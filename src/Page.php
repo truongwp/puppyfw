@@ -65,29 +65,38 @@ class Page {
 	 */
 	public function __construct( $data ) {
 		$this->init_storage();
-		
-		/*if ( ! empty( $data['fields'] ) ) {
-			$fields = $data['fields'];
-			unset( $data['fields'] );
-		}*/
 
 		$data = $this->normalize( $data );
 		$this->data = apply_filters( 'puppyfw_normalize_page_data', $data, $this );
-
-		/*if ( isset( $fields ) ) {
-			foreach ( $fields as $field ) {
-				$this->add_field( $field );
-			}
-		}*/
 	}
-	
+
 	/**
 	 * Initializes storage.
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	protected function init_storage() {
 		$this->storage = new Storages\Option();
+	}
+
+	/**
+	 * Prepares fields for rendering.
+	 *
+	 * @since 1.0.0
+	 */
+	protected function prepare_fields() {
+		if ( empty( $this->data['fields'] ) ) {
+			return;
+		}
+
+		$fields = $this->data['fields'];
+		unset( $this->data['fields'] );
+
+		if ( isset( $fields ) ) {
+			foreach ( $fields as $field ) {
+				$this->add_field( $field );
+			}
+		}
 	}
 
 	/**
@@ -194,15 +203,8 @@ class Page {
 	 * Loads page.
 	 */
 	public function load() {
-		$fields = $this->data['fields'];
-		unset( $this->data['fields'] );
+		$this->prepare_fields();
 
-		if ( isset( $fields ) ) {
-			foreach ( $fields as $field ) {
-				$this->add_field( $field );
-			}
-		}
-		
 		/**
 		 * Fires before rendering page.
 		 *
@@ -233,6 +235,10 @@ class Page {
 	 * @return mixed
 	 */
 	public function get_option( $option_id ) {
+		if ( empty( $this->fields ) ) {
+			$this->prepare_fields();
+		}
+
 		$default_value = isset( $this->defaults[ $option_id ] ) ? $this->defaults[ $option_id ] : null;
 
 		if ( $this->data['option_name'] ) {
@@ -322,7 +328,7 @@ class Page {
 	 * @return boolean
 	 */
 	public function is_screen() {
-		return get_current_screen()->id === $this->page_hook;
+		return is_admin() && get_current_screen()->id === $this->page_hook;
 	}
 
 	/**

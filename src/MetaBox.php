@@ -12,14 +12,14 @@ namespace PuppyFW;
  * MetaBox class
  */
 class MetaBox extends Page {
-	
+
 	/**
 	 * Page type.
 	 *
 	 * @var string
 	 */
 	public $type = 'meta_box';
-	
+
 	/**
 	 * MetaBox constructor.
 	 *
@@ -40,7 +40,7 @@ class MetaBox extends Page {
 	public function get_id() {
 		return $this->data['id'];
 	}
-	
+
 	/**
 	 * Initializes storage.
 	 */
@@ -81,7 +81,7 @@ class MetaBox extends Page {
 
 	/**
 	 * Render meta box.
-	 * 
+	 *
 	 * @param \WP_Post $post Post object.
 	 */
 	public function render_meta_box( $post ) {
@@ -102,7 +102,7 @@ class MetaBox extends Page {
 					</template>
 				</div>
 			</div>
-			
+
 			<input type="hidden" name="_puppyfw_page_data" value="<?php echo esc_attr( wp_json_encode( $this->data ) ); ?>">
 			<input type="hidden" name="_puppyfw_save_data" :value="JSON.stringify(getSaveData())">
 		</div>
@@ -119,20 +119,20 @@ class MetaBox extends Page {
 		$this->storage->set_post_id( $this->get_post_id() );
 		parent::load();
 	}
-	
+
 	/**
 	 * Gets post ID in edit post page.
 	 * This is copy from `wp-admin\post.php` file.
-	 * 
+	 *
 	 * @return int
 	 */
 	protected function get_post_id() {
 		if ( isset( $_GET['post'] ) ) {
-			$post_id = $post_ID = (int) $_GET['post'];
-		} elseif ( isset( $_POST['post_ID'] ) ) {
-			$post_id = $post_ID = (int) $_POST['post_ID'];
+			$post_id = (int) $_GET['post'];
+		} elseif ( isset( $_POST['post_ID'] ) ) { // WPCS: csrf ok.
+			$post_id = (int) $_POST['post_ID'];
 		} else {
-			$post_id = $post_ID = 0;
+			$post_id = 0;
 		}
 		return $post_id;
 	}
@@ -143,7 +143,7 @@ class MetaBox extends Page {
 	 * @return boolean
 	 */
 	public function is_screen() {
-		return in_array( get_current_screen()->id, $this->data['screen'] );
+		return is_admin() && in_array( get_current_screen()->id, $this->data['screen'] );
 	}
 
 	/**
@@ -152,6 +152,7 @@ class MetaBox extends Page {
 	 * @return true|WP_Error Return true on success, WP_Error object on failure.
 	 */
 	public function check_permission() {
+		// TODO.
 		return true;
 	}
 }
