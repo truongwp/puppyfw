@@ -19,6 +19,18 @@ class MetaBox extends Page {
 	 * @var string
 	 */
 	public $type = 'meta_box';
+	
+	/**
+	 * MetaBox constructor.
+	 *
+	 * @param array $data Meta box data.
+	 */
+	public function __construct( $data ) {
+		parent::__construct( $data );
+		if ( ! empty( $data['post_id'] ) ) {
+			$this->storage->set_post_id( $data['post_id'] );
+		}
+	}
 
 	/**
 	 * Gets meta box identity.
@@ -59,7 +71,7 @@ class MetaBox extends Page {
 		add_meta_box(
 			$this->data['id'],
 			$this->data['title'],
-			array( $this, 'render' ),
+			array( $this, 'render_meta_box' ),
 			$this->data['screen'],
 			$this->data['context'],
 			$this->data['priority'],
@@ -72,28 +84,27 @@ class MetaBox extends Page {
 	 * 
 	 * @param \WP_Post $post Post object.
 	 */
-	public function render( $post ) {
+	public function render_meta_box( $post ) {
 		?>
 		<div id="puppyfw-app" class="puppyfw-page-<?php echo esc_attr( $this->get_id() ); ?>">
-			<form>
-				<div class="puppyfw">
-					<div class="puppyfw__content">
-						<template v-if="notice.message">
-							<div :class="'puppyfw-notice puppyfw-notice-' + notice.type">
-								<span class="dashicons dashicons-yes" v-if="notice.type == 'success'"></span>
-								<span class="dashicons dashicons-no" v-if="notice.type == 'error'"></span>
-								{{ notice.message }}
-							</div>
-						</template>
+			<div class="puppyfw">
+				<div class="puppyfw__content">
+					<template v-if="notice.message">
+						<div :class="'puppyfw-notice puppyfw-notice-' + notice.type">
+							<span class="dashicons dashicons-yes" v-if="notice.type == 'success'"></span>
+							<span class="dashicons dashicons-no" v-if="notice.type == 'error'"></span>
+							{{ notice.message }}
+						</div>
+					</template>
 
-						<template v-for="field in fields">
-							<component :is="getComponentName(field.type)" :field="field" :key="field" v-show="field.visible"></component>
-						</template>
-
-						<input type="hidden" name="puppyfw_save_data" :value="JSON.stringify(getSaveData())">
-					</div>
+					<template v-for="field in fields">
+						<component :is="getComponentName(field.type)" :field="field" :key="field" v-show="field.visible"></component>
+					</template>
 				</div>
-			</form>
+			</div>
+			
+			<input type="hidden" name="_puppyfw_page_data" value="<?php echo esc_attr( wp_json_encode( $this->data ) ); ?>">
+			<input type="hidden" name="_puppyfw_save_data" :value="JSON.stringify(getSaveData())">
 		</div>
 		<?php
 	}
@@ -107,7 +118,6 @@ class MetaBox extends Page {
 		}
 		$this->storage->set_post_id( $this->get_post_id() );
 		parent::load();
-		add_action( 'save_post', array( $this, 'save' ) );
 	}
 	
 	/**
@@ -135,8 +145,13 @@ class MetaBox extends Page {
 	public function is_screen() {
 		return in_array( get_current_screen()->id, $this->data['screen'] );
 	}
-	
-	public function save( $post_id ) {
-		
+
+	/**
+	 * Checks permission when save.
+	 *
+	 * @return true|WP_Error Return true on success, WP_Error object on failure.
+	 */
+	public function check_permission() {
+		return true;
 	}
 }

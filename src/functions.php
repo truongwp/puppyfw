@@ -79,3 +79,29 @@ function puppyfw_save_option( $page_data, $save_data, $args = array() ) {
 	}
 }
 add_action( 'puppyfw_save_option', 'puppyfw_save_option', 10, 3 );
+
+
+/**
+ * Saves meta box data.
+ *
+ * @since 1.0.0
+ *
+ * @param int $post_id Post ID.
+ */
+function puppyfw_save_meta_box( $post_id ) {
+	// TODO: check security.
+	if ( empty( $_POST['_puppyfw_page_data'] ) || empty( $_POST['_puppyfw_save_data'] ) ) {
+		return;
+	}
+	
+	$page_data = json_decode( wp_unslash( $_POST['_puppyfw_page_data'] ), true );
+	$save_data = json_decode( wp_unslash( $_POST['_puppyfw_save_data'] ), true );
+	if ( ! $page_data || ! $save_data ) {
+		return;
+	}
+	
+	$page_data = puppyfw()->helper->normalize_page( $page_data );
+	$page_data['post_id'] = $post_id;
+	puppyfw()->helper->save_hooks( $page_data, $save_data );
+}
+add_action( 'save_post', 'puppyfw_save_meta_box' );

@@ -261,7 +261,7 @@ class Page {
 	 */
 	public function check_permission() {
 		if ( ! current_user_can( $this->data['capability'] ) ) {
-			return new WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
+			return new \WP_Error( 'permission-denied', __( 'Permission denied!', 'puppyfw' ) );
 		}
 	}
 
