@@ -154,7 +154,7 @@
 .puppyfw-tab__titles {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 0.76923em;
+  padding: 0 0.76923em;
   position: relative;
 }
 
@@ -204,7 +204,7 @@
 
 .puppyfw-tab--vertical .puppyfw-tab__titles {
   border-right: 1px solid #e5e5e5;
-  padding: 0;
+  padding: 0.76923em 0;
 }
 
 .puppyfw-tab--vertical .puppyfw-tab__titles:before {
@@ -220,6 +220,10 @@
 
 .puppyfw-tab--vertical .puppyfw-tab__titles li a {
   border: 0;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__titles li.active a {
+  margin-right: -1px;
 }
 
 .puppyfw-tab--vertical .puppyfw-tab__panes {

@@ -21,6 +21,7 @@
 		alpha: false,
 		tabs: [],
 		tab: '',
+		vertical: false,
 		quicktags: true,
 		tinymce: false,
 		media_buttons: false,

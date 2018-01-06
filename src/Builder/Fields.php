@@ -417,6 +417,13 @@ class Fields {
 					@changeValue="value => field.tabs = value"
 				></key-value-control>
 
+				<checkbox-control
+					:id="field.baseId + '-vertical'"
+					:label="puppyfw.i18n.builder.labels.vertical"
+					:value="field.vertical"
+					@changeValue="value => field.vertical = value"
+				></checkbox-control>
+
 				<?php FieldSettings::field_repeatable(); ?>
 
 				<?php FieldSettings::field_tab(); ?>

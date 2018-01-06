@@ -166,6 +166,7 @@ class Builder {
 				'taxonomy'     => _x( 'Taxonomy', 'field setting label', 'puppyfw' ),
 				'noneOption'   => _x( 'None option', 'field setting label', 'puppyfw' ),
 				'repeatable'   => _x( 'Repeatable', 'field setting label', 'puppyfw' ),
+				'vertical'    => _x( 'Vertical', 'field setting label', 'puppyfw' ),
 				'dependency'   => _x( 'Dependency', 'field setting label', 'puppyfw' ),
 			),
 		);

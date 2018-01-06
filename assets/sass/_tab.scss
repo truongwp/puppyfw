@@ -2,7 +2,7 @@
   &__titles {
     list-style: none;
     margin: 0;
-    padding: 0 0 0 ppfw-size(10, 13);
+    padding: 0 ppfw-size(10, 13);
     position: relative;
 
     &:before {
@@ -45,13 +45,13 @@
   &__pane {
   	padding: 0 10px;
   }
-  
+
   &--vertical {
     display: flex;
-    
+
     .puppyfw-tab__titles {
       border-right: 1px solid $color-border;
-      padding: 0;
+      padding: ppfw-size(10, 13) 0;
 
       &:before {
         display: none;
@@ -62,13 +62,19 @@
         margin: 0;
         border: 1px solid $color-border;
         border-right: 0;
-        
+
         a {
           border: 0;
         }
+
+        &.active {
+          a {
+            margin-right: -1px;
+          }
+        }
       }
     }
-    
+
     .puppyfw-tab__panes {
       flex: auto;
     }

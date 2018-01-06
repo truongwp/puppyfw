@@ -13,6 +13,25 @@ if ( ! defined( 'PUPPYFW_URL' ) ) {
 	define( 'PUPPYFW_URL', plugin_dir_url( __FILE__ ) );
 }
 
+
+\PuppyFW\StaticCache::set( 'rendered_fields', array() );
+
+$rest = new \PuppyFW\REST();
+$rest->init();
+
+/**
+ * Filters for enabling/disabling options page builder.
+ *
+ * @since 0.3.0
+ *
+ * @param bool $enable Whether to enable options page builder or not.
+ */
+if ( apply_filters( 'puppyfw_show_builder', true ) ) {
+	$builder = new \PuppyFW\Builder\Builder();
+	$builder->init();
+}
+
+
 /**
  * Gets framework instance.
  *
@@ -58,32 +77,6 @@ function puppyfw_init() {
 	do_action( 'puppyfw_after_init', $framework );
 }
 add_action( 'init', 'puppyfw_init' );
-
-
-/**
- * Runs something before init framework.
- *
- * @param \PuppyFW\Framework $framework Framework instance.
- */
-function puppyfw_before_init( \PuppyFW\Framework $framework ) {
-	\PuppyFW\StaticCache::set( 'rendered_fields', array() );
-
-	$rest = new \PuppyFW\REST();
-	$rest->init();
-
-	/**
-	 * Filters for enabling/disabling options page builder.
-	 *
-	 * @since 0.3.0
-	 *
-	 * @param bool $enable Whether to enable options page builder or not.
-	 */
-	if ( apply_filters( 'puppyfw_show_builder', true ) ) {
-		$builder = new \PuppyFW\Builder\Builder();
-		$builder->init();
-	}
-}
-add_action( 'puppyfw_before_init', 'puppyfw_before_init' );
 
 
 /**
