@@ -20,6 +20,18 @@ class Tab extends Field {
 	protected $has_value = false;
 
 	/**
+	 * Normalize field data.
+	 *
+	 * @param  array $field_data Field data.
+	 * @return array
+	 */
+	protected function normalize( $field_data ) {
+		$field_data = parent::normalize( $field_data );
+		$field_data['vertical'] = ! empty( $field_data['vertical'] );
+		return $field_data;
+	}
+
+	/**
 	 * Adds tab.
 	 *
 	 * @since 0.3.0
@@ -37,7 +49,7 @@ class Tab extends Field {
 	public function js_template() {
 		?>
 		<script type="text/x-template" id="puppyfw-field-template-tab">
-			<div class="puppyfw-field puppyfw-field--fullwidth puppyfw-tab" :id="field.id_attr">
+			<div class="puppyfw-field puppyfw-field--fullwidth puppyfw-tab" :class="{ 'puppyfw-tab--vertical': field.vertical }" :id="field.id_attr">
 				<ul class="puppyfw-tab__titles">
 					<li v-for="(tab, index) in tabs" :key="tab.baseId" :class="{ 'active': tab.key == currentTab }">
 						<a :href="'#' + getTabId(tab.key)" @click.prevent="activeTab(tab.key)">{{ tab.value }}</a>

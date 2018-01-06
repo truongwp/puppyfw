@@ -45,4 +45,32 @@
   &__pane {
   	padding: 0 10px;
   }
+  
+  &--vertical {
+    display: flex;
+    
+    .puppyfw-tab__titles {
+      border-right: 1px solid $color-border;
+      padding: 0;
+
+      &:before {
+        display: none;
+      }
+
+      li {
+        float: none;
+        margin: 0;
+        border: 1px solid $color-border;
+        border-right: 0;
+        
+        a {
+          border: 0;
+        }
+      }
+    }
+    
+    .puppyfw-tab__panes {
+      flex: auto;
+    }
+  }
 }

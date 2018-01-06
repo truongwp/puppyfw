@@ -196,6 +196,38 @@
   padding: 0 10px;
 }
 
+.puppyfw-tab--vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__titles {
+  border-right: 1px solid #e5e5e5;
+  padding: 0;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__titles:before {
+  display: none;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__titles li {
+  float: none;
+  margin: 0;
+  border: 1px solid #e5e5e5;
+  border-right: 0;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__titles li a {
+  border: 0;
+}
+
+.puppyfw-tab--vertical .puppyfw-tab__panes {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
 .puppyfw-image-preview {
   margin-top: 10px;
   margin-bottom: 10px;
