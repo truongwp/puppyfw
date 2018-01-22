@@ -119,6 +119,13 @@
 	});
 
 
+	builder.api.registerFieldType( 'password', puppyfw.i18n.builder.types.password );
+	builder.api.registerTemplate( 'password', {
+		template: '#puppyfw-field-edit-password-tpl',
+		mixins: [ builder.mixins.HasAttrs ]
+	});
+
+
 	builder.api.registerFieldType( 'radio', puppyfw.i18n.builder.types.radio );
 	builder.api.registerTemplate( 'radio', {
 		template: '#puppyfw-field-edit-choice-tpl',

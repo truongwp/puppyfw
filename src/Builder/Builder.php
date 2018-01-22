@@ -126,6 +126,7 @@ class Builder {
 				'images'       => _x( 'Images', 'field type', 'puppyfw' ),
 				'map'          => _x( 'Map', 'field type', 'puppyfw' ),
 				'number'       => _x( 'Number', 'field type', 'puppyfw' ),
+				'password'     => _x( 'Password', 'field type', 'puppyfw' ),
 				'radio'        => _x( 'Radio', 'field type', 'puppyfw' ),
 				'repeatable'   => _x( 'Repeatable', 'field type', 'puppyfw' ),
 				'select'       => _x( 'Select', 'field type', 'puppyfw' ),

@@ -400,6 +400,27 @@ class Fields {
 		</script>
 
 
+		<script type="text/x-template" id="puppyfw-field-edit-password-tpl">
+			<div class="field__edit">
+				<?php FieldSettings::field_type(); ?>
+
+				<?php FieldSettings::field_id(); ?>
+
+				<?php FieldSettings::field_title(); ?>
+
+				<?php FieldSettings::field_desc(); ?>
+
+				<?php FieldSettings::field_attrs(); ?>
+
+				<?php FieldSettings::field_repeatable(); ?>
+
+				<?php FieldSettings::field_tab(); ?>
+
+				<?php FieldSettings::field_dependency(); ?>
+			</div>
+		</script>
+
+
 		<script type="text/x-template" id="puppyfw-field-edit-tab-tpl">
 			<div class="field__edit">
 				<?php FieldSettings::field_type(); ?>

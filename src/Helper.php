@@ -46,10 +46,11 @@ class Helper {
 	 */
 	public function field_type_mapping() {
 		return apply_filters( 'puppyfw_field_type_mapping', array(
-			'text'        => 'input',
-			'number'      => 'input',
 			'email'       => 'input',
+			'number'      => 'input',
+			'password'    => 'input',
 			'tel'         => 'input',
+			'text'        => 'input',
 			'post_select' => 'select',
 		) );
 	}
