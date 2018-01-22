@@ -143,6 +143,8 @@ class BuilderMetaBox {
 
 		wp_enqueue_script( 'puppyfw-builder-app', PUPPYFW_URL . 'assets/js/builder-app.js', array( 'puppyfw-builder', 'vue' ), '0.3.0', true );
 
+		wp_enqueue_script( 'puppyfw-builder-page', PUPPYFW_URL . 'assets/js/builder/builder-page.js', array( 'jquery' ), '1.0.0', true );
+
 		/**
 		 * Fires after enqueuing builder app assets.
 		 *

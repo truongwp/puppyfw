@@ -129,6 +129,16 @@ class Helper {
 			return call_user_func( $method, $page_data );
 		}
 
+		return $page_data;
+	}
+
+	/**
+	 * Normalizes options page data.
+	 *
+	 * @param  array $page_data Page data.
+	 * @return array
+	 */
+	public function normalize_options_page( $page_data ) {
 		$page_data = wp_parse_args( $page_data, array(
 			'parent_slug' => '',
 			'page_title'  => '',
