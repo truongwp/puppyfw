@@ -24,7 +24,7 @@ class Fields {
 	 * Loads field assets.
 	 */
 	public function assets() {
-		wp_enqueue_script( 'puppyfw-builder-fields', PUPPYFW_URL . 'assets/js/builder-fields.js', array( 'puppyfw-builder' ), '0.3.0', true );
+		wp_enqueue_script( 'puppyfw-builder-fields', PUPPYFW_URL . 'assets/js/builder/builder-fields.js', array( 'puppyfw-builder' ), '0.3.0', true );
 	}
 
 	/**

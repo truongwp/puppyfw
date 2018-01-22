@@ -103,7 +103,7 @@ class ToolsMetaBox {
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'clipboard', PUPPYFW_URL . 'assets/js/lib/clipboard.min.js', array(), '1.7.1', true );
-		wp_enqueue_script( 'puppyfw-builder-tools', PUPPYFW_URL . 'assets/js/builder-tools.js', array( 'puppyfw-builder-app', 'clipboard' ), '0.4.0', true );
+		wp_enqueue_script( 'puppyfw-builder-tools', PUPPYFW_URL . 'assets/js/builder/builder-tools.js', array( 'puppyfw-builder-app', 'clipboard' ), '0.4.0', true );
 	}
 
 	/**

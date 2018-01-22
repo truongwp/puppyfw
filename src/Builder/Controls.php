@@ -24,7 +24,7 @@ class Controls {
 	 * Loads control assets.
 	 */
 	public function assets() {
-		wp_enqueue_script( 'puppyfw-builder-controls', PUPPYFW_URL . 'assets/js/builder-controls.js', array( 'puppyfw-builder' ), '0.3.0', true );
+		wp_enqueue_script( 'puppyfw-builder-controls', PUPPYFW_URL . 'assets/js/builder/builder-controls.js', array( 'puppyfw-builder' ), '0.3.0', true );
 	}
 
 	/**

@@ -115,7 +115,7 @@ class BuilderMetaBox {
 
 		wp_enqueue_script(
 			'puppyfw-builder',
-			PUPPYFW_URL . 'assets/js/builder.js',
+			PUPPYFW_URL . 'assets/js/builder/builder.js',
 			array(
 				'vue',
 				'jquery',
@@ -141,7 +141,7 @@ class BuilderMetaBox {
 		 */
 		do_action( 'puppyfw_builder_fields_assets' );
 
-		wp_enqueue_script( 'puppyfw-builder-app', PUPPYFW_URL . 'assets/js/builder-app.js', array( 'puppyfw-builder', 'vue' ), '0.3.0', true );
+		wp_enqueue_script( 'puppyfw-builder-app', PUPPYFW_URL . 'assets/js/builder/builder-app.js', array( 'puppyfw-builder', 'vue' ), '0.3.0', true );
 
 		wp_enqueue_script( 'puppyfw-builder-page', PUPPYFW_URL . 'assets/js/builder/builder-page.js', array( 'jquery' ), '1.0.0', true );
 
