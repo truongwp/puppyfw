@@ -141,6 +141,7 @@ class Helper {
 	 */
 	public function normalize_options_page( $page_data ) {
 		$page_data = wp_parse_args( $page_data, array(
+			'type'        => 'options_page',
 			'parent_slug' => '',
 			'page_title'  => '',
 			'menu_title'  => '',
